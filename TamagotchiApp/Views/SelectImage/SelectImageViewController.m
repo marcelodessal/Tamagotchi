@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *imagen4;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSString *petName;
+@property (strong, nonatomic) IBOutlet UILabel *lblMessage;
 
 
 @end
@@ -36,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setTitle:@"Selección de Imágen"];
+    [self setTitle:@"Imágen"];
     [self.scrollView setContentSize: CGSizeMake(480, 120)];
     [self.lblPetName setText:self.petName];
 }
@@ -46,8 +47,12 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)continue:(id)sender {
-    ShowEnergyViewController *newController = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil                                                                                   withPetName:self.petName withPetImage:self.imagenSeleccionada.image];
-    [self.navigationController pushViewController:newController animated:YES];
+    if (self.imagenSeleccionada.image) {
+        ShowEnergyViewController *newController = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil                                                                                   withPetName:self.petName withPetImage:self.imagenSeleccionada.image];
+        [self.navigationController pushViewController:newController animated:YES];
+    } else {
+        self.lblMessage.text = @"Seleccione una mascota";
+    }
 }
 
 - (IBAction)selectImage:(UIButton*)sender {
@@ -68,6 +73,7 @@
         default:
             break;
     }
+    self.lblMessage.text = @"";
     
 }
 

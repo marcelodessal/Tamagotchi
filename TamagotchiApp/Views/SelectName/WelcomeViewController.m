@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setTitle:@"Tamagotchi"];
+    [self setTitle:@"Inicio"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,5 +51,7 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+
 
 @end
