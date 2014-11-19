@@ -52,6 +52,14 @@
     return YES;
 }
 
-
+- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if([string rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].length) {
+        return YES;
+    } else if(!string.length) { //return exception
+        return YES;
+    }
+    return NO;
+}
 
 @end
