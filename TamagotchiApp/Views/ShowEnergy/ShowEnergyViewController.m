@@ -9,6 +9,8 @@
 #import "ShowEnergyViewController.h"
 
 @interface ShowEnergyViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *energyLeft;
+@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 
 @end
 
@@ -17,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    int energy = [self.progressView progress] * 100;
+    NSString *value = [NSString stringWithFormat:@" %i ",energy];
+    [self.energyLeft setText: value];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +31,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

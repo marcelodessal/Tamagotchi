@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *imagen2;
 @property (strong, nonatomic) IBOutlet UIButton *imagen3;
 @property (strong, nonatomic) IBOutlet UIButton *imagen4;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -22,13 +23,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.scrollView setContentSize: CGSizeMake(480, 120)];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)select1:(id)sender {
+- (IBAction)selectImage:(UIButton*)sender {
+    
+    switch (sender.tag) {
+        case 0:
+            [self.imagenSeleccionada setImage:[UIImage imageNamed:@"ciervo_comiendo_1"]];
+            break;
+        case 1:
+            [self.imagenSeleccionada setImage:[UIImage imageNamed:@"gato_comiendo_1"]];
+            break;
+        case 2:
+            [self.imagenSeleccionada setImage:[UIImage imageNamed:@"leon_comiendo_1"]];
+            break;
+        case 3:
+            [self.imagenSeleccionada setImage:[UIImage imageNamed:@"jirafa_comiendo_1"]];
+            break;
+        default:
+            break;
+    }
     
 }
 

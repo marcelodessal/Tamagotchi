@@ -11,6 +11,7 @@
                 <outlet property="imagen3" destination="z1D-9N-suU" id="Ebc-Gl-cN3"/>
                 <outlet property="imagen4" destination="6dC-xd-iAE" id="3E7-g0-XbN"/>
                 <outlet property="imagenSeleccionada" destination="tOS-bF-iqB" id="050-fo-DBC"/>
+                <outlet property="scrollView" destination="ATT-nm-Lar" id="gDp-YY-hSV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,38 +25,47 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ATT-nm-Lar">
-                    <rect key="frame" x="0.0" y="382" width="320" height="93"/>
+                    <rect key="frame" x="0.0" y="382" width="320" height="120"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47s-cN-PXb">
-                            <rect key="frame" x="80" y="0.0" width="80" height="80"/>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47s-cN-PXb">
+                            <rect key="frame" x="120" y="0.0" width="120" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="gato_comiendo_1">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="selectImage:" destination="-1" eventType="touchUpInside" id="9zW-c0-Vhv"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z1D-9N-suU">
-                            <rect key="frame" x="160" y="0.0" width="80" height="80"/>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z1D-9N-suU">
+                            <rect key="frame" x="240" y="0.0" width="120" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="leon_comiendo_1">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="selectImage:" destination="-1" eventType="touchUpInside" id="zoB-Xr-CUd"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6dC-xd-iAE">
-                            <rect key="frame" x="240" y="0.0" width="80" height="80"/>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6dC-xd-iAE">
+                            <rect key="frame" x="360" y="0.0" width="80" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="jirafa_comiendo_1">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="selectImage:" destination="-1" eventType="touchUpInside" id="ZcL-ZQ-lFO"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yxT-Nf-LMd">
-                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" backgroundImage="ciervo_comiendo_1">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="select1:" destination="-1" eventType="touchUpInside" id="KkN-UB-wpd"/>
+                                <action selector="selectImage:" destination="-1" eventType="touchUpInside" id="bbI-df-xL1"/>
                             </connections>
                         </button>
                     </subviews>
