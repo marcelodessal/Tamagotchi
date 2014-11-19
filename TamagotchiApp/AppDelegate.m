@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import "WelcomeViewController.h"
-#import "SelectImageViewController.h"
-#import "ShowEnergyViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,10 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    //WelcomeViewController* home = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
-    //SelectImageViewController* home = [[SelectImageViewController alloc] initWithNibName:@"SelectImageViewController" bundle:nil];
-    ShowEnergyViewController* home = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil];
-    
+    WelcomeViewController* home = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
     
     UINavigationController* navControllerHome = [[UINavigationController alloc] initWithRootViewController:home];
     

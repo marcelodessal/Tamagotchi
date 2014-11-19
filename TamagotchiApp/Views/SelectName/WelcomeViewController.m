@@ -7,6 +7,7 @@
 //
 
 #import "WelcomeViewController.h"
+#import "SelectImageViewController.h"
 
 @interface WelcomeViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *nombreMascota;
@@ -18,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self setTitle:@"Tamagotchi"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,18 +28,28 @@
 }
 - (IBAction)continuar:(id)sender {
     
-    [self.nombreMascota resignFirstResponder];
+    NSString *petName = self.nombreMascota.text.capitalizedString;
+    
+    if (petName.length > 2) {
+        SelectImageViewController *newController = [[SelectImageViewController alloc] initWithNibName:@"SelectImageViewController" bundle:nil withPetName:petName];
+        [self.navigationController pushViewController:newController animated:YES];
+    } else if (petName.length > 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El nombre debe tener como mínimo tres letras" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El nombre no puede estar en blanco" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
 
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
 }
-
 
 @end

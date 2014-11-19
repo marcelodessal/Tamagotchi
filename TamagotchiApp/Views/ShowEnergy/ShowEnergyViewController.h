@@ -10,4 +10,6 @@
 
 @interface ShowEnergyViewController : UIViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withPetName:(NSString *)petName withPetImage:(UIImage *)petImage;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface SelectImageViewController : UIViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withPetName:(NSString *)petName;
+
 @end
