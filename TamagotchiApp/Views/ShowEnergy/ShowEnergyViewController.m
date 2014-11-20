@@ -7,12 +7,15 @@
 //
 
 #import "ShowEnergyViewController.h"
+#import "SelectFoodViewController.h"
 
 @interface ShowEnergyViewController ()
+@property (strong, nonatomic) IBOutlet UIButton *btnFeed;
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 @property (strong, nonatomic) IBOutlet UILabel *lblPetName;
 @property (strong, nonatomic) IBOutlet UILabel *lblEnergy;
 @property (strong, nonatomic) IBOutlet UIImageView *image;
+@property (strong, nonatomic) IBOutlet UIImageView *imgFood;
 
 @property (strong, nonatomic) NSString *petName;
 @property (strong, nonatomic) UIImage *petImage;
@@ -51,6 +54,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)feed:(id)sender {
+    SelectFoodViewController *newController = [[SelectFoodViewController alloc] initWithNibName:@"SelectFoodViewController" bundle:nil];
+    [newController setDelegate:self];
+    [self.navigationController pushViewController:newController animated:YES];
+}
+
+
+#pragma mark - SelectFoodDelegate methods
+- (void) didSelectFood:(Food *) foodItem {
+    [self.imgFood setImage:[UIImage imageNamed:foodItem.foodImage]];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

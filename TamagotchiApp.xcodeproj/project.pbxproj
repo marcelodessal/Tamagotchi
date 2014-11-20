@@ -11,6 +11,11 @@
 		B00F85FB1A1BD0630005847C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B00F85FA1A1BD0630005847C /* AppDelegate.m */; };
 		B00F86031A1BD0630005847C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00F86021A1BD0630005847C /* Images.xcassets */; };
 		B00F86121A1BD0630005847C /* TamagotchiAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B00F86111A1BD0630005847C /* TamagotchiAppTests.m */; };
+		B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */; };
+		B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */; };
+		B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE6E1A1E70DD00C19810 /* FoodCell.m */; };
+		B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE6F1A1E70DD00C19810 /* FoodCell.xib */; };
+		B088FE741A1E7EBA00C19810 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE731A1E7EBA00C19810 /* Food.m */; };
 		B0D35F661A1BD4D90059E6AC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */; };
 		B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */; };
 		B0D35F6B1A1BD52F0059E6AC /* SelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F691A1BD52F0059E6AC /* SelectImageViewController.m */; };
@@ -39,6 +44,14 @@
 		B00F860B1A1BD0630005847C /* TamagotchiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TamagotchiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00F86101A1BD0630005847C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B00F86111A1BD0630005847C /* TamagotchiAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TamagotchiAppTests.m; sourceTree = "<group>"; };
+		B088FE591A1E46A800C19810 /* SelectFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectFoodViewController.h; path = Views/SelectFood/SelectFoodViewController.h; sourceTree = "<group>"; };
+		B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectFoodViewController.m; path = Views/SelectFood/SelectFoodViewController.m; sourceTree = "<group>"; };
+		B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectFoodViewController.xib; path = Views/SelectFood/SelectFoodViewController.xib; sourceTree = "<group>"; };
+		B088FE6D1A1E70DD00C19810 /* FoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodCell.h; path = Views/SelectFood/FoodCell.h; sourceTree = "<group>"; };
+		B088FE6E1A1E70DD00C19810 /* FoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodCell.m; path = Views/SelectFood/FoodCell.m; sourceTree = "<group>"; };
+		B088FE6F1A1E70DD00C19810 /* FoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FoodCell.xib; path = Views/SelectFood/FoodCell.xib; sourceTree = "<group>"; };
+		B088FE721A1E7EBA00C19810 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Food.h; path = Views/Food.h; sourceTree = "<group>"; };
+		B088FE731A1E7EBA00C19810 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Food.m; path = Views/Food.m; sourceTree = "<group>"; };
 		B0D35F631A1BD4D90059E6AC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -127,11 +140,27 @@
 		B00F86201A1BD3320005847C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B088FE581A1E468100C19810 /* SelectFood */,
 				B0D3607A1A1BE2AB0059E6AC /* ShowEnergy */,
 				B0D35F611A1BD4D90059E6AC /* SelectImage */,
 				B0D35F621A1BD4D90059E6AC /* SelectName */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		B088FE581A1E468100C19810 /* SelectFood */ = {
+			isa = PBXGroup;
+			children = (
+				B088FE591A1E46A800C19810 /* SelectFoodViewController.h */,
+				B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */,
+				B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */,
+				B088FE6D1A1E70DD00C19810 /* FoodCell.h */,
+				B088FE6E1A1E70DD00C19810 /* FoodCell.m */,
+				B088FE6F1A1E70DD00C19810 /* FoodCell.xib */,
+				B088FE721A1E7EBA00C19810 /* Food.h */,
+				B088FE731A1E7EBA00C19810 /* Food.m */,
+			);
+			name = SelectFood;
 			sourceTree = "<group>";
 		};
 		B0D35F611A1BD4D90059E6AC /* SelectImage */ = {
@@ -248,8 +277,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00F86031A1BD0630005847C /* Images.xcassets in Resources */,
+				B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */,
 				B0D35F6C1A1BD52F0059E6AC /* SelectImageViewController.xib in Resources */,
 				B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */,
+				B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */,
 				B0D3607F1A1BE2C70059E6AC /* ShowEnergyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,9 +300,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D35F6B1A1BD52F0059E6AC /* SelectImageViewController.m in Sources */,
+				B088FE741A1E7EBA00C19810 /* Food.m in Sources */,
 				B00F85FB1A1BD0630005847C /* AppDelegate.m in Sources */,
+				B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */,
 				B0D3607E1A1BE2C70059E6AC /* ShowEnergyViewController.m in Sources */,
 				B00F85F81A1BD0630005847C /* main.m in Sources */,
+				B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */,
 				B0D35F661A1BD4D90059E6AC /* WelcomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectFoodViewController.h"
 
-@interface ShowEnergyViewController : UIViewController
+@interface ShowEnergyViewController : UIViewController <SelectFoodDelegate>
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withPetName:(NSString *)petName withPetImage:(UIImage *)petImage;
 
