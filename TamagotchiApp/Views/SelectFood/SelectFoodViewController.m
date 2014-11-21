@@ -17,24 +17,24 @@
 @end
 
 @implementation SelectFoodViewController {
-    NSArray *foodItems;
+    //NSArray *foodItems;
+    NSMutableArray *foodItems;
+    NSDictionary *foodList;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    foodItems = [[NSArray alloc] initWithObjects:
-                 [[Food alloc] initWithName:@"Tarta" withImage:@"comida_0"],
-                 [[Food alloc] initWithName:@"Torta" withImage:@"comida_1"],
-                 [[Food alloc] initWithName:@"Helado" withImage:@"comida_2"],
-                 [[Food alloc] initWithName:@"Pollo" withImage:@"comida_3"],
-                 [[Food alloc] initWithName:@"Hamburguesa" withImage:@"comida_4"],
-                 [[Food alloc] initWithName:@"Pescado" withImage:@"comida_5"],
-                 [[Food alloc] initWithName:@"Fruta" withImage:@"comida_6"],
-                 [[Food alloc] initWithName:@"Salchicha" withImage:@"comida_7"],
-                 [[Food alloc] initWithName:@"Pan" withImage:@"comida_8"],nil];
-   
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"Food" withExtension:@"plist"];
+    foodList = [NSDictionary dictionaryWithContentsOfURL:url];
+    foodItems = [[NSMutableArray alloc] init];
+    
+    for (id key in foodList) {
+        Food *item = [[Food alloc] initWithName:key withImage:foodList[key]];
+        [foodItems addObject:item];
+    }
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"FoodCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"foodCell"];
     
     [self.tableView reloadData];

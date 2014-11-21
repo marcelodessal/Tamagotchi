@@ -11,6 +11,8 @@
 		B00F85FB1A1BD0630005847C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B00F85FA1A1BD0630005847C /* AppDelegate.m */; };
 		B00F86031A1BD0630005847C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00F86021A1BD0630005847C /* Images.xcassets */; };
 		B00F86121A1BD0630005847C /* TamagotchiAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B00F86111A1BD0630005847C /* TamagotchiAppTests.m */; };
+		B01DE4BB1A1F501800E2C7DF /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = B01DE4BA1A1F501800E2C7DF /* Food.plist */; };
+		B01DE4BD1A1F518500E2C7DF /* Pets.plist in Resources */ = {isa = PBXBuildFile; fileRef = B01DE4BC1A1F518500E2C7DF /* Pets.plist */; };
 		B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */; };
 		B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */; };
 		B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE6E1A1E70DD00C19810 /* FoodCell.m */; };
@@ -44,6 +46,8 @@
 		B00F860B1A1BD0630005847C /* TamagotchiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TamagotchiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00F86101A1BD0630005847C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B00F86111A1BD0630005847C /* TamagotchiAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TamagotchiAppTests.m; sourceTree = "<group>"; };
+		B01DE4BA1A1F501800E2C7DF /* Food.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
+		B01DE4BC1A1F518500E2C7DF /* Pets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pets.plist; sourceTree = "<group>"; };
 		B088FE591A1E46A800C19810 /* SelectFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectFoodViewController.h; path = Views/SelectFood/SelectFoodViewController.h; sourceTree = "<group>"; };
 		B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectFoodViewController.m; path = Views/SelectFood/SelectFoodViewController.m; sourceTree = "<group>"; };
 		B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectFoodViewController.xib; path = Views/SelectFood/SelectFoodViewController.xib; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 			children = (
 				B00F85F61A1BD0630005847C /* Info.plist */,
 				B00F85F71A1BD0630005847C /* main.m */,
+				B01DE4BA1A1F501800E2C7DF /* Food.plist */,
+				B01DE4BC1A1F518500E2C7DF /* Pets.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -276,6 +282,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01DE4BD1A1F518500E2C7DF /* Pets.plist in Resources */,
+				B01DE4BB1A1F501800E2C7DF /* Food.plist in Resources */,
 				B00F86031A1BD0630005847C /* Images.xcassets in Resources */,
 				B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */,
 				B0D35F6C1A1BD52F0059E6AC /* SelectImageViewController.xib in Resources */,
