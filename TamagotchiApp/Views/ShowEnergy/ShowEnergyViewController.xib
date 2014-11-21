@@ -73,9 +73,18 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="6Xo-qI-U8h" appends="YES" id="O1T-yE-SZo"/>
+            </connections>
             <point key="canvasLocation" x="140" y="155"/>
         </view>
+        <tapGestureRecognizer id="6Xo-qI-U8h">
+            <connections>
+                <action selector="handleTap:" destination="-1" id="24X-bp-nPp"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

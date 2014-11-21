@@ -64,8 +64,22 @@
 #pragma mark - SelectFoodDelegate methods
 - (void) didSelectFood:(Food *) foodItem {
     [self.imgFood setImage:[UIImage imageNamed:foodItem.foodImage]];
+    [self.imgFood setCenter:CGPointMake(267, 514)];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+#pragma mark - Gestures methods
+- (IBAction)handleTap:(UITapGestureRecognizer *)recognizer {
+    CGPoint location = [recognizer locationInView:self.view];
+    
+    if (self.imgFood) {
+        [UIView animateWithDuration:1.0f animations:^(void) {
+            [self.imgFood setCenter:location];
+        }];
+        
+    }
+    
+}
 
 @end
