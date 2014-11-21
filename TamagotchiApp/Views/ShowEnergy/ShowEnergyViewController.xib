@@ -9,8 +9,8 @@
                 <outlet property="btnFeed" destination="SZ4-4D-zne" id="x7D-0m-0s1"/>
                 <outlet property="image" destination="IeB-F0-az5" id="K3L-ju-GQK"/>
                 <outlet property="imgFood" destination="gaw-9P-a2W" id="PTQ-Vf-FTc"/>
-                <outlet property="lblEnergy" destination="bby-KQ-Z9p" id="MgI-kd-FFF"/>
                 <outlet property="lblPetName" destination="tR9-0x-qP0" id="rN2-IQ-NnO"/>
+                <outlet property="mouth" destination="vh6-rW-Vo9" id="rKv-C2-2mk"/>
                 <outlet property="progressView" destination="PaN-3v-WDq" id="YCf-sR-HBz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,15 +28,8 @@
                     <rect key="frame" x="28" y="443" width="218" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </progressView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bby-KQ-Z9p">
-                    <rect key="frame" x="250" y="433" width="35" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d1p-34-4rq">
-                    <rect key="frame" x="289" y="433" width="18" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Energy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d1p-34-4rq">
+                    <rect key="frame" x="261" y="433" width="53" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -71,6 +64,11 @@
                         <action selector="feed:" destination="-1" eventType="touchUpInside" id="gUY-Dk-gJJ"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="vh6-rW-Vo9">
+                    <rect key="frame" x="85" y="302" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>

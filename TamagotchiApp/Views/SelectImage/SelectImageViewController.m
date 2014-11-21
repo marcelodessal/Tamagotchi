@@ -8,6 +8,7 @@
 
 #import "SelectImageViewController.h"
 #import "ShowEnergyViewController.h"
+#import "Pet.h"
 
 @interface SelectImageViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *lblPetName;
@@ -17,9 +18,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *imagen3;
 @property (strong, nonatomic) IBOutlet UIButton *imagen4;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) NSString *petName;
-@property (strong, nonatomic) IBOutlet UILabel *lblMessage;
 
+@property (strong, nonatomic) IBOutlet UILabel *lblMessage;
+@property (strong, nonatomic) NSString *petName;
+@property (strong, nonatomic) NSString *petType;
 
 @end
 
@@ -48,7 +50,8 @@
 }
 - (IBAction)continue:(id)sender {
     if (self.imagenSeleccionada.image) {
-        ShowEnergyViewController *newController = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil                                                                                   withPetName:self.petName withPetImage:self.imagenSeleccionada.image];
+        Pet *pet = [[Pet alloc] initWithName:self.petName withImage:self.imagenSeleccionada.image withType:self.petType];
+        ShowEnergyViewController *newController = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil                                                                                   withPet: pet];
         [self.navigationController pushViewController:newController animated:YES];
     } else {
         self.lblMessage.text = @"Seleccione una mascota";
@@ -60,15 +63,19 @@
     switch (sender.tag) {
         case 0:
             [self.imagenSeleccionada setImage:[UIImage imageNamed:@"ciervo_comiendo_1"]];
+            self.petType = @"ciervo";
             break;
         case 1:
             [self.imagenSeleccionada setImage:[UIImage imageNamed:@"gato_comiendo_1"]];
+            self.petType = @"gato";
             break;
         case 2:
             [self.imagenSeleccionada setImage:[UIImage imageNamed:@"leon_comiendo_1"]];
+            self.petType = @"leon";
             break;
         case 3:
             [self.imagenSeleccionada setImage:[UIImage imageNamed:@"jirafa_comiendo_1"]];
+            self.petType = @"jirafa";
             break;
         default:
             break;
