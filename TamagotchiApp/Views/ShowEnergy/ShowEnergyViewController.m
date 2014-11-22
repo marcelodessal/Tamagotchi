@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 @property (strong, nonatomic) IBOutlet UIImageView *imgFood;
 @property (strong, nonatomic) IBOutlet UIImageView *mouth;
+@property (strong, nonatomic) MFMailComposeViewController *mailComposer;
 
 @property (strong, nonatomic) Pet *pet;
 
@@ -55,6 +56,11 @@
     } else { // jirafa
         [self.mouth setCenter:CGPointMake(160, 245)];
     }
+    
+    //Add mail button to navigation bar
+    UIBarButtonItem* mailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mail_icon"]  style:UIBarButtonItemStyleDone target:self action:@selector(sendMail:)];
+ 
+    self.navigationItem.rightBarButtonItem = mailButton;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,7 +74,48 @@
     [self.navigationController pushViewController:newController animated:YES];
 }
 
+- (void)sendMail:(id)sender {
+    NSString *emailTitle = @"Que app copada";
+    NSString *messageBody = [NSString stringWithFormat:@"Buenas! Soy %@, cómo va? Quería comentarte que estuve usando la App TamagotchiApp para comerme todo y está genial. Bajatela YA!!   Saludos", self.pet.petName];
+    
+    self.mailComposer = [[MFMailComposeViewController alloc] init];
+    self.mailComposer.mailComposeDelegate = self;
+    [self.mailComposer setSubject:emailTitle];
+    [self.mailComposer setMessageBody:messageBody isHTML:NO];
+    
+    // Present mail view controller on screen
+    [self presentViewController:self.mailComposer animated:YES completion:nil];
+    
+}
 
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    
+    UIAlertView *alert;
+    switch (result) {
+         case MFMailComposeResultCancelled:
+            alert = [[UIAlertView alloc] initWithTitle:@"Cancel by user" message:@"You canceled the mail" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+            break;
+        case MFMailComposeResultSaved:
+            alert = [[UIAlertView alloc] initWithTitle:@"Draft Saved" message:@"Composed Mail is saved in draft." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+            break;
+        case MFMailComposeResultSent:
+            alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You have successfully sent email." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+            break;
+        case MFMailComposeResultFailed:
+            alert = [[UIAlertView alloc] initWithTitle:@"Failed" message:@"Sorry! Failed to send." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+            break;
+        default:
+            break;
+    }
+
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 #pragma mark - SelectFoodDelegate methods
 - (void) didSelectFood:(Food *) foodItem {
     [self.imgFood setImage:[UIImage imageNamed:foodItem.foodImage]];

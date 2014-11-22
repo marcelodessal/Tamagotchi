@@ -19,6 +19,7 @@
 		B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE6E1A1E70DD00C19810 /* FoodCell.m */; };
 		B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE6F1A1E70DD00C19810 /* FoodCell.xib */; };
 		B088FE741A1E7EBA00C19810 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE731A1E7EBA00C19810 /* Food.m */; };
+		B08D52FD1A1FFB70004E9E19 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D52FC1A1FFB70004E9E19 /* MessageUI.framework */; };
 		B0D35F661A1BD4D90059E6AC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */; };
 		B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */; };
 		B0D35F6B1A1BD52F0059E6AC /* SelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F691A1BD52F0059E6AC /* SelectImageViewController.m */; };
@@ -59,6 +60,7 @@
 		B088FE6F1A1E70DD00C19810 /* FoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FoodCell.xib; path = Views/SelectFood/FoodCell.xib; sourceTree = "<group>"; };
 		B088FE721A1E7EBA00C19810 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Food.h; path = Views/Food.h; sourceTree = "<group>"; };
 		B088FE731A1E7EBA00C19810 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Food.m; path = Views/Food.m; sourceTree = "<group>"; };
+		B08D52FC1A1FFB70004E9E19 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B0D35F631A1BD4D90059E6AC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B08D52FD1A1FFB70004E9E19 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +94,7 @@
 		B00F85E91A1BD0630005847C = {
 			isa = PBXGroup;
 			children = (
+				B08D52FC1A1FFB70004E9E19 /* MessageUI.framework */,
 				B00F85F41A1BD0630005847C /* TamagotchiApp */,
 				B00F860E1A1BD0630005847C /* TamagotchiAppTests */,
 				B00F85F31A1BD0630005847C /* Products */,

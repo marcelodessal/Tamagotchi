@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SelectFoodViewController.h"
 #import "Pet.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ShowEnergyViewController : UIViewController <SelectFoodDelegate>
+@interface ShowEnergyViewController : UIViewController <SelectFoodDelegate, MFMailComposeViewControllerDelegate>
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withPet:(Pet *) pet;
 
