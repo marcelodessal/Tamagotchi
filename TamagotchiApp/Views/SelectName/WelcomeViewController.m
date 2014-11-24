@@ -8,6 +8,7 @@
 
 #import "WelcomeViewController.h"
 #import "SelectImageViewController.h"
+#import "Pet.h"
 
 @interface WelcomeViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *nombreMascota;

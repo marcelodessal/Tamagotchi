@@ -53,4 +53,8 @@
     return self.petEnergy;
 }
 
+- (BOOL)canExercise {
+    return self.petEnergy;
+}
+
 @end

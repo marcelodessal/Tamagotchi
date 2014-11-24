@@ -65,6 +65,15 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    if (timer && [timer isValid]) {
+        [timer invalidate];
+        timer = nil;
+    }
+    [super viewWillDisappear:YES];
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -86,15 +95,36 @@
 }
 
 - (void) startExercise {
-    [self.btnExercise setTitle:@"Parar" forState:UIControlStateNormal];
-    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startExerciseAnimation) userInfo:nil repeats:YES];
     
+    if ([self.pet canExercise]){
+        [self.btnExercise setTitle:@"Parar" forState:UIControlStateNormal];
+        [self startExerciseAnimation];
+    } 
+    //start timer to decrease pet energy every 1 sec
+    if (!timer || ![timer isValid]) {
+        timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startPetExercise) userInfo:nil repeats:YES];
+    }
+}
+
+- (void) startPetExercise {
+    
+    if ([self.pet canExercise]) {
+
+        [self.pet exercise];
+        
+        // update progress bar
+        [self updateEnergyAnimationWithDuration:1];
+    } else {
+        [self stopExercise];
+    }
+  
 }
 
 - (void) stopExercise {
     [self.btnExercise setTitle:@"Ejercitar" forState:UIControlStateNormal];
     [self stopExerciseAnimation];
     
+    // stop timer to stop decreasing pet energy
     if (timer && [timer isValid]) {
         [timer invalidate];
         timer = nil;
@@ -168,18 +198,8 @@
     
     [self.image setAnimationImages:images];
     [self.image setAnimationDuration:1];
-    [self.image setAnimationRepeatCount:1];
+    [self.image setAnimationRepeatCount:10];
     [self.image startAnimating];
-    
-    [self.pet exercise];
-    
-    // update progress bar with duration equals to 1 sec
-    [self updateEnergyAnimationWithDuration:1];
-    
-    // check if energy is over
-    if ([self.pet getEnergy] == 0)
-        [self stopExercise];
-    
 }
 
 - (void) stopExerciseAnimation {

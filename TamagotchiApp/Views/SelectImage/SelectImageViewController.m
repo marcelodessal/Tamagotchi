@@ -50,7 +50,6 @@
 }
 - (IBAction)continue:(id)sender {
     if (self.imagenSeleccionada.image) {
-//        Pet *pet = [[Pet alloc] initWithName:self.petName withImage:self.imagenSeleccionada.image withType:self.petType];
         Pet *pet = [Pet sharedInstance];
         [pet setInitialName:self.petName andImage:self.imagenSeleccionada.image andType:self.petType];
         ShowEnergyViewController *newController = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil                                                                                   withPet: pet];

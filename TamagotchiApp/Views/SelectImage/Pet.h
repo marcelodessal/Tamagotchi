@@ -19,4 +19,6 @@
 - (int) getEnergy;
 - (void) eat;
 - (void) exercise;
+- (BOOL) canExercise;
+
 @end
