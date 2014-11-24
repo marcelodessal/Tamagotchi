@@ -99,7 +99,7 @@
     if ([self.pet canExercise]){
         [self.btnExercise setTitle:@"Parar" forState:UIControlStateNormal];
         [self startExerciseAnimation];
-    } 
+    }
     //start timer to decrease pet energy every 1 sec
     if (!timer || ![timer isValid]) {
         timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startPetExercise) userInfo:nil repeats:YES];
@@ -194,6 +194,7 @@
                        [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_2",self.pet.petType]],
                        [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_3",self.pet.petType]],
                        [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_4",self.pet.petType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_5",self.pet.petType]],
                        nil];
     
     [self.image setAnimationImages:images];
