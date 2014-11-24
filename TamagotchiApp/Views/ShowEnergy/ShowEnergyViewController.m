@@ -93,19 +93,19 @@
     UIAlertView *alert;
     switch (result) {
          case MFMailComposeResultCancelled:
-            alert = [[UIAlertView alloc] initWithTitle:@"Cancel by user" message:@"You canceled the mail" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"Has cancelado el mensaje" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [alert show];
             break;
         case MFMailComposeResultSaved:
-            alert = [[UIAlertView alloc] initWithTitle:@"Draft Saved" message:@"Composed Mail is saved in draft." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El mensaje ha sido guardado como borrador." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [alert show];
             break;
         case MFMailComposeResultSent:
-            alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You have successfully sent email." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El mensaje fue enviado exitosamente." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [alert show];
             break;
         case MFMailComposeResultFailed:
-            alert = [[UIAlertView alloc] initWithTitle:@"Failed" message:@"Sorry! Failed to send." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El envio ha fallado." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             [alert show];
             break;
         default:
