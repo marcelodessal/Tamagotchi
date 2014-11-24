@@ -14,6 +14,9 @@
 @property (strong, nonatomic) UIImage *petImage;
 @property (strong, nonatomic) NSString *petType;
 
-- (instancetype)initWithName:(NSString*) name withImage:(UIImage *) image withType:(NSString*) type;
-
++ (instancetype) sharedInstance;
+- (instancetype)setInitialName:(NSString*) name andImage:(UIImage*) image andType:(NSString *) type;
+- (int) getEnergy;
+- (void) eat;
+- (void) exercise;
 @end
