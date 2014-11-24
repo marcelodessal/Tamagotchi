@@ -18,14 +18,19 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imgFood;
 @property (strong, nonatomic) IBOutlet UIImageView *mouth;
 @property (strong, nonatomic) MFMailComposeViewController *mailComposer;
+@property (strong, nonatomic) IBOutlet UIButton *btnExercise;
 
 @property (strong, nonatomic) Pet *pet;
 
-@property BOOL foodAvailable;
+@property BOOL isFoodAvailable;
+@property BOOL isExercising;
 
 @end
 
-@implementation ShowEnergyViewController
+@implementation ShowEnergyViewController {
+    
+    NSTimer *timer;
+}
     
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withPet:(Pet *) pet
 {
@@ -44,7 +49,10 @@
     [self.lblPetName setText:self.pet.petName];
     [self.image setImage:self.pet.petImage];
     
-    self.foodAvailable = NO;
+    [self.progressView setProgress:1];
+    
+    self.isFoodAvailable = NO;
+    self.isExercising = NO;
     
     // Set mouth position according to what animal is
     if ([self.pet.petType isEqualToString:@"ciervo"]){
@@ -61,6 +69,15 @@
     UIBarButtonItem* mailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mail_icon"]  style:UIBarButtonItemStyleDone target:self action:@selector(sendMail:)];
  
     self.navigationItem.rightBarButtonItem = mailButton;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    if (timer && [timer isValid]) {
+        [timer invalidate];
+        timer = nil;
+    }
+    [super viewWillDisappear:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,17 +128,66 @@
         default:
             break;
     }
-
+    
+    
     // Close the Mail Interface
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+
+- (IBAction)exercise:(id)sender {
+    if (self.isExercising)
+        [self stopExercise];
+    else
+        [self startExercise];
+    
+    self.isExercising = !self.isExercising;
+}
+
+- (void) startExercise {
+    
+    if ([self.pet canExercise]){
+        [self.btnExercise setTitle:@"Parar" forState:UIControlStateNormal];
+        [self startExerciseAnimation];
+    }
+    //start timer to decrease pet energy every 1 sec
+    if (!timer || ![timer isValid]) {
+        timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startPetExercise) userInfo:nil repeats:YES];
+    }
+}
+
+- (void) startPetExercise {
+    
+    if ([self.pet canExercise]) {
+
+        [self.pet exercise];
+        
+        // update progress bar
+        [self updateEnergyAnimationWithDuration:1];
+    } else {
+        [self stopExercise];
+    }
+  
+}
+
+- (void) stopExercise {
+    [self.btnExercise setTitle:@"Ejercitar" forState:UIControlStateNormal];
+    [self stopExerciseAnimation];
+    
+    // stop timer to stop decreasing pet energy
+    if (timer && [timer isValid]) {
+        [timer invalidate];
+        timer = nil;
+    }
+}
+
 #pragma mark - SelectFoodDelegate methods
 - (void) didSelectFood:(Food *) foodItem {
     [self.imgFood setImage:[UIImage imageNamed:foodItem.foodImage]];
     [self.imgFood setCenter:CGPointMake(267, 514)];
     [self.navigationController popViewControllerAnimated:YES];
-    self.foodAvailable = YES;
+    self.isFoodAvailable = YES;
     [self.imgFood setHidden:NO];
 }
 
@@ -130,7 +196,7 @@
 - (IBAction)handleTap:(UITapGestureRecognizer *)recognizer {
     CGPoint location = [recognizer locationInView:self.view];
     
-    if (self.foodAvailable) {
+    if (self.isFoodAvailable) {
         [UIView animateWithDuration:2.0f
                               delay:0.5f
                             options:UIViewAnimationOptionCurveEaseIn
@@ -142,7 +208,8 @@
                              BOOL isInside = [self.mouth pointInside: pt withEvent:nil];
                              if (isInside){
                                  [self.imgFood setHidden:YES];
-                                 [self eatFood];
+                                 [self.pet eat];
+                                 [self eatFoodAnimation];
                              }
                          }];
         
@@ -152,7 +219,7 @@
 
 
 #pragma mark - Animation methods
-- (void) eatFood {
+- (void) eatFoodAnimation {
     
     NSArray *images = [[NSArray alloc] initWithObjects:
                        [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",self.pet.petType]],
@@ -165,11 +232,35 @@
     [self.image setAnimationDuration:1];
     [self.image setAnimationRepeatCount:2];
     [self.image startAnimating];
-    [self changeEnergy];
+    
+    // update progress bar with duration equals to 2 sec (twice previous animation duration of 1 sec)
+    [self updateEnergyAnimationWithDuration:2];
 }
 
--(void) changeEnergy {
-    [UIView animateWithDuration:2 animations:^{ [self.progressView setProgress:1 animated:YES];}];
+- (void) startExerciseAnimation {
+    
+    NSArray *images = [[NSArray alloc] initWithObjects:
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_1",self.pet.petType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_2",self.pet.petType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_3",self.pet.petType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_4",self.pet.petType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_5",self.pet.petType]],
+                       nil];
+    
+    [self.image setAnimationImages:images];
+    [self.image setAnimationDuration:1];
+    [self.image setAnimationRepeatCount:10];
+    [self.image startAnimating];
+}
+
+- (void) stopExerciseAnimation {
+    [self.image stopAnimating];
+}
+
+
+-(void) updateEnergyAnimationWithDuration:(float) duration {
+    float progress = [self.pet getEnergy] / 100.0f;
+    [UIView animateWithDuration:duration animations:^{ [self.progressView setProgress:progress animated:YES];}];
 }
 
 @end
