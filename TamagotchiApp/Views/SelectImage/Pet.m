@@ -82,8 +82,4 @@ When pet get exhausted or get recovered, notifies this new condition
     return ![self canExercise];
 }
 
-
-
-
-
 @end

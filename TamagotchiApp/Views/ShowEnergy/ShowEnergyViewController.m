@@ -46,29 +46,6 @@
     self.isFoodAvailable = NO;
     self.isExercising = NO;
     
-    // Set mouth position according to the animal and its state
- 
-    if (pet.isExhausted) {
-        if ([pet.petType isEqualToString:@"ciervo"]){
-            [self.mouth setCenter:CGPointMake(160, 320)];
-        } else if ([pet.petType isEqualToString:@"gato"]){
-            [self.mouth setCenter:CGPointMake(160, 330)];
-        } else if ([pet.petType isEqualToString:@"leon"]){
-            [self.mouth setCenter:CGPointMake(105, 330)];
-        } else { // jirafa
-            [self.mouth setCenter:CGPointMake(170, 265)];
-        }
-    } else {
-        if ([pet.petType isEqualToString:@"ciervo"]){
-            [self.mouth setCenter:CGPointMake(175, 300)];
-        } else if ([pet.petType isEqualToString:@"gato"]){
-            [self.mouth setCenter:CGPointMake(125, 300)];
-        } else if ([pet.petType isEqualToString:@"leon"]){
-            [self.mouth setCenter:CGPointMake(110, 320)];
-        } else { // jirafa
-            [self.mouth setCenter:CGPointMake(160, 245)];
-        }
-    }
     
     //Add mail button to navigation bar
     UIBarButtonItem* mailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mail_icon"]  style:UIBarButtonItemStyleDone target:self action:@selector(sendMail:)];
@@ -77,6 +54,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(petGetExhausted) name:GET_EXHAUSTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(petGetRecovered) name:GET_RECOVERED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(petGetPromoted) name:GET_PROMOTED object:nil];
@@ -149,7 +127,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
-
 
 - (IBAction)exercise:(id)sender {
     if (self.isExercising)
@@ -225,7 +202,31 @@
 
 - (IBAction)handleTap:(UITapGestureRecognizer *)recognizer {
     CGPoint location = [recognizer locationInView:self.view];
+
+    // Set mouth position according to the animal and its state
     
+    if (pet.isExhausted) {
+        if ([pet.petType isEqualToString:@"ciervo"]){
+            [self.mouth setCenter:CGPointMake(160, 320)];
+        } else if ([pet.petType isEqualToString:@"gato"]){
+            [self.mouth setCenter:CGPointMake(160, 330)];
+        } else if ([pet.petType isEqualToString:@"leon"]){
+            [self.mouth setCenter:CGPointMake(105, 330)];
+        } else { // jirafa
+            [self.mouth setCenter:CGPointMake(170, 265)];
+        }
+    } else {
+        if ([pet.petType isEqualToString:@"ciervo"]){
+            [self.mouth setCenter:CGPointMake(175, 300)];
+        } else if ([pet.petType isEqualToString:@"gato"]){
+            [self.mouth setCenter:CGPointMake(125, 300)];
+        } else if ([pet.petType isEqualToString:@"leon"]){
+            [self.mouth setCenter:CGPointMake(110, 320)];
+        } else { // jirafa
+            [self.mouth setCenter:CGPointMake(160, 245)];
+        }
+    }
+
     if (self.isFoodAvailable) {
         [UIView animateWithDuration:2.0f
                               delay:0.5f
