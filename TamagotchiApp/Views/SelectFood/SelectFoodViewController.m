@@ -58,6 +58,9 @@
     
     cell.foodName.text = [foodItems[indexPath.row] foodName];
     [cell.image setImage:[UIImage imageNamed:[foodItems[indexPath.row] foodImage]]];
+    int energyValue = [foodItems[indexPath.row] foodEnergy];
+    NSString *energy = [NSString stringWithFormat:@"Energía: +%i", energyValue];
+    cell.lblfoodEnergy.text = energy;
     
     return cell;
 }
