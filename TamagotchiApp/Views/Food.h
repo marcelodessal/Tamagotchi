@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {pan, helado, hamburguesa, tarta, fruta, pollo, torta, pescado, salchicha} FoodType;
+
 @interface Food : NSObject
 @property (strong, nonatomic) NSString *foodImage;
 @property (strong, nonatomic) NSString *foodName;
-
+@property FoodType foodType;
+@property int foodEnergy;
 - (instancetype)initWithName:(NSString*) name withImage:(NSString*) image;
 
 @end

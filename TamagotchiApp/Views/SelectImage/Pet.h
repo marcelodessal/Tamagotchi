@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <NotificationCenter/NotificationCenter.h>
+#import "Food.h"
+
+extern NSString* const GET_EXHAUSTED;
+extern NSString* const GET_RECOVERED;
+extern NSString* const GET_PROMOTED;
 
 @interface Pet : NSObject
 @property (strong, nonatomic) NSString *petName;
@@ -15,10 +21,12 @@
 @property (strong, nonatomic) NSString *petType;
 
 + (instancetype) sharedInstance;
-- (instancetype)setInitialName:(NSString*) name andImage:(UIImage*) image andType:(NSString *) type;
+-(void) setInitialValues;
 - (int) getEnergy;
-- (void) eat;
+- (int) getLevel;
+- (void) eatFood:(Food*)foodItem;
 - (void) exercise;
 - (BOOL) canExercise;
+- (BOOL) isExhausted;
 
 @end

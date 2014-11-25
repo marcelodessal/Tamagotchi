@@ -20,20 +20,11 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) IBOutlet UILabel *lblMessage;
-@property (strong, nonatomic) NSString *petName;
-@property (strong, nonatomic) NSString *petType;
 
 @end
 
-@implementation SelectImageViewController
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withPetName:(NSString *)petName;
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.petName = petName;
-    }
-    return self;
+@implementation SelectImageViewController {
+    Pet *pet;
 }
 
 - (void)viewDidLoad {
@@ -41,7 +32,8 @@
     // Do any additional setup after loading the view from its nib.
     [self setTitle:@"Imágen"];
     [self.scrollView setContentSize: CGSizeMake(480, 120)];
-    [self.lblPetName setText:self.petName];
+    pet = [Pet sharedInstance];
+    [self.lblPetName setText:pet.petName];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,9 +42,8 @@
 }
 - (IBAction)continue:(id)sender {
     if (self.imagenSeleccionada.image) {
-        Pet *pet = [Pet sharedInstance];
-        [pet setInitialName:self.petName andImage:self.imagenSeleccionada.image andType:self.petType];
-        ShowEnergyViewController *newController = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil                                                                                   withPet: pet];
+        pet.petImage = self.imagenSeleccionada.image;
+        ShowEnergyViewController *newController = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil];
         [self.navigationController pushViewController:newController animated:YES];
     } else {
         self.lblMessage.text = @"Seleccione una mascota";
@@ -64,19 +55,19 @@
     switch (sender.tag) {
         case 0:
             [self.imagenSeleccionada setImage:[UIImage imageNamed:@"ciervo_comiendo_1"]];
-            self.petType = @"ciervo";
+            pet.petType = @"ciervo";
             break;
         case 1:
             [self.imagenSeleccionada setImage:[UIImage imageNamed:@"gato_comiendo_1"]];
-            self.petType = @"gato";
+            pet.petType = @"gato";
             break;
         case 2:
             [self.imagenSeleccionada setImage:[UIImage imageNamed:@"leon_comiendo_1"]];
-            self.petType = @"leon";
+            pet.petType = @"leon";
             break;
         case 3:
             [self.imagenSeleccionada setImage:[UIImage imageNamed:@"jirafa_comiendo_1"]];
-            self.petType = @"jirafa";
+            pet.petType = @"jirafa";
             break;
         default:
             break;

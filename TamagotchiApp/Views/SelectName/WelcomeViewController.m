@@ -21,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setTitle:@"Inicio"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,12 +30,15 @@
 }
 - (IBAction)continuar:(id)sender {
     
-    NSString *petName = self.nombreMascota.text.capitalizedString;
+    Pet *pet = [Pet sharedInstance];
+    [pet setInitialValues];
     
-    if (petName.length > 2) {
-        SelectImageViewController *newController = [[SelectImageViewController alloc] initWithNibName:@"SelectImageViewController" bundle:nil withPetName:petName];
+    pet.petName = self.nombreMascota.text.capitalizedString;
+    
+    if (pet.petName.length > 2) {
+        SelectImageViewController *newController = [[SelectImageViewController alloc] initWithNibName:@"SelectImageViewController" bundle:nil];
         [self.navigationController pushViewController:newController animated:YES];
-    } else if (petName.length > 0) {
+    } else if (pet.petName.length > 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El nombre debe tener como mínimo tres letras" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     } else {
