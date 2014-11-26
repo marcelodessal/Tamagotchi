@@ -12,6 +12,7 @@
 
 @interface WelcomeViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *nombreMascota;
+@property (strong, nonatomic) Pet *pet;
 
 @end
 
@@ -22,23 +23,58 @@
     // Do any additional setup after loading the view from its nib.
     [self setTitle:@"Inicio"];
     
+    self.pet = [Pet sharedInstance];
+    [self.pet setInitialValues];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+// Restore previous game
+
+- (IBAction)restoreValues:(id)sender {
+    
+    NSString *restoreURLString = [NSString stringWithFormat:@"/pet/%@", self.pet.code];
+
+    [[NetworkManager sharedInstance] GET:restoreURLString parameters:nil
+                                  success:[self getSuccessHandler]
+                                  failure:[self getErrorHandler]];
+}
+
+- (Success) getSuccessHandler {
+    
+    return ^(NSURLSessionDataTask *task, id responseObject) {
+        
+        // TODO parsear el json y restaurar los valores del singleton
+        
+        [self nextScreen];
+    };
+}
+
+- (Failure) getErrorHandler {
+    
+    return ^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *errorMessage = [NSString stringWithFormat:@"Error: %@", error];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:errorMessage
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    };
+}
+
+// New game
+
 - (IBAction)continuar:(id)sender {
     
-    Pet *pet = [Pet sharedInstance];
-    [pet setInitialValues];
+    self.pet.petName = self.nombreMascota.text.capitalizedString;
     
-    pet.petName = self.nombreMascota.text.capitalizedString;
-    
-    if (pet.petName.length > 2) {
-        SelectImageViewController *newController = [[SelectImageViewController alloc] initWithNibName:@"SelectImageViewController" bundle:nil];
-        [self.navigationController pushViewController:newController animated:YES];
-    } else if (pet.petName.length > 0) {
+    if (self.pet.petName.length > 2) {
+        [self nextScreen];
+    } else if (self.pet.petName.length > 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El nombre debe tener como mínimo tres letras" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     } else {
@@ -46,6 +82,11 @@
         [alert show];
     }
     
+}
+
+- (void) nextScreen {
+    SelectImageViewController *newController = [[SelectImageViewController alloc] initWithNibName:@"SelectImageViewController" bundle:nil];
+    [self.navigationController pushViewController:newController animated:YES];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

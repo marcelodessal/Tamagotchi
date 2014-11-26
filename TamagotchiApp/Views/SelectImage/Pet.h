@@ -16,6 +16,7 @@ extern NSString* const GET_RECOVERED;
 extern NSString* const GET_PROMOTED;
 
 @interface Pet : NSObject
+@property (strong, nonatomic) NSString *code;
 @property (strong, nonatomic) NSString *petName;
 @property (strong, nonatomic) UIImage *petImage;
 @property (strong, nonatomic) NSString *petType;
@@ -28,5 +29,6 @@ extern NSString* const GET_PROMOTED;
 - (void) exercise;
 - (BOOL) canExercise;
 - (BOOL) isExhausted;
+- (NSDictionary*) getJSON;
 
 @end

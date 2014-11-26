@@ -38,6 +38,7 @@ When pet get exhausted or get recovered, notifies this new condition
 }
 
 - (void) setInitialValues {
+    self.code = @"MD8462";
     self.petEnergy = 100;
     self.petLevel = 1;
 }
@@ -80,6 +81,17 @@ When pet get exhausted or get recovered, notifies this new condition
 
 - (BOOL) isExhausted {
     return ![self canExercise];
+}
+
+- (NSDictionary*) getJSON {
+    NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
+                          self.code, @"code",
+                          self.petName, @"name",
+                          [NSNumber numberWithInt:self.petEnergy], @"energy",
+                          [NSNumber numberWithInt:self.petLevel], @"level",
+                          [NSNumber numberWithInt:self.petExperience ], @"experience",
+                          nil];
+    return json;
 }
 
 @end
