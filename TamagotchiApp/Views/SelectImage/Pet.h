@@ -30,5 +30,6 @@ extern NSString* const GET_PROMOTED;
 - (BOOL) canExercise;
 - (BOOL) isExhausted;
 - (NSDictionary*) getJSON;
+- (void) restoreValuesfromJSON:(NSDictionary*) values;
 
 @end

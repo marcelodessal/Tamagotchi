@@ -46,9 +46,7 @@
 - (Success) getSuccessHandler {
     
     return ^(NSURLSessionDataTask *task, id responseObject) {
-        
-        // TODO parsear el json y restaurar los valores del singleton
-        
+        [self.pet restoreValuesfromJSON: responseObject];
         [self nextScreen];
     };
 }

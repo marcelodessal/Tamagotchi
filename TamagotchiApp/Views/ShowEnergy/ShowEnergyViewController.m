@@ -23,7 +23,9 @@
 @property BOOL isFoodAvailable;
 @property BOOL isExercising;
 @property (strong, nonatomic) Food *foodItem;
+@property (strong, nonatomic) IBOutlet UILabel *lblEnergy;
 
+@property (strong, nonatomic) IBOutlet UILabel *lblLevel;
 
 @end
 
@@ -41,7 +43,10 @@
     [self.lblPetName setText:pet.petName];
     [self.image setImage:pet.petImage];
     
+    
     [self updateEnergyBarAnimationWithDuration:1];
+    [self.lblEnergy setText:[NSString stringWithFormat:@"%i", [pet getEnergy]]];
+    [self.lblLevel setText:[NSString stringWithFormat:@"Nivel: %i", [pet getLevel]]];
     
     self.isFoodAvailable = NO;
     self.isExercising = NO;

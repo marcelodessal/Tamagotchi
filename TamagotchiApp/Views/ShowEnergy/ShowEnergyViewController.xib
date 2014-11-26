@@ -11,6 +11,8 @@
                 <outlet property="btnFeed" destination="SZ4-4D-zne" id="x7D-0m-0s1"/>
                 <outlet property="image" destination="IeB-F0-az5" id="K3L-ju-GQK"/>
                 <outlet property="imgFood" destination="gaw-9P-a2W" id="PTQ-Vf-FTc"/>
+                <outlet property="lblEnergy" destination="oOU-Hy-Sbk" id="B8G-KP-5K7"/>
+                <outlet property="lblLevel" destination="eBW-dy-0Zo" id="MqP-CJ-MpY"/>
                 <outlet property="lblPetName" destination="tR9-0x-qP0" id="rN2-IQ-NnO"/>
                 <outlet property="mouth" destination="vh6-rW-Vo9" id="rKv-C2-2mk"/>
                 <outlet property="progressView" destination="PaN-3v-WDq" id="YCf-sR-HBz"/>
@@ -32,11 +34,11 @@
                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="PaN-3v-WDq">
-                    <rect key="frame" x="28" y="443" width="264" height="2"/>
+                    <rect key="frame" x="16" y="430" width="264" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </progressView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Energy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d1p-34-4rq">
-                    <rect key="frame" x="134" y="448" width="53" height="21"/>
+                    <rect key="frame" x="141" y="435" width="53" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -89,6 +91,20 @@
                         <action selector="exercise:" destination="-1" eventType="touchUpInside" id="D8s-Ah-4e1"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oOU-Hy-Sbk">
+                    <rect key="frame" x="282" y="423" width="25" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nivel :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eBW-dy-0Zo">
+                    <rect key="frame" x="21" y="451" width="80" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
             <gestureRecognizers/>

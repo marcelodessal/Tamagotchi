@@ -94,4 +94,11 @@ When pet get exhausted or get recovered, notifies this new condition
     return json;
 }
 
+- (void)restoreValuesfromJSON:(NSDictionary *)dict {
+    self.petName = [dict objectForKey:@"name"];
+    self.petEnergy = [[dict objectForKey:@"energy"] intValue];
+    self.petLevel = [[dict objectForKey:@"level"] intValue];
+    self.petExperience = [[dict objectForKey:@"experience"] intValue];
+}
+
 @end
