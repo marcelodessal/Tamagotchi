@@ -104,43 +104,6 @@
     
 }
 
-//- (IBAction)networkingTester:(id)sender {
-//    [[NetworkManager sharedInstance] GET:@"/key/value/one/two" parameters:nil
-//                                 success:[self getSuccessHandler]
-//                                 failure:[self getErrorHandler]];
-//}
-//
-//
-//- (Success) getSuccessHandler {
-//    
-//    return ^(NSURLSessionDataTask *task, id responseObject) {
-//        
-//        NSDictionary *response = responseObject;
-//        NSString *message = [NSString stringWithFormat:@"%@", response[@"key"]];
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Respuesta"
-//                                                            message:message
-//                                                           delegate:nil
-//                                                  cancelButtonTitle:@"OK"
-//                                                  otherButtonTitles:nil];
-//        [alertView show];
-//    };
-//}
-//
-//- (Failure) getErrorHandler {
-//    
-//    return ^(NSURLSessionDataTask *task, NSError *error) {
-//        NSString *errorMessage = [NSString stringWithFormat:@"Error: %@", error];
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-//                                                            message:errorMessage
-//                                                           delegate:nil
-//                                                  cancelButtonTitle:@"OK"
-//                                                  otherButtonTitles:nil];
-//        [alertView show];
-//    };
-//}
-//
-
-
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     
     UIAlertView *alert;
