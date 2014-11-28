@@ -9,6 +9,7 @@
 #import "ShowEnergyViewController.h"
 #import "SelectFoodViewController.h"
 #import "Pet.h"
+#import "PushNotificationManager.h"
 
 @interface ShowEnergyViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *btnFeed;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblEnergy;
 
 @property (strong, nonatomic) IBOutlet UILabel *lblLevel;
+@property (strong, nonatomic) IBOutlet UILabel *lblPushNotification;
 
 @end
 
@@ -45,8 +47,6 @@
     
     
     [self updateEnergyBarAnimationWithDuration:1];
-    [self.lblEnergy setText:[NSString stringWithFormat:@"%i", [pet getEnergy]]];
-    [self.lblLevel setText:[NSString stringWithFormat:@"Nivel: %i", [pet getLevel]]];
     
     self.isFoodAvailable = NO;
     self.isExercising = NO;
@@ -189,10 +189,17 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Felicidades!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
     [self postToServer];
+    [self sendNotification];
+    
+}
+
+- (void)sendNotification {
+    NSDictionary *data = [pet getNotificationJSON];
+    [PushNotificationManager pushNotification:data];
 }
 
 - (void)postToServer {
-    NSDictionary *parameters = [pet getJSON];
+    NSDictionary *parameters = [pet getServerJSON];
     
     [[NetworkManager sharedInstance] POST:@"/pet" parameters:parameters
                                  success:[self getSuccessHandler]
@@ -202,15 +209,7 @@
 - (Success) getSuccessHandler {
     
     return ^(NSURLSessionDataTask *task, id responseObject) {
-        
-        NSDictionary *response = responseObject;
-        NSString *message = [NSString stringWithFormat:@"%@", response];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Respuesta"
-                                                            message:message
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
+        // Do something
     };
 }
 
@@ -233,7 +232,7 @@
 - (void) didSelectFood:(Food *) foodItem {
     self.foodItem = foodItem;
     [self.imgFood setImage:[UIImage imageNamed:foodItem.foodImage]];
-    [self.imgFood setCenter:CGPointMake(267, 514)];
+    [self.imgFood setCenter:CGPointMake(250, 430)];
     [self.navigationController popViewControllerAnimated:YES];
     self.isFoodAvailable = YES;
     [self.imgFood setHidden:NO];
@@ -351,6 +350,9 @@
 -(void) updateEnergyBarAnimationWithDuration:(float) duration {
     float progress = [pet getEnergy] / 100.0f;
     [UIView animateWithDuration:duration animations:^{ [self.progressView setProgress:progress animated:YES];}];
+    [self.lblEnergy setText:[NSString stringWithFormat:@"%i", [pet getEnergy]]];
+    [self.lblLevel setText:[NSString stringWithFormat:@"Nivel: %i", [pet getLevel]]];
+
 }
 
 

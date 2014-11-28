@@ -32,11 +32,24 @@
 		B00F86031A1BD0630005847C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00F86021A1BD0630005847C /* Images.xcassets */; };
 		B00F86121A1BD0630005847C /* TamagotchiAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B00F86111A1BD0630005847C /* TamagotchiAppTests.m */; };
 		B01DE4BB1A1F501800E2C7DF /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = B01DE4BA1A1F501800E2C7DF /* Food.plist */; };
+		B0822DA91A28D24400EFDD4E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DA81A28D24400EFDD4E /* MessageUI.framework */; };
+		B0822DAB1A28D25800EFDD4E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DAA1A28D25800EFDD4E /* AudioToolbox.framework */; };
+		B0822DAD1A28D26400EFDD4E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DAC1A28D26400EFDD4E /* CFNetwork.framework */; };
+		B0822DAF1A28D27000EFDD4E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DAE1A28D27000EFDD4E /* CoreGraphics.framework */; };
+		B0822DB11A28D27A00EFDD4E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DB01A28D27A00EFDD4E /* CoreLocation.framework */; };
+		B0822DB31A28D28A00EFDD4E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DB21A28D28A00EFDD4E /* libz.dylib */; };
+		B0822DB51A28D2A500EFDD4E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DB41A28D2A500EFDD4E /* MobileCoreServices.framework */; };
+		B0822DB71A28D2AC00EFDD4E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DB61A28D2AC00EFDD4E /* QuartzCore.framework */; };
+		B0822DB91A28D2B900EFDD4E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DB81A28D2B900EFDD4E /* Security.framework */; };
+		B0822DBB1A28D2C100EFDD4E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DBA1A28D2C100EFDD4E /* StoreKit.framework */; };
+		B0822DBD1A28D2D800EFDD4E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DBC1A28D2D800EFDD4E /* SystemConfiguration.framework */; };
+		B0822DC01A28D2F100EFDD4E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DBE1A28D2F100EFDD4E /* Bolts.framework */; };
+		B0822DC11A28D2F100EFDD4E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DBF1A28D2F100EFDD4E /* Parse.framework */; };
+		B0822DC41A28F85600EFDD4E /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0822DC31A28F85600EFDD4E /* PushNotificationManager.m */; };
 		B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */; };
 		B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */; };
 		B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE6E1A1E70DD00C19810 /* FoodCell.m */; };
 		B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE6F1A1E70DD00C19810 /* FoodCell.xib */; };
-		B08D52FD1A1FFB70004E9E19 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D52FC1A1FFB70004E9E19 /* MessageUI.framework */; };
 		B0D35F661A1BD4D90059E6AC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */; };
 		B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */; };
 		B0D35F6B1A1BD52F0059E6AC /* SelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F691A1BD52F0059E6AC /* SelectImageViewController.m */; };
@@ -108,13 +121,27 @@
 		B00F86101A1BD0630005847C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B00F86111A1BD0630005847C /* TamagotchiAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TamagotchiAppTests.m; sourceTree = "<group>"; };
 		B01DE4BA1A1F501800E2C7DF /* Food.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
+		B0822DA81A28D24400EFDD4E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B0822DAA1A28D25800EFDD4E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B0822DAC1A28D26400EFDD4E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B0822DAE1A28D27000EFDD4E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B0822DB01A28D27A00EFDD4E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B0822DB21A28D28A00EFDD4E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B0822DB41A28D2A500EFDD4E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B0822DB61A28D2AC00EFDD4E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B0822DB81A28D2B900EFDD4E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B0822DBA1A28D2C100EFDD4E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B0822DBC1A28D2D800EFDD4E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B0822DBE1A28D2F100EFDD4E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../Downloads/parse-library-1-2/Bolts.framework"; sourceTree = "<group>"; };
+		B0822DBF1A28D2F100EFDD4E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1-2/Parse.framework"; sourceTree = "<group>"; };
+		B0822DC21A28F85600EFDD4E /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
+		B0822DC31A28F85600EFDD4E /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
 		B088FE591A1E46A800C19810 /* SelectFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectFoodViewController.h; path = Views/SelectFood/SelectFoodViewController.h; sourceTree = "<group>"; };
 		B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectFoodViewController.m; path = Views/SelectFood/SelectFoodViewController.m; sourceTree = "<group>"; };
 		B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectFoodViewController.xib; path = Views/SelectFood/SelectFoodViewController.xib; sourceTree = "<group>"; };
 		B088FE6D1A1E70DD00C19810 /* FoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodCell.h; path = Views/SelectFood/FoodCell.h; sourceTree = "<group>"; };
 		B088FE6E1A1E70DD00C19810 /* FoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodCell.m; path = Views/SelectFood/FoodCell.m; sourceTree = "<group>"; };
 		B088FE6F1A1E70DD00C19810 /* FoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FoodCell.xib; path = Views/SelectFood/FoodCell.xib; sourceTree = "<group>"; };
-		B08D52FC1A1FFB70004E9E19 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B0D35F631A1BD4D90059E6AC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -131,7 +158,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B08D52FD1A1FFB70004E9E19 /* MessageUI.framework in Frameworks */,
+				B0822DC01A28D2F100EFDD4E /* Bolts.framework in Frameworks */,
+				B0822DC11A28D2F100EFDD4E /* Parse.framework in Frameworks */,
+				B0822DBD1A28D2D800EFDD4E /* SystemConfiguration.framework in Frameworks */,
+				B0822DBB1A28D2C100EFDD4E /* StoreKit.framework in Frameworks */,
+				B0822DB91A28D2B900EFDD4E /* Security.framework in Frameworks */,
+				B0822DB71A28D2AC00EFDD4E /* QuartzCore.framework in Frameworks */,
+				B0822DB51A28D2A500EFDD4E /* MobileCoreServices.framework in Frameworks */,
+				B0822DB31A28D28A00EFDD4E /* libz.dylib in Frameworks */,
+				B0822DB11A28D27A00EFDD4E /* CoreLocation.framework in Frameworks */,
+				B0822DAF1A28D27000EFDD4E /* CoreGraphics.framework in Frameworks */,
+				B0822DAD1A28D26400EFDD4E /* CFNetwork.framework in Frameworks */,
+				B0822DAB1A28D25800EFDD4E /* AudioToolbox.framework in Frameworks */,
+				B0822DA91A28D24400EFDD4E /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +189,8 @@
 			children = (
 				B00E07C41A27929F0004320C /* NetworkManager.h */,
 				B00E07C51A27929F0004320C /* NetworkManager.m */,
+				B0822DC21A28F85600EFDD4E /* PushNotificationManager.h */,
+				B0822DC31A28F85600EFDD4E /* PushNotificationManager.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -207,7 +248,19 @@
 		B00F85E91A1BD0630005847C = {
 			isa = PBXGroup;
 			children = (
-				B08D52FC1A1FFB70004E9E19 /* MessageUI.framework */,
+				B0822DBE1A28D2F100EFDD4E /* Bolts.framework */,
+				B0822DBF1A28D2F100EFDD4E /* Parse.framework */,
+				B0822DBC1A28D2D800EFDD4E /* SystemConfiguration.framework */,
+				B0822DBA1A28D2C100EFDD4E /* StoreKit.framework */,
+				B0822DB81A28D2B900EFDD4E /* Security.framework */,
+				B0822DB61A28D2AC00EFDD4E /* QuartzCore.framework */,
+				B0822DB41A28D2A500EFDD4E /* MobileCoreServices.framework */,
+				B0822DB21A28D28A00EFDD4E /* libz.dylib */,
+				B0822DB01A28D27A00EFDD4E /* CoreLocation.framework */,
+				B0822DAE1A28D27000EFDD4E /* CoreGraphics.framework */,
+				B0822DAC1A28D26400EFDD4E /* CFNetwork.framework */,
+				B0822DAA1A28D25800EFDD4E /* AudioToolbox.framework */,
+				B0822DA81A28D24400EFDD4E /* MessageUI.framework */,
 				B00F85F41A1BD0630005847C /* TamagotchiApp */,
 				B00F860E1A1BD0630005847C /* TamagotchiAppTests */,
 				B00F85F31A1BD0630005847C /* Products */,
@@ -391,6 +444,11 @@
 				TargetAttributes = {
 					B00F85F11A1BD0630005847C = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B00F860A1A1BD0630005847C = {
 						CreatedOnToolsVersion = 6.1;
@@ -460,6 +518,7 @@
 				B00E07B51A2792560004320C /* AFHTTPSessionManager.m in Sources */,
 				B00E07BE1A2792560004320C /* UIAlertView+AFNetworking.m in Sources */,
 				B00E07B91A2792560004320C /* AFURLRequestSerialization.m in Sources */,
+				B0822DC41A28F85600EFDD4E /* PushNotificationManager.m in Sources */,
 				B00F85FB1A1BD0630005847C /* AppDelegate.m in Sources */,
 				B00E07BB1A2792560004320C /* AFURLSessionManager.m in Sources */,
 				B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */,
@@ -575,10 +634,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iOS Development: Marcelo Dessal (S4H9RA34EY)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TamagotchiApp/ThirdPartiesLibraries",
+					"/Users/marcelo.dessal/Downloads/parse-library-1",
+					"/Users/marcelo.dessal/Downloads/parse-library-1-2",
+				);
 				INFOPLIST_FILE = TamagotchiApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6f44e8bd-74d3-4294-ad76-0849a6709531";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -587,10 +655,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iOS Development: Marcelo Dessal (S4H9RA34EY)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TamagotchiApp/ThirdPartiesLibraries",
+					"/Users/marcelo.dessal/Downloads/parse-library-1",
+					"/Users/marcelo.dessal/Downloads/parse-library-1-2",
+				);
 				INFOPLIST_FILE = TamagotchiApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6f44e8bd-74d3-4294-ad76-0849a6709531";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

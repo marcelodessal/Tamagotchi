@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WelcomeViewController.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -19,6 +20,29 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    [Parse setApplicationId:@"guhchukKgURzzZVCHBFOxyD35VHeMQm3EUZEdJvD"
+                  clientKey:@"SnnbrQ9yOemJspA7LRt1MCACFFUYNkbQ1k2IM1vH"];
+    
+    // Register for Push Notitications
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeAlert |UIUserNotificationTypeBadge | UIUserNotificationTypeSound) categories:nil]];
+    }
+    else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                                               UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)]; }
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
+#endif
+    
+    // Subscribe to channel
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        [currentInstallation addUniqueObject:@"PeleaDeMascotas" forKey:@"channels"];
+        [currentInstallation saveInBackground];
+        
+
+    
+    // Set the home screen
     WelcomeViewController* home = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
     
     UINavigationController* navControllerHome = [[UINavigationController alloc] initWithRootViewController:home];
@@ -28,6 +52,25 @@
     [self.window makeKeyAndVisible];
 
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //[PFPush handlePush:userInfo];
+    NSString *code = [userInfo objectForKey:@"code"];
+    NSString *name = [userInfo objectForKey:@"name"];
+    NSString *level = [userInfo objectForKey:@"level"];
+    
+    NSString *message = [NSString stringWithFormat:@"%@ (%@) ha subido al nivel %@", name, code, level];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Atención!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
