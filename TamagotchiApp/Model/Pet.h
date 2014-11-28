@@ -11,6 +11,8 @@
 #import <NotificationCenter/NotificationCenter.h>
 #import "Food.h"
 
+typedef enum {Ciervo, Gato, Leon, Jirafa} PetType;
+
 extern NSString* const GET_EXHAUSTED;
 extern NSString* const GET_RECOVERED;
 extern NSString* const GET_PROMOTED;
@@ -29,7 +31,8 @@ extern NSString* const GET_PROMOTED;
 - (void) exercise;
 - (BOOL) canExercise;
 - (BOOL) isExhausted;
-- (NSDictionary*) getJSON;
+- (NSDictionary*) getServerJSON;
 - (void) restoreValuesfromJSON:(NSDictionary*) values;
+- (NSDictionary*) getNotificationJSON;
 
 @end
