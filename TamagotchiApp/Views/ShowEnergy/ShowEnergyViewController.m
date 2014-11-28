@@ -51,8 +51,6 @@
     self.isFoodAvailable = NO;
     self.isExercising = NO;
     
-    [PushNotificationManager subscribeToChannel];
-    
     
     //Add mail button to navigation bar
     UIBarButtonItem* mailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mail_icon"]  style:UIBarButtonItemStyleDone target:self action:@selector(sendMail:)];

@@ -34,6 +34,12 @@
 #else
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
 #endif
+    
+    // Subscribe to channel
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        [currentInstallation addUniqueObject:@"PeleaDeMascotas" forKey:@"channels"];
+        [currentInstallation saveInBackground];
+        
 
     
     // Set the home screen
@@ -56,7 +62,15 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
+    //[PFPush handlePush:userInfo];
+    NSString *code = [userInfo objectForKey:@"code"];
+    NSString *name = [userInfo objectForKey:@"name"];
+    NSString *level = [userInfo objectForKey:@"level"];
+    
+    NSString *message = [NSString stringWithFormat:@"%@ (%@) ha subido al nivel %@", name, code, level];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Atención!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

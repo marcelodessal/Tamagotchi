@@ -34,6 +34,12 @@
     [self.scrollView setContentSize: CGSizeMake(480, 120)];
     pet = [Pet sharedInstance];
     [self.lblPetName setText:pet.petName];
+    
+    if (![pet.petType isEqualToString:@""]) {
+        NSArray *pets = @[@"ciervo",  @"gato", @"leon", @"jirafa"];
+        NSString *image = [NSString stringWithFormat:@"%@_comiendo_1",pets];
+        [self.imagenSeleccionada setImage:[UIImage imageNamed:image]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

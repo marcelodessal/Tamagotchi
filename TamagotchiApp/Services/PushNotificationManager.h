@@ -11,7 +11,5 @@
 
 @interface PushNotificationManager : NSObject
 
-+ (void)subscribeToChannel;
-+ (void)unsubscribeToChannel;
 + (void)pushNotification:(NSDictionary*) message;
 @end
