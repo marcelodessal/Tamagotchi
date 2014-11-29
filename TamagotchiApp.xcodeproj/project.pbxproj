@@ -31,6 +31,10 @@
 		B00F85FB1A1BD0630005847C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B00F85FA1A1BD0630005847C /* AppDelegate.m */; };
 		B00F86031A1BD0630005847C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00F86021A1BD0630005847C /* Images.xcassets */; };
 		B00F86121A1BD0630005847C /* TamagotchiAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B00F86111A1BD0630005847C /* TamagotchiAppTests.m */; };
+		B018C36E1A291A58003ADA05 /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B018C36C1A291A58003ADA05 /* RankingViewController.m */; };
+		B018C36F1A291A58003ADA05 /* RankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B018C36D1A291A58003ADA05 /* RankingViewController.xib */; };
+		B018C3781A292618003ADA05 /* RankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B018C3761A292618003ADA05 /* RankingCell.m */; };
+		B018C3791A292618003ADA05 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B018C3771A292618003ADA05 /* RankingCell.xib */; };
 		B01DE4BB1A1F501800E2C7DF /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = B01DE4BA1A1F501800E2C7DF /* Food.plist */; };
 		B0822DA91A28D24400EFDD4E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DA81A28D24400EFDD4E /* MessageUI.framework */; };
 		B0822DAB1A28D25800EFDD4E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DAA1A28D25800EFDD4E /* AudioToolbox.framework */; };
@@ -120,6 +124,12 @@
 		B00F860B1A1BD0630005847C /* TamagotchiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TamagotchiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00F86101A1BD0630005847C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B00F86111A1BD0630005847C /* TamagotchiAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TamagotchiAppTests.m; sourceTree = "<group>"; };
+		B018C36B1A291A58003ADA05 /* RankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingViewController.h; sourceTree = "<group>"; };
+		B018C36C1A291A58003ADA05 /* RankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingViewController.m; sourceTree = "<group>"; };
+		B018C36D1A291A58003ADA05 /* RankingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingViewController.xib; sourceTree = "<group>"; };
+		B018C3751A292618003ADA05 /* RankingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingCell.h; sourceTree = "<group>"; };
+		B018C3761A292618003ADA05 /* RankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingCell.m; sourceTree = "<group>"; };
+		B018C3771A292618003ADA05 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
 		B01DE4BA1A1F501800E2C7DF /* Food.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
 		B0822DA81A28D24400EFDD4E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B0822DAA1A28D25800EFDD4E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -321,12 +331,27 @@
 		B00F86201A1BD3320005847C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B018C36A1A291A3D003ADA05 /* Ranking */,
 				B088FE581A1E468100C19810 /* SelectFood */,
 				B0D3607A1A1BE2AB0059E6AC /* ShowEnergy */,
 				B0D35F611A1BD4D90059E6AC /* SelectImage */,
 				B0D35F621A1BD4D90059E6AC /* SelectName */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		B018C36A1A291A3D003ADA05 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				B018C36B1A291A58003ADA05 /* RankingViewController.h */,
+				B018C36C1A291A58003ADA05 /* RankingViewController.m */,
+				B018C36D1A291A58003ADA05 /* RankingViewController.xib */,
+				B018C3751A292618003ADA05 /* RankingCell.h */,
+				B018C3761A292618003ADA05 /* RankingCell.m */,
+				B018C3771A292618003ADA05 /* RankingCell.xib */,
+			);
+			name = Ranking;
+			path = Views/Ranking;
 			sourceTree = "<group>";
 		};
 		B088FE581A1E468100C19810 /* SelectFood */ = {
@@ -482,7 +507,9 @@
 			files = (
 				B01DE4BB1A1F501800E2C7DF /* Food.plist in Resources */,
 				B00F86031A1BD0630005847C /* Images.xcassets in Resources */,
+				B018C3791A292618003ADA05 /* RankingCell.xib in Resources */,
 				B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */,
+				B018C36F1A291A58003ADA05 /* RankingViewController.xib in Resources */,
 				B0D35F6C1A1BD52F0059E6AC /* SelectImageViewController.xib in Resources */,
 				B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */,
 				B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */,
@@ -512,6 +539,7 @@
 				B00E07C01A2792560004320C /* UIImageView+AFNetworking.m in Sources */,
 				B00E07B81A2792560004320C /* AFURLConnectionOperation.m in Sources */,
 				B00E07C61A27929F0004320C /* NetworkManager.m in Sources */,
+				B018C3781A292618003ADA05 /* RankingCell.m in Sources */,
 				B00E07BD1A2792560004320C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				B00E07C31A2792560004320C /* UIWebView+AFNetworking.m in Sources */,
 				B00E07B31A2792560004320C /* AFHTTPRequestOperation.m in Sources */,
@@ -527,6 +555,7 @@
 				B0D3607E1A1BE2C70059E6AC /* ShowEnergyViewController.m in Sources */,
 				B00E07BF1A2792560004320C /* UIButton+AFNetworking.m in Sources */,
 				B00E07BA1A2792560004320C /* AFURLResponseSerialization.m in Sources */,
+				B018C36E1A291A58003ADA05 /* RankingViewController.m in Sources */,
 				B00E078C1A2791EB0004320C /* Pet.m in Sources */,
 				B00F85F81A1BD0630005847C /* main.m in Sources */,
 				B00E07C21A2792560004320C /* UIRefreshControl+AFNetworking.m in Sources */,

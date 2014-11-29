@@ -58,6 +58,9 @@ When pet get exhausted or get recovered, notifies this new condition
     if (self.isExhausted)
         [[NSNotificationCenter defaultCenter] postNotificationName:GET_RECOVERED object:nil];
     self.petEnergy += foodItem.foodEnergy;
+    if (self.petEnergy > 100)
+        self.petEnergy = 100;
+    
 }
 
 - (void) exercise {

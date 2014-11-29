@@ -10,7 +10,6 @@
 #import "AFNetworkActivityIndicatorManager.h"
 
 
-NSString* const testBaseURLString = @"http://echo.jsontest.com";
 NSString* const baseURLString = @"http://tamagotchi.herokuapp.com";
 
 @implementation NetworkManager
@@ -35,7 +34,7 @@ NSString* const baseURLString = @"http://tamagotchi.herokuapp.com";
         sessionConfiguration.timeoutIntervalForRequest = 20.0;
         
         // Initialize the session
-        NSURL *baseURL = [NSURL URLWithString:baseURLString]; // change to testBaseURLString for testing purposes
+        NSURL *baseURL = [NSURL URLWithString:baseURLString];
         _sharedInstance = [[NetworkManager alloc] initWithBaseURL:baseURL sessionConfiguration:sessionConfiguration];
         
         //Setup a default JSONSerializer for all request/responses.

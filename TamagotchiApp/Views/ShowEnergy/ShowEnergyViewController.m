@@ -8,6 +8,7 @@
 
 #import "ShowEnergyViewController.h"
 #import "SelectFoodViewController.h"
+#import "RankingViewController.h"
 #import "Pet.h"
 #import "PushNotificationManager.h"
 
@@ -88,6 +89,12 @@
     SelectFoodViewController *newController = [[SelectFoodViewController alloc] initWithNibName:@"SelectFoodViewController" bundle:nil];
     [newController setDelegate:self];
     [self.navigationController pushViewController:newController animated:YES];
+}
+
+- (IBAction)listRanking:(id)sender {
+    RankingViewController *newController = [[RankingViewController alloc] initWithNibName:@"RankingViewController" bundle:nil];
+    [self.navigationController pushViewController:newController animated:YES];
+   
 }
 
 - (void)sendMail:(id)sender {
