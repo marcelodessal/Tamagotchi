@@ -8,7 +8,7 @@
 
 #import "SelectImageViewController.h"
 #import "ShowEnergyViewController.h"
-#import "Pet.h"
+#import "MyPet.h"
 
 @interface SelectImageViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *lblPetName;
@@ -21,24 +21,24 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *lblMessage;
 
+@property (strong, nonatomic) MyPet *myPet;
+
+
 @end
 
-@implementation SelectImageViewController {
-    Pet *pet;
-}
+@implementation SelectImageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setTitle:@"Imágen"];
-    [self.scrollView setContentSize: CGSizeMake(480, 120)];
-    pet = [Pet sharedInstance];
-    [self.lblPetName setText:pet.petName];
+    [self.scrollView setContentSize: CGSizeMake(500, 100)];
     
-    if (![pet.petType isEqualToString:@""]) {
-        NSArray *pets = @[@"ciervo",  @"gato", @"leon", @"jirafa"];
-        NSString *image = [NSString stringWithFormat:@"%@_comiendo_1",pets];
-        [self.imagenSeleccionada setImage:[UIImage imageNamed:image]];
+    self.myPet = [MyPet sharedInstance];
+    [self.lblPetName setText:self.myPet.petName];
+    
+    if (self.myPet.petType >= 0) {
+        [self.imagenSeleccionada setImage:[self.myPet getDefaultImageForType:self.myPet.petType]];
     }
 }
 
@@ -48,7 +48,7 @@
 }
 - (IBAction)continue:(id)sender {
     if (self.imagenSeleccionada.image) {
-        pet.petImage = self.imagenSeleccionada.image;
+        self.myPet.petImage = self.imagenSeleccionada.image;
         ShowEnergyViewController *newController = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil];
         [self.navigationController pushViewController:newController animated:YES];
     } else {
@@ -58,26 +58,11 @@
 
 - (IBAction)selectImage:(UIButton*)sender {
     
-    switch (sender.tag) {
-        case 0:
-            [self.imagenSeleccionada setImage:[UIImage imageNamed:@"ciervo_comiendo_1"]];
-            pet.petType = @"ciervo";
-            break;
-        case 1:
-            [self.imagenSeleccionada setImage:[UIImage imageNamed:@"gato_comiendo_1"]];
-            pet.petType = @"gato";
-            break;
-        case 2:
-            [self.imagenSeleccionada setImage:[UIImage imageNamed:@"leon_comiendo_1"]];
-            pet.petType = @"leon";
-            break;
-        case 3:
-            [self.imagenSeleccionada setImage:[UIImage imageNamed:@"jirafa_comiendo_1"]];
-            pet.petType = @"jirafa";
-            break;
-        default:
-            break;
-    }
+    int type = (int)sender.tag;
+    
+    self.myPet.petType = type;
+    [self.imagenSeleccionada setImage:[self.myPet getDefaultImageForType:type]];
+    self.myPet.petStringType = [self.myPet getStringType:type];
     self.lblMessage.text = @"";
     
 }

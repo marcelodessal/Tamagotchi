@@ -8,11 +8,11 @@
 
 #import "WelcomeViewController.h"
 #import "SelectImageViewController.h"
-#import "Pet.h"
+#import "MyPet.h"
 
 @interface WelcomeViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *nombreMascota;
-@property (strong, nonatomic) Pet *pet;
+@property (strong, nonatomic) MyPet *myPet;
 
 @end
 
@@ -23,8 +23,8 @@
     // Do any additional setup after loading the view from its nib.
     [self setTitle:@"Inicio"];
     
-    self.pet = [Pet sharedInstance];
-    [self.pet setInitialValues];
+    self.myPet = [MyPet sharedInstance];
+    [self.myPet setInitialValues];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,7 +36,7 @@
 
 - (IBAction)restoreValues:(id)sender {
     
-    NSString *restoreURLString = [NSString stringWithFormat:@"/pet/%@", self.pet.code];
+    NSString *restoreURLString = [NSString stringWithFormat:@"/pet/%@", self.myPet.code];
 
     [[NetworkManager sharedInstance] GET:restoreURLString parameters:nil
                                   success:[self getSuccessHandler]
@@ -46,7 +46,7 @@
 - (Success) getSuccessHandler {
     
     return ^(NSURLSessionDataTask *task, id responseObject) {
-        [self.pet restoreValuesfromJSON: responseObject];
+        [self.myPet restoreValuesfromJSON: responseObject];
         [self nextScreen];
     };
 }
@@ -68,11 +68,11 @@
 
 - (IBAction)continuar:(id)sender {
     
-    self.pet.petName = self.nombreMascota.text.capitalizedString;
+    self.myPet.petName = self.nombreMascota.text.capitalizedString;
     
-    if (self.pet.petName.length > 2) {
+    if (self.myPet.petName.length > 2) {
         [self nextScreen];
-    } else if (self.pet.petName.length > 0) {
+    } else if (self.myPet.petName.length > 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El nombre debe tener como mínimo tres letras" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     } else {

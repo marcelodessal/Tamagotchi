@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Pet.h"
 
 @interface RankingCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UIImageView *image;
-@property (strong, nonatomic) IBOutlet UILabel *name;
-@property (strong, nonatomic) IBOutlet UILabel *level;
+
+- (instancetype) initWithPet:(Pet*) pet;
 
 @end

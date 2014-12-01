@@ -9,7 +9,7 @@
 #import "ShowEnergyViewController.h"
 #import "SelectFoodViewController.h"
 #import "RankingViewController.h"
-#import "Pet.h"
+#import "MyPet.h"
 #import "PushNotificationManager.h"
 
 @interface ShowEnergyViewController ()
@@ -30,21 +30,21 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblLevel;
 @property (strong, nonatomic) IBOutlet UILabel *lblPushNotification;
 
+@property (strong, nonatomic) MyPet *myPet;
+@property (strong, nonatomic) NSTimer *timer;
+
 @end
 
-@implementation ShowEnergyViewController {
-    
-    Pet *pet;
-    NSTimer *timer;
-}
-    
+@implementation ShowEnergyViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setTitle:@"Nivel de Energía"];
-    pet = [Pet sharedInstance];
-    [self.lblPetName setText:pet.petName];
-    [self.image setImage:pet.petImage];
+    
+    self.myPet = [MyPet sharedInstance];
+    [self.lblPetName setText:self.myPet.petName];
+    [self.image setImage:self.myPet.petImage];
     
     
     [self updateEnergyBarAnimationWithDuration:1];
@@ -67,9 +67,9 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    if (timer && [timer isValid]) {
-        [timer invalidate];
-        timer = nil;
+    if (self.timer && [self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
     }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:GET_EXHAUSTED object:nil];
@@ -99,7 +99,7 @@
 
 - (void)sendMail:(id)sender {
     NSString *emailTitle = @"Que app copada";
-    NSString *messageBody = [NSString stringWithFormat:@"Buenas! Soy %@, cómo va? Quería comentarte que estuve usando la App TamagotchiApp para comerme todo y está genial. Bajatela YA!!   Saludos", pet.petName];
+    NSString *messageBody = [NSString stringWithFormat:@"Buenas! Soy %@, cómo va? Quería comentarte que estuve usando la App TamagotchiApp para comerme todo y está genial. Bajatela YA!!   Saludos", self.myPet.petName];
     
     self.mailComposer = [[MFMailComposeViewController alloc] init];
     self.mailComposer.mailComposeDelegate = self;
@@ -144,7 +144,7 @@
     if (self.isExercising)
         [self stopExercise];
     else
-        if (pet.canExercise)
+        if (self.myPet.canExercise)
             [self startExercise];
 }
 
@@ -153,13 +153,13 @@
     [self.btnExercise setTitle:@"Parar" forState:UIControlStateNormal];
     
     //start timer to decrease pet energy every 1 sec
-    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startPetExercise) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startPetExercise) userInfo:nil repeats:YES];
     
     [self startExerciseAnimation];
 }
 
 - (void)startPetExercise {
-    [pet exercise];
+    [self.myPet exercise];
     [self updateEnergyBarAnimationWithDuration:1];
     }
 
@@ -168,9 +168,9 @@
     [self.btnExercise setTitle:@"Ejercitar" forState:UIControlStateNormal];
     
     // stop timer to stop decreasing pet energy
-    if (timer && [timer isValid]) {
-        [timer invalidate];
-        timer = nil;
+    if (self.timer && [self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
     }
     
     [self stopExerciseAnimation];
@@ -181,18 +181,18 @@
 - (void)petGetExhausted {
     [self stopExercise];
     [self.btnExercise setEnabled:NO];
-    [self.image setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_4",pet.petType]]];
+    [self.image setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_4",self.myPet.petStringType]]];
     [self getExhaustAnimation];
 }
 
 - (void)petGetRecovered {
     [self.btnExercise setEnabled:YES];
-    [self.image setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",pet.petType]]];
+    [self.image setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",self.myPet.petStringType]]];
 }
 
 - (void)petGetPromoted {
     [self stopExercise];
-    NSString *message = [NSString stringWithFormat:@"%@ ha pasado al nivel %i", pet.petName, [pet getLevel]];
+    NSString *message = [NSString stringWithFormat:@"%@ ha pasado al nivel %i", self.myPet.petName, self.myPet.petLevel];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Felicidades!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
     [self postToServer];
@@ -201,12 +201,12 @@
 }
 
 - (void)sendNotification {
-    NSDictionary *data = [pet getNotificationJSON];
+    NSDictionary *data = [self.myPet getNotificationJSON];
     [PushNotificationManager pushNotification:data];
 }
 
 - (void)postToServer {
-    NSDictionary *parameters = [pet getServerJSON];
+    NSDictionary *parameters = [self.myPet getServerJSON];
     
     [[NetworkManager sharedInstance] POST:@"/pet" parameters:parameters
                                  success:[self getSuccessHandler]
@@ -251,30 +251,6 @@
 - (IBAction)handleTap:(UITapGestureRecognizer *)recognizer {
     CGPoint location = [recognizer locationInView:self.view];
 
-    // Set mouth position according to the animal and its state
-    
-    if (pet.isExhausted) {
-        if ([pet.petType isEqualToString:@"ciervo"]){
-            [self.mouth setCenter:CGPointMake(160, 320)];
-        } else if ([pet.petType isEqualToString:@"gato"]){
-            [self.mouth setCenter:CGPointMake(160, 330)];
-        } else if ([pet.petType isEqualToString:@"leon"]){
-            [self.mouth setCenter:CGPointMake(105, 330)];
-        } else { // jirafa
-            [self.mouth setCenter:CGPointMake(170, 265)];
-        }
-    } else {
-        if ([pet.petType isEqualToString:@"ciervo"]){
-            [self.mouth setCenter:CGPointMake(175, 300)];
-        } else if ([pet.petType isEqualToString:@"gato"]){
-            [self.mouth setCenter:CGPointMake(125, 300)];
-        } else if ([pet.petType isEqualToString:@"leon"]){
-            [self.mouth setCenter:CGPointMake(110, 320)];
-        } else { // jirafa
-            [self.mouth setCenter:CGPointMake(160, 245)];
-        }
-    }
-
     if (self.isFoodAvailable) {
         [UIView animateWithDuration:2.0f
                               delay:0.5f
@@ -287,7 +263,7 @@
                              BOOL isInside = [self.mouth pointInside: pt withEvent:nil];
                              if (isInside){
                                  [self.imgFood setHidden:YES];
-                                 [pet eatFood:self.foodItem];
+                                 [self.myPet eatFood:self.foodItem];
                                  [self eatFoodAnimation];
                                  self.isFoodAvailable = NO;
                              }
@@ -303,10 +279,10 @@
 - (void) eatFoodAnimation {
     
     NSArray *images = [[NSArray alloc] initWithObjects:
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_2",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_3",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_4",pet.petType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_2",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_3",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_4",self.myPet.petStringType]],
                        nil];
     
     [self.image setAnimationImages:images];
@@ -321,11 +297,11 @@
 - (void) startExerciseAnimation {
     
     NSArray *images = [[NSArray alloc] initWithObjects:
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_1",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_2",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_3",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_4",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_5",pet.petType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_1",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_2",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_3",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_4",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_5",self.myPet.petStringType]],
                        nil];
     
     [self.image setAnimationImages:images];
@@ -341,10 +317,10 @@
 - (void) getExhaustAnimation {
     
     NSArray *images = [[NSArray alloc] initWithObjects:
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_1",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_2",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_3",pet.petType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_4",pet.petType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_1",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_2",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_3",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_4",self.myPet.petStringType]],
                        nil];
     
     [self.image setAnimationImages:images];
@@ -355,10 +331,10 @@
 
 
 -(void) updateEnergyBarAnimationWithDuration:(float) duration {
-    float progress = [pet getEnergy] / 100.0f;
+    float progress = self.myPet.petEnergy / 100.0f;
     [UIView animateWithDuration:duration animations:^{ [self.progressView setProgress:progress animated:YES];}];
-    [self.lblEnergy setText:[NSString stringWithFormat:@"%i", [pet getEnergy]]];
-    [self.lblLevel setText:[NSString stringWithFormat:@"Nivel: %i", [pet getLevel]]];
+    [self.lblEnergy setText:[NSString stringWithFormat:@"%i", self.myPet.petEnergy]];
+    [self.lblLevel setText:[NSString stringWithFormat:@"Nivel: %i", self.myPet.petLevel]];
 
 }
 

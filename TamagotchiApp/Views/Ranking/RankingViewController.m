@@ -9,27 +9,25 @@
 #import "RankingViewController.h"
 #import "RankingCell.h"
 #import "Pet.h"
+#import "MyPet.h"
 #import "NetworkManager.h"
 
 @interface RankingViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *rankingItems;
 @property (strong, nonatomic) NSArray *sortedRankingItems;
+@property (strong, nonatomic) NSArray *images;
+@property (strong, nonatomic) MyPet *myPet;
 
 @end
 
-@implementation RankingViewController {
-    NSArray *images;
-    Pet *myPet;
-}
+@implementation RankingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    myPet = [Pet sharedInstance];
-    
-    images = [[NSArray alloc] initWithObjects:@"ciervo_comiendo_1", @"gato_comiendo_1", @"leon_comiendo_1", @"jirafa_comiendo_1", nil];
+    self.images = [[NSArray alloc] initWithObjects:@"ciervo_comiendo_1", @"gato_comiendo_1", @"leon_comiendo_1", @"jirafa_comiendo_1", nil];
+    self.myPet = [MyPet sharedInstance];
     
     [self getRankingFromServer];
 
@@ -54,11 +52,11 @@
 - (Success) getSuccessHandler {
     
     return ^(NSURLSessionDataTask *task, id responseObject) {
-        self.rankingItems = [[NSArray alloc] initWithArray:responseObject];
+        NSArray *rankingItems = [[NSArray alloc] initWithArray:responseObject];
         
         NSSortDescriptor *sortByLevel = [NSSortDescriptor sortDescriptorWithKey:@"level" ascending:NO];
         NSArray *sortDescriptors = [NSArray arrayWithObject:sortByLevel];
-        self.sortedRankingItems = [self.rankingItems sortedArrayUsingDescriptors:sortDescriptors];
+        self.sortedRankingItems = [rankingItems sortedArrayUsingDescriptors:sortDescriptors];
 
         [self.tableView reloadData];
         };
@@ -92,20 +90,10 @@
     
     // Populate each cell
     NSDictionary *item = self.sortedRankingItems[indexPath.row];
+    Pet *pet = [[Pet alloc] initWithDictionary:item];
     
-    if ([[item objectForKey:@"code"] isEqualToString:myPet.code]){
-        cell.backgroundColor = [UIColor grayColor];
-    } else {
-        cell.backgroundColor = [UIColor whiteColor];
-    }
+    return [cell initWithPet:pet];
     
-    cell.name.text = [item objectForKey:@"name"];
-    
-    int imagesArrayIndex = [[item objectForKey:@"pet_type"] intValue];
-    [cell.image setImage:[UIImage imageNamed:images[imagesArrayIndex]]];
-    cell.level.text = [NSString stringWithFormat:@"%@",[item objectForKey:@"level"]];
-    
-    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

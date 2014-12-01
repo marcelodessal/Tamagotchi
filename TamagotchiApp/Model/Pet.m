@@ -8,94 +8,57 @@
 
 #import "Pet.h"
 
-NSString* const GET_EXHAUSTED = @"GET_EXHAUSTED";
-NSString* const GET_RECOVERED = @"GET_RECOVERED";
-NSString* const GET_PROMOTED = @"GET_PROMOTED";
+@interface Pet()
 
-@interface Pet ()
-@property int petEnergy;
-@property int petLevel;
-@property int petExperience;
+@property (strong, nonatomic) NSArray *pets;
+
 @end
 
-@implementation Pet {
-    
-    NSDictionary *pets;
-    NSArray *petsArray;
-    
-}
-/*
-Pet gains 15 points of experience per each call to exercise
-Pet is promoted to the next level when experience reaches 100 times current level ^ 2
-When pet get exhausted or get recovered, notifies this new condition
-*/
+@implementation Pet
 
-+ (instancetype) sharedInstance {
-    static dispatch_once_t onceToken = 0;
-    __strong static id _sharedObject = nil;
-    
-    dispatch_once(&onceToken, ^{
-        _sharedObject = [[self alloc] init];
-    });
-    
-    return _sharedObject;
-}
-
-- (void) setInitialValues {
-    self.code = @"MD8462";
-    self.petEnergy = 100;
-    self.petLevel = 1;
-    petsArray = @[@"ciervo",  @"gato", @"leon", @"jirafa"];
-    pets = [[NSDictionary alloc] initWithObjectsAndKeys:
-            [NSNumber numberWithInt:Ciervo], @"ciervo",
-            [NSNumber numberWithInt:Gato], @"gato",
-            [NSNumber numberWithInt:Leon], @"leon",
-            [NSNumber numberWithInt:Jirafa], @"jirafa",
-            nil];
-}
-
-- (void) eatFood:(Food*)foodItem {
-    if (self.isExhausted)
-        [[NSNotificationCenter defaultCenter] postNotificationName:GET_RECOVERED object:nil];
-    self.petEnergy += foodItem.foodEnergy;
-    if (self.petEnergy > 100)
-        self.petEnergy = 100;
-    
-}
-
-- (void) exercise {
-    self.petEnergy -= 10;
-    if (self.petEnergy <= 0) {
-        self.petEnergy = 0;
-        [[NSNotificationCenter defaultCenter] postNotificationName:GET_EXHAUSTED object:nil];
+- (instancetype)initWithDictionary:(NSDictionary*) dict {
+    self = [super init];
+    if (self) {
+        self.code = [dict objectForKey:@"code"];
+        self.petName = [dict objectForKey:@"name"];
+        self.petType = [[dict objectForKey:@"pet_type"] intValue];
+        self.petStringType = [self getStringType:self.petType];
+        self.petEnergy = [[dict objectForKey:@"energy"] intValue];
+        self.petLevel = [[dict objectForKey:@"level"] intValue];
+        self.petExperience = [[dict objectForKey:@"experience"] intValue];
+        
+        self.petImage = [self getDefaultImageForType:self.petType];
     }
-    self.petExperience += 15;
-    NSLog(@"Experience: %i - Needed to promotion: %i", self.petExperience, 100*self.petLevel*self.petLevel);
+    return self;
+}
+
+
+- (NSString*)getStringType:(int) type {
     
-    if (self.petExperience >= 100*self.petLevel*self.petLevel) {
-        self.petLevel++;
-        NSLog(@"Level: %i", self.petLevel);
-        self.petExperience = 0;
-        [[NSNotificationCenter defaultCenter] postNotificationName:GET_PROMOTED object:nil];
+    switch (type) {
+        case Ciervo:
+            return @"ciervo";
+            break;
+        case Gato:
+            return @"gato";
+            break;
+        case Leon:
+            return @"leon";
+            break;
+        case Jirafa:
+            return @"jirafa";
+            break;
+        default:
+            break;
     }
-    
+    return @"";
 }
 
-- (int) getEnergy {
-    return self.petEnergy;
+- (UIImage*) getDefaultImageForType:(int) type {
+    NSString *imageName = [NSString stringWithFormat:@"%@_comiendo_1", [self getStringType:type]];
+    return [UIImage imageNamed:imageName];
 }
 
-- (int) getLevel {
-    return self.petLevel;
-}
-
-- (BOOL)canExercise {
-    return self.petEnergy;
-}
-
-- (BOOL) isExhausted {
-    return ![self canExercise];
-}
 
 - (NSDictionary*) getNotificationJSON {
     NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -110,13 +73,13 @@ When pet get exhausted or get recovered, notifies this new condition
     
     NSNumber *petTypeValue;
     
-    if ([self.petType isEqualToString:@"ciervo"]){
+    if ([self.petStringType isEqualToString:@"ciervo"]){
         petTypeValue = [NSNumber numberWithInt:Ciervo];
-    } else if ([self.petType isEqualToString:@"gato"]){
+    } else if ([self.petStringType isEqualToString:@"gato"]){
         petTypeValue = [NSNumber numberWithInt:Gato];
-    } else if ([self.petType isEqualToString:@"leon"]){
+    } else if ([self.petStringType isEqualToString:@"leon"]){
         petTypeValue = [NSNumber numberWithInt:Leon];
-    } else if ([self.petType isEqualToString:@"jirafa"]){
+    } else if ([self.petStringType isEqualToString:@"jirafa"]){
         petTypeValue = [NSNumber numberWithInt:Jirafa];
     }
     
@@ -133,8 +96,8 @@ When pet get exhausted or get recovered, notifies this new condition
 
 - (void)restoreValuesfromJSON:(NSDictionary *)dict {
     self.petName = [dict objectForKey:@"name"];
-    int index = [[dict objectForKey:@"pet_type"] intValue];
-    self.petType = petsArray[index];
+    self.petType = [[dict objectForKey:@"pet_type"] intValue];
+    self.petStringType = [self getStringType:self.petType];
     self.petEnergy = [[dict objectForKey:@"energy"] intValue];
     self.petLevel = [[dict objectForKey:@"level"] intValue];
     self.petExperience = [[dict objectForKey:@"experience"] intValue];

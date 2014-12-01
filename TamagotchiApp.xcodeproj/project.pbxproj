@@ -54,6 +54,7 @@
 		B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */; };
 		B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE6E1A1E70DD00C19810 /* FoodCell.m */; };
 		B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE6F1A1E70DD00C19810 /* FoodCell.xib */; };
+		B0BE413B1A2CE1750079C2EB /* MyPet.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE413A1A2CE1750079C2EB /* MyPet.m */; };
 		B0D35F661A1BD4D90059E6AC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */; };
 		B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */; };
 		B0D35F6B1A1BD52F0059E6AC /* SelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F691A1BD52F0059E6AC /* SelectImageViewController.m */; };
@@ -152,6 +153,8 @@
 		B088FE6D1A1E70DD00C19810 /* FoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodCell.h; path = Views/SelectFood/FoodCell.h; sourceTree = "<group>"; };
 		B088FE6E1A1E70DD00C19810 /* FoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodCell.m; path = Views/SelectFood/FoodCell.m; sourceTree = "<group>"; };
 		B088FE6F1A1E70DD00C19810 /* FoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FoodCell.xib; path = Views/SelectFood/FoodCell.xib; sourceTree = "<group>"; };
+		B0BE41391A2CE1750079C2EB /* MyPet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPet.h; sourceTree = "<group>"; };
+		B0BE413A1A2CE1750079C2EB /* MyPet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPet.m; sourceTree = "<group>"; };
 		B0D35F631A1BD4D90059E6AC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -416,6 +419,8 @@
 				B00E07881A2791EB0004320C /* Food.m */,
 				B00E07891A2791EB0004320C /* Pet.h */,
 				B00E078A1A2791EB0004320C /* Pet.m */,
+				B0BE41391A2CE1750079C2EB /* MyPet.h */,
+				B0BE413A1A2CE1750079C2EB /* MyPet.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -557,6 +562,7 @@
 				B00E07BA1A2792560004320C /* AFURLResponseSerialization.m in Sources */,
 				B018C36E1A291A58003ADA05 /* RankingViewController.m in Sources */,
 				B00E078C1A2791EB0004320C /* Pet.m in Sources */,
+				B0BE413B1A2CE1750079C2EB /* MyPet.m in Sources */,
 				B00F85F81A1BD0630005847C /* main.m in Sources */,
 				B00E07C21A2792560004320C /* UIRefreshControl+AFNetworking.m in Sources */,
 				B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */,
