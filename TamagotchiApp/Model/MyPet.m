@@ -7,6 +7,7 @@
 //
 
 #import "MyPet.h"
+#import <CoreLocation/CoreLocation.h>
 
 NSString* const GET_EXHAUSTED = @"GET_EXHAUSTED";
 NSString* const GET_RECOVERED = @"GET_RECOVERED";
@@ -36,6 +37,11 @@ NSString* const GET_PROMOTED = @"GET_PROMOTED";
     self.petEnergy = 100;
     self.petLevel = 1;
     self.petType = -1;
+}
+
+- (void) setLocation:(CLLocation*) location {
+    self.petLatitude = location.coordinate.latitude;
+    self.petLongitude = location.coordinate.longitude;
 }
 
 - (void) eatFood:(Food*)foodItem {
@@ -73,6 +79,33 @@ NSString* const GET_PROMOTED = @"GET_PROMOTED";
     return ![self canExercise];
 }
 
+- (void)postToServer {
+    NSDictionary *parameters = [self getServerJSON];
+
+    [[NetworkManager sharedInstance] POST:@"/pet" parameters:parameters
+                                 success:[self getSuccessHandler]
+                                 failure:[self getErrorHandler]];
+}
+
+- (Success) getSuccessHandler {
+
+    return ^(NSURLSessionDataTask *task, id responseObject) {
+        // Do something
+    };
+}
+
+- (Failure) getErrorHandler {
+
+    return ^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *errorMessage = [NSString stringWithFormat:@"Error: %@", error];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:errorMessage
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    };
+}
 
 
 

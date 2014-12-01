@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RankingCell.h"
 
-@interface RankingViewController : UIViewController <UITableViewDataSource>
+@interface RankingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RankingCellDelegate>
 
 @end

@@ -11,6 +11,7 @@
 #import "Pet.h"
 #import "MyPet.h"
 #import "NetworkManager.h"
+#import "MapViewController.h"
 
 @interface RankingViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -92,12 +93,25 @@
     NSDictionary *item = self.sortedRankingItems[indexPath.row];
     Pet *pet = [[Pet alloc] initWithDictionary:item];
     
-    return [cell initWithPet:pet];
+    [cell fillDataWithPet:pet];
+    cell.delegate = self;
+    
+    return cell;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.sortedRankingItems.count;
+}
+
+
+
+
+#pragma mark - RankingCellDelegate
+- (void) didSelectPetMap:(Pet *)pet {
+    MapViewController *newController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+    newController.pet = pet;
+    [self.navigationController pushViewController:newController animated:YES];
 }
 
 

@@ -11,6 +11,7 @@
 #import "RankingViewController.h"
 #import "MyPet.h"
 #import "PushNotificationManager.h"
+#import "LocationManager.h"
 
 @interface ShowEnergyViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *btnFeed;
@@ -33,6 +34,8 @@
 @property (strong, nonatomic) MyPet *myPet;
 @property (strong, nonatomic) NSTimer *timer;
 
+@property (strong, nonatomic) LocationManager *locationManager;
+
 @end
 
 @implementation ShowEnergyViewController
@@ -43,6 +46,7 @@
     [self setTitle:@"Nivel de Energía"];
     
     self.myPet = [MyPet sharedInstance];
+    
     [self.lblPetName setText:self.myPet.petName];
     [self.image setImage:self.myPet.petImage];
     
@@ -57,6 +61,10 @@
     UIBarButtonItem* mailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mail_icon"]  style:UIBarButtonItemStyleDone target:self action:@selector(sendMail:)];
  
     self.navigationItem.rightBarButtonItem = mailButton;
+    
+    [[LocationManager sharedInstance] startUpdates];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -195,7 +203,7 @@
     NSString *message = [NSString stringWithFormat:@"%@ ha pasado al nivel %i", self.myPet.petName, self.myPet.petLevel];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Felicidades!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
-    [self postToServer];
+    [self.myPet postToServer];
     [self sendNotification];
     
 }
@@ -203,34 +211,6 @@
 - (void)sendNotification {
     NSDictionary *data = [self.myPet getNotificationJSON];
     [PushNotificationManager pushNotification:data];
-}
-
-- (void)postToServer {
-    NSDictionary *parameters = [self.myPet getServerJSON];
-    
-    [[NetworkManager sharedInstance] POST:@"/pet" parameters:parameters
-                                 success:[self getSuccessHandler]
-                                 failure:[self getErrorHandler]];
-}
-
-- (Success) getSuccessHandler {
-    
-    return ^(NSURLSessionDataTask *task, id responseObject) {
-        // Do something
-    };
-}
-
-- (Failure) getErrorHandler {
-    
-    return ^(NSURLSessionDataTask *task, NSError *error) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Error: %@", error];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                            message:errorMessage
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    };
 }
 
 

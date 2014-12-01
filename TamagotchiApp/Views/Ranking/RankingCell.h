@@ -9,8 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Pet.h"
 
+@protocol RankingCellDelegate <NSObject>
+
+- (void)didSelectPetMap:(Pet*)pet;
+
+@end
+
 @interface RankingCell : UITableViewCell
 
+@property (weak, nonatomic) id <RankingCellDelegate> delegate;
+
 - (instancetype) initWithPet:(Pet*) pet;
+-(void) fillDataWithPet:(Pet*) pet;
 
 @end

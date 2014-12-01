@@ -55,6 +55,10 @@
 		B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE6E1A1E70DD00C19810 /* FoodCell.m */; };
 		B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE6F1A1E70DD00C19810 /* FoodCell.xib */; };
 		B0BE413B1A2CE1750079C2EB /* MyPet.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE413A1A2CE1750079C2EB /* MyPet.m */; };
+		B0BE413E1A2D066D0079C2EB /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE413D1A2D066D0079C2EB /* LocationManager.m */; };
+		B0BE41401A2D074A0079C2EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BE413F1A2D074A0079C2EB /* MapKit.framework */; };
+		B0BE41491A2D0B630079C2EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE41471A2D0B630079C2EB /* MapViewController.m */; };
+		B0BE414A1A2D0B630079C2EB /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0BE41481A2D0B630079C2EB /* MapViewController.xib */; };
 		B0D35F661A1BD4D90059E6AC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */; };
 		B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */; };
 		B0D35F6B1A1BD52F0059E6AC /* SelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F691A1BD52F0059E6AC /* SelectImageViewController.m */; };
@@ -155,6 +159,12 @@
 		B088FE6F1A1E70DD00C19810 /* FoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FoodCell.xib; path = Views/SelectFood/FoodCell.xib; sourceTree = "<group>"; };
 		B0BE41391A2CE1750079C2EB /* MyPet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPet.h; sourceTree = "<group>"; };
 		B0BE413A1A2CE1750079C2EB /* MyPet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPet.m; sourceTree = "<group>"; };
+		B0BE413C1A2D066D0079C2EB /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		B0BE413D1A2D066D0079C2EB /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		B0BE413F1A2D074A0079C2EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B0BE41461A2D0B630079C2EB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		B0BE41471A2D0B630079C2EB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		B0BE41481A2D0B630079C2EB /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		B0D35F631A1BD4D90059E6AC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -171,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0BE41401A2D074A0079C2EB /* MapKit.framework in Frameworks */,
 				B0822DC01A28D2F100EFDD4E /* Bolts.framework in Frameworks */,
 				B0822DC11A28D2F100EFDD4E /* Parse.framework in Frameworks */,
 				B0822DBD1A28D2D800EFDD4E /* SystemConfiguration.framework in Frameworks */,
@@ -204,6 +215,8 @@
 				B00E07C51A27929F0004320C /* NetworkManager.m */,
 				B0822DC21A28F85600EFDD4E /* PushNotificationManager.h */,
 				B0822DC31A28F85600EFDD4E /* PushNotificationManager.m */,
+				B0BE413C1A2D066D0079C2EB /* LocationManager.h */,
+				B0BE413D1A2D066D0079C2EB /* LocationManager.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -261,6 +274,7 @@
 		B00F85E91A1BD0630005847C = {
 			isa = PBXGroup;
 			children = (
+				B0BE413F1A2D074A0079C2EB /* MapKit.framework */,
 				B0822DBE1A28D2F100EFDD4E /* Bolts.framework */,
 				B0822DBF1A28D2F100EFDD4E /* Parse.framework */,
 				B0822DBC1A28D2D800EFDD4E /* SystemConfiguration.framework */,
@@ -352,6 +366,9 @@
 				B018C3751A292618003ADA05 /* RankingCell.h */,
 				B018C3761A292618003ADA05 /* RankingCell.m */,
 				B018C3771A292618003ADA05 /* RankingCell.xib */,
+				B0BE41461A2D0B630079C2EB /* MapViewController.h */,
+				B0BE41471A2D0B630079C2EB /* MapViewController.m */,
+				B0BE41481A2D0B630079C2EB /* MapViewController.xib */,
 			);
 			name = Ranking;
 			path = Views/Ranking;
@@ -513,6 +530,7 @@
 				B01DE4BB1A1F501800E2C7DF /* Food.plist in Resources */,
 				B00F86031A1BD0630005847C /* Images.xcassets in Resources */,
 				B018C3791A292618003ADA05 /* RankingCell.xib in Resources */,
+				B0BE414A1A2D0B630079C2EB /* MapViewController.xib in Resources */,
 				B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */,
 				B018C36F1A291A58003ADA05 /* RankingViewController.xib in Resources */,
 				B0D35F6C1A1BD52F0059E6AC /* SelectImageViewController.xib in Resources */,
@@ -536,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0BE413E1A2D066D0079C2EB /* LocationManager.m in Sources */,
 				B00E07B71A2792560004320C /* AFSecurityPolicy.m in Sources */,
 				B00E078B1A2791EB0004320C /* Food.m in Sources */,
 				B00E07B61A2792560004320C /* AFNetworkReachabilityManager.m in Sources */,
@@ -556,6 +575,7 @@
 				B00E07BB1A2792560004320C /* AFURLSessionManager.m in Sources */,
 				B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */,
 				B00E07B41A2792560004320C /* AFHTTPRequestOperationManager.m in Sources */,
+				B0BE41491A2D0B630079C2EB /* MapViewController.m in Sources */,
 				B00E07C11A2792560004320C /* UIProgressView+AFNetworking.m in Sources */,
 				B0D3607E1A1BE2C70059E6AC /* ShowEnergyViewController.m in Sources */,
 				B00E07BF1A2792560004320C /* UIButton+AFNetworking.m in Sources */,

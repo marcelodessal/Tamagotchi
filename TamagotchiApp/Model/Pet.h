@@ -20,6 +20,8 @@ typedef enum {Ciervo, Gato, Leon, Jirafa} PetType;
 @property int petEnergy;
 @property int petLevel;
 @property int petExperience;
+@property float petLatitude;
+@property float petLongitude;
 
 - (instancetype)initWithDictionary:(NSDictionary*) dict;
 - (NSDictionary*) getServerJSON;

@@ -26,6 +26,8 @@
         self.petEnergy = [[dict objectForKey:@"energy"] intValue];
         self.petLevel = [[dict objectForKey:@"level"] intValue];
         self.petExperience = [[dict objectForKey:@"experience"] intValue];
+        self.petLatitude = [[dict objectForKey:@"position_lat"] floatValue];
+        self.petLongitude = [[dict objectForKey:@"position_lon"] floatValue];
         
         self.petImage = [self getDefaultImageForType:self.petType];
     }
@@ -89,7 +91,9 @@
                           petTypeValue, @"pet_type",
                           [NSNumber numberWithInt:self.petEnergy], @"energy",
                           [NSNumber numberWithInt:self.petLevel], @"level",
-                          [NSNumber numberWithInt:self.petExperience ], @"experience",
+                          [NSNumber numberWithInt:self.petExperience], @"experience",
+                          [NSNumber numberWithFloat:self.petLatitude], @"position_lat",
+                          [NSNumber numberWithFloat:self.petLongitude], @"position_lon",
                           nil];
     return json;
 }
@@ -101,6 +105,9 @@
     self.petEnergy = [[dict objectForKey:@"energy"] intValue];
     self.petLevel = [[dict objectForKey:@"level"] intValue];
     self.petExperience = [[dict objectForKey:@"experience"] intValue];
+    self.petLatitude = [[dict objectForKey:@"position_lat"] floatValue];
+    self.petLongitude = [[dict objectForKey:@"position_lon"] floatValue];
+
 }
 
 @end
