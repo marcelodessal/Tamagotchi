@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SelectFoodViewController.h"
-#import "Pet.h"
 #import <MessageUI/MessageUI.h>
 #import <NotificationCenter/NotificationCenter.h>
 #import "NetworkManager.h"
