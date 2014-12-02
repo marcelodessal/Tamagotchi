@@ -65,6 +65,7 @@
 		B0D35F6C1A1BD52F0059E6AC /* SelectImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D35F6A1A1BD52F0059E6AC /* SelectImageViewController.xib */; };
 		B0D3607E1A1BE2C70059E6AC /* ShowEnergyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D3607C1A1BE2C70059E6AC /* ShowEnergyViewController.m */; };
 		B0D3607F1A1BE2C70059E6AC /* ShowEnergyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D3607D1A1BE2C70059E6AC /* ShowEnergyViewController.xib */; };
+		B0FF90A81A2DE4DA005E1C1C /* SpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FF90A71A2DE4DA005E1C1C /* SpotAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,8 @@
 		B0D3607B1A1BE2C70059E6AC /* ShowEnergyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowEnergyViewController.h; sourceTree = "<group>"; };
 		B0D3607C1A1BE2C70059E6AC /* ShowEnergyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowEnergyViewController.m; sourceTree = "<group>"; };
 		B0D3607D1A1BE2C70059E6AC /* ShowEnergyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowEnergyViewController.xib; sourceTree = "<group>"; };
+		B0FF90A61A2DE4DA005E1C1C /* SpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotAnnotation.h; sourceTree = "<group>"; };
+		B0FF90A71A2DE4DA005E1C1C /* SpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +381,8 @@
 				B0880BBC1A2DDC3A000EB2EB /* MapViewController.h */,
 				B0880BBD1A2DDC3A000EB2EB /* MapViewController.m */,
 				B0880BBE1A2DDC3A000EB2EB /* MapViewController.xib */,
+				B0FF90A61A2DE4DA005E1C1C /* SpotAnnotation.h */,
+				B0FF90A71A2DE4DA005E1C1C /* SpotAnnotation.m */,
 			);
 			name = Maps;
 			path = Views/Maps;
@@ -571,6 +576,7 @@
 				B00E07BC1A2792560004320C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B00E07C01A2792560004320C /* UIImageView+AFNetworking.m in Sources */,
 				B00E07B81A2792560004320C /* AFURLConnectionOperation.m in Sources */,
+				B0FF90A81A2DE4DA005E1C1C /* SpotAnnotation.m in Sources */,
 				B00E07C61A27929F0004320C /* NetworkManager.m in Sources */,
 				B018C3781A292618003ADA05 /* RankingCell.m in Sources */,
 				B00E07BD1A2792560004320C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
