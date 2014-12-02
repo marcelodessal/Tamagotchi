@@ -47,9 +47,16 @@
     
     self.myPet = [MyPet sharedInstance];
     
-    [self.lblPetName setText:self.myPet.petName];
-    [self.image setImage:[self.myPet getDefaultImage]];
+    if (self.myPet.isExhausted) {
+        NSString* imageName = [NSString stringWithFormat:@"%@_exhausto_4",self.myPet.petStringType];
+        [self.image setImage:[UIImage imageNamed:imageName]];
+        [self.btnExercise setEnabled:NO];
+    } else {
+        [self.image setImage:[self.myPet getDefaultImage]];
+        [self.btnExercise setEnabled:YES];
+    }
     
+    [self.lblPetName setText:self.myPet.petName];
     
     [self updateEnergyBarAnimationWithDuration:1];
     

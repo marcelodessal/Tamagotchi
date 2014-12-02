@@ -50,6 +50,8 @@
     // Set the home screen
     UIViewController *home;
     
+//    home = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
+    
     if (![defaults boolForKey:NAME_SELECTED])
         home = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
     else if (![defaults boolForKey:IMAGE_SELECTED])
