@@ -24,7 +24,6 @@
     [self setTitle:@"Inicio"];
     
     self.myPet = [MyPet sharedInstance];
-    [self.myPet setInitialValues];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,7 +83,12 @@
 
 - (void) nextScreen {
     SelectImageViewController *newController = [[SelectImageViewController alloc] initWithNibName:@"SelectImageViewController" bundle:nil];
-    [self.navigationController pushViewController:newController animated:YES];
+    
+    // Save screen completion status for skipping this screen in the future
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:NAME_SELECTED];
+    
+    //Push the next screen
+     [self.navigationController pushViewController:newController animated:YES];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

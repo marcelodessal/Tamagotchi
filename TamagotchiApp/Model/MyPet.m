@@ -13,6 +13,9 @@ NSString* const GET_EXHAUSTED = @"GET_EXHAUSTED";
 NSString* const GET_RECOVERED = @"GET_RECOVERED";
 NSString* const GET_PROMOTED = @"GET_PROMOTED";
 
+NSString* const NAME_SELECTED = @"NAME_SELECTED";
+NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
+
 @implementation MyPet
 
 /*
@@ -26,7 +29,13 @@ NSString* const GET_PROMOTED = @"GET_PROMOTED";
     __strong static id _sharedObject = nil;
     
     dispatch_once(&onceToken, ^{
-        _sharedObject = [[self alloc] init];
+        NSString *path = [MyPet pathForDataFile];
+        _sharedObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        
+        if (!_sharedObject) {
+            _sharedObject = [[self alloc] init];
+            [_sharedObject setInitialValues];
+        }
     });
     
     return _sharedObject;
@@ -107,6 +116,46 @@ NSString* const GET_PROMOTED = @"GET_PROMOTED";
     };
 }
 
+#pragma mark - NSCoding protocol implementation
+
+- (instancetype)initWithCoder:(NSCoder *) coder {
+    self = [super init];
+    if (self) {
+        [self setCode:[coder decodeObjectForKey:@"code"]];
+        [self setPetName:[coder decodeObjectForKey:@"name"]];
+        [self setPetType:[coder decodeIntForKey:@"pet_type"]];
+        [self setPetEnergy:[coder decodeIntForKey:@"energy"]];
+        [self setPetLevel:[coder decodeIntForKey:@"level"]];
+        [self setPetExperience:[coder decodeIntForKey:@"experience"]];
+        [self setPetLatitude:[coder decodeFloatForKey:@"position_lat"]];
+        [self setPetLongitude:[coder decodeFloatForKey:@"position_lon"]];
+    }
+    return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) coder {
+    [coder encodeObject: self.code forKey:@"code"];
+    [coder encodeObject:self.petName forKey:@"name"];
+    [coder encodeInt:self.petType forKey:@"pet_type"];
+    [coder encodeInt:self.petEnergy forKey:@"energy"];
+    [coder encodeInt:self.petLevel forKey:@"level"];
+    [coder encodeInt:self.petExperience forKey:@"experience"];
+    [coder encodeFloat:self.petLatitude forKey:@"position_lat"];
+    [coder encodeFloat:self.petLongitude forKey:@"position_lon"];
+}
+
+
++ (NSString *) pathForDataFile {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *folder = @"~/Library/Application Support/TamagotchiApp/";
+    folder = [folder stringByExpandingTildeInPath];
+    
+    if ([fileManager fileExistsAtPath: folder] == NO) {
+        [fileManager createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    NSString *fileName = @"TamagotchiApp.data";
+    return [folder stringByAppendingPathComponent: fileName];
+}
 
 
 @end

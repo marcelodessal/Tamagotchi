@@ -48,7 +48,7 @@
     self.myPet = [MyPet sharedInstance];
     
     [self.lblPetName setText:self.myPet.petName];
-    [self.image setImage:self.myPet.petImage];
+    [self.image setImage:[self.myPet getDefaultImage]];
     
     
     [self updateEnergyBarAnimationWithDuration:1];

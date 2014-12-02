@@ -40,7 +40,7 @@
         self.pet = pet;
         self.name.text = pet.petName;
         self.level.text = [NSString stringWithFormat:@"%i", pet.petLevel];
-        [self.image setImage:pet.petImage];
+        [self.image setImage:[pet getDefaultImage]];
         
         MyPet *myPet = [MyPet sharedInstance];
         
@@ -58,7 +58,7 @@
     self.pet = pet;
     self.name.text = pet.petName;
     self.level.text = [NSString stringWithFormat:@"%i", pet.petLevel];
-    [self.image setImage:pet.petImage];
+    [self.image setImage:[pet getDefaultImage]];
     
     MyPet *myPet = [MyPet sharedInstance];
     

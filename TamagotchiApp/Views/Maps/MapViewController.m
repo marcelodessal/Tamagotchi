@@ -51,7 +51,7 @@
     if (nil == av) {
         av = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:dqref];
     }
-    av.image = self.pet.petImage;
+    av.image = [self.pet getDefaultImage];
     [av setBounds:CGRectMake(0, 0, 40, 40)];
     [av setCanShowCallout:YES];
 

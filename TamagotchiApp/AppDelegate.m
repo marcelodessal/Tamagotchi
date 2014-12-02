@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "WelcomeViewController.h"
+#import "SelectImageViewController.h"
+#import "ShowEnergyViewController.h"
+#import "MyPet.h"
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
@@ -41,9 +44,18 @@
         [currentInstallation saveInBackground];
         
 
+    // Load user defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     // Set the home screen
-    WelcomeViewController* home = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
+    UIViewController *home;
+    
+    if (![defaults boolForKey:NAME_SELECTED])
+        home = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
+    else if (![defaults boolForKey:IMAGE_SELECTED])
+        home = [[SelectImageViewController alloc] initWithNibName:@"SelectImageViewController" bundle:nil];
+    else
+        home = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil];
     
     UINavigationController* navControllerHome = [[UINavigationController alloc] initWithRootViewController:home];
     
@@ -81,6 +93,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self saveDataToDisk];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -93,6 +106,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self saveDataToDisk];
+}
+
+- (void) saveDataToDisk {
+    MyPet *myPet = [MyPet sharedInstance];
+    NSString *path = [MyPet pathForDataFile];
+    [NSKeyedArchiver archiveRootObject: myPet toFile: path];
 }
 
 @end

@@ -28,8 +28,6 @@
         self.petExperience = [[dict objectForKey:@"experience"] intValue];
         self.petLatitude = [[dict objectForKey:@"position_lat"] floatValue];
         self.petLongitude = [[dict objectForKey:@"position_lon"] floatValue];
-        
-        self.petImage = [self getDefaultImageForType:self.petType];
     }
     return self;
 }
@@ -59,6 +57,10 @@
 - (UIImage*) getDefaultImageForType:(int) type {
     NSString *imageName = [NSString stringWithFormat:@"%@_comiendo_1", [self getStringType:type]];
     return [UIImage imageNamed:imageName];
+}
+
+- (UIImage*) getDefaultImage {
+    return [self getDefaultImageForType:self.petType];
 }
 
 

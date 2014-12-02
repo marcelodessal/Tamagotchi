@@ -48,8 +48,13 @@
 }
 - (IBAction)continue:(id)sender {
     if (self.imagenSeleccionada.image) {
-        self.myPet.petImage = self.imagenSeleccionada.image;
+ //       self.myPet.petImage = self.imagenSeleccionada.image;
         ShowEnergyViewController *newController = [[ShowEnergyViewController alloc] initWithNibName:@"ShowEnergyViewController" bundle:nil];
+        
+        // Save screen completion status for skipping this screen in the future
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:IMAGE_SELECTED];
+        
+        //Push the next screen
         [self.navigationController pushViewController:newController animated:YES];
     } else {
         self.lblMessage.text = @"Seleccione una mascota";

@@ -15,9 +15,13 @@ extern NSString* const GET_EXHAUSTED;
 extern NSString* const GET_RECOVERED;
 extern NSString* const GET_PROMOTED;
 
-@interface MyPet : Pet
+extern NSString* const NAME_SELECTED;
+extern NSString* const IMAGE_SELECTED;
+
+@interface MyPet : Pet <NSCoding>
 
 + (instancetype) sharedInstance;
++ (NSString*) pathForDataFile;
 - (void) setInitialValues;
 - (void) eatFood:(Food*)foodItem;
 - (void) exercise;

@@ -28,6 +28,7 @@ typedef enum {Ciervo, Gato, Leon, Jirafa} PetType;
 - (void) restoreValuesfromJSON:(NSDictionary*) values;
 - (NSDictionary*) getNotificationJSON;
 - (UIImage*) getDefaultImageForType:(int) type;
+- (UIImage*) getDefaultImage;
 - (NSString*) getStringType:(int) type;
 
 @end
