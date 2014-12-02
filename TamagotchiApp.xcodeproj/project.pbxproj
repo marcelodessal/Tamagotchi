@@ -50,6 +50,8 @@
 		B0822DC01A28D2F100EFDD4E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DBE1A28D2F100EFDD4E /* Bolts.framework */; };
 		B0822DC11A28D2F100EFDD4E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DBF1A28D2F100EFDD4E /* Parse.framework */; };
 		B0822DC41A28F85600EFDD4E /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0822DC31A28F85600EFDD4E /* PushNotificationManager.m */; };
+		B0880BBF1A2DDC3A000EB2EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0880BBD1A2DDC3A000EB2EB /* MapViewController.m */; };
+		B0880BC01A2DDC3A000EB2EB /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0880BBE1A2DDC3A000EB2EB /* MapViewController.xib */; };
 		B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */; };
 		B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */; };
 		B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE6E1A1E70DD00C19810 /* FoodCell.m */; };
@@ -57,8 +59,6 @@
 		B0BE413B1A2CE1750079C2EB /* MyPet.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE413A1A2CE1750079C2EB /* MyPet.m */; };
 		B0BE413E1A2D066D0079C2EB /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE413D1A2D066D0079C2EB /* LocationManager.m */; };
 		B0BE41401A2D074A0079C2EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BE413F1A2D074A0079C2EB /* MapKit.framework */; };
-		B0BE41491A2D0B630079C2EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE41471A2D0B630079C2EB /* MapViewController.m */; };
-		B0BE414A1A2D0B630079C2EB /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0BE41481A2D0B630079C2EB /* MapViewController.xib */; };
 		B0D35F661A1BD4D90059E6AC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */; };
 		B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */; };
 		B0D35F6B1A1BD52F0059E6AC /* SelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F691A1BD52F0059E6AC /* SelectImageViewController.m */; };
@@ -151,6 +151,9 @@
 		B0822DBF1A28D2F100EFDD4E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1-2/Parse.framework"; sourceTree = "<group>"; };
 		B0822DC21A28F85600EFDD4E /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
 		B0822DC31A28F85600EFDD4E /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
+		B0880BBC1A2DDC3A000EB2EB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		B0880BBD1A2DDC3A000EB2EB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		B0880BBE1A2DDC3A000EB2EB /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		B088FE591A1E46A800C19810 /* SelectFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectFoodViewController.h; path = Views/SelectFood/SelectFoodViewController.h; sourceTree = "<group>"; };
 		B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectFoodViewController.m; path = Views/SelectFood/SelectFoodViewController.m; sourceTree = "<group>"; };
 		B088FE5B1A1E46A800C19810 /* SelectFoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectFoodViewController.xib; path = Views/SelectFood/SelectFoodViewController.xib; sourceTree = "<group>"; };
@@ -162,9 +165,6 @@
 		B0BE413C1A2D066D0079C2EB /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		B0BE413D1A2D066D0079C2EB /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		B0BE413F1A2D074A0079C2EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		B0BE41461A2D0B630079C2EB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		B0BE41471A2D0B630079C2EB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		B0BE41481A2D0B630079C2EB /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		B0D35F631A1BD4D90059E6AC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -348,6 +348,7 @@
 		B00F86201A1BD3320005847C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B0880B7D1A2DD460000EB2EB /* Maps */,
 				B018C36A1A291A3D003ADA05 /* Ranking */,
 				B088FE581A1E468100C19810 /* SelectFood */,
 				B0D3607A1A1BE2AB0059E6AC /* ShowEnergy */,
@@ -366,12 +367,20 @@
 				B018C3751A292618003ADA05 /* RankingCell.h */,
 				B018C3761A292618003ADA05 /* RankingCell.m */,
 				B018C3771A292618003ADA05 /* RankingCell.xib */,
-				B0BE41461A2D0B630079C2EB /* MapViewController.h */,
-				B0BE41471A2D0B630079C2EB /* MapViewController.m */,
-				B0BE41481A2D0B630079C2EB /* MapViewController.xib */,
 			);
 			name = Ranking;
 			path = Views/Ranking;
+			sourceTree = "<group>";
+		};
+		B0880B7D1A2DD460000EB2EB /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				B0880BBC1A2DDC3A000EB2EB /* MapViewController.h */,
+				B0880BBD1A2DDC3A000EB2EB /* MapViewController.m */,
+				B0880BBE1A2DDC3A000EB2EB /* MapViewController.xib */,
+			);
+			name = Maps;
+			path = Views/Maps;
 			sourceTree = "<group>";
 		};
 		B088FE581A1E468100C19810 /* SelectFood */ = {
@@ -530,12 +539,12 @@
 				B01DE4BB1A1F501800E2C7DF /* Food.plist in Resources */,
 				B00F86031A1BD0630005847C /* Images.xcassets in Resources */,
 				B018C3791A292618003ADA05 /* RankingCell.xib in Resources */,
-				B0BE414A1A2D0B630079C2EB /* MapViewController.xib in Resources */,
 				B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */,
 				B018C36F1A291A58003ADA05 /* RankingViewController.xib in Resources */,
 				B0D35F6C1A1BD52F0059E6AC /* SelectImageViewController.xib in Resources */,
 				B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */,
 				B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */,
+				B0880BC01A2DDC3A000EB2EB /* MapViewController.xib in Resources */,
 				B0D3607F1A1BE2C70059E6AC /* ShowEnergyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +577,7 @@
 				B00E07C31A2792560004320C /* UIWebView+AFNetworking.m in Sources */,
 				B00E07B31A2792560004320C /* AFHTTPRequestOperation.m in Sources */,
 				B00E07B51A2792560004320C /* AFHTTPSessionManager.m in Sources */,
+				B0880BBF1A2DDC3A000EB2EB /* MapViewController.m in Sources */,
 				B00E07BE1A2792560004320C /* UIAlertView+AFNetworking.m in Sources */,
 				B00E07B91A2792560004320C /* AFURLRequestSerialization.m in Sources */,
 				B0822DC41A28F85600EFDD4E /* PushNotificationManager.m in Sources */,
@@ -575,7 +585,6 @@
 				B00E07BB1A2792560004320C /* AFURLSessionManager.m in Sources */,
 				B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */,
 				B00E07B41A2792560004320C /* AFHTTPRequestOperationManager.m in Sources */,
-				B0BE41491A2D0B630079C2EB /* MapViewController.m in Sources */,
 				B00E07C11A2792560004320C /* UIProgressView+AFNetworking.m in Sources */,
 				B0D3607E1A1BE2C70059E6AC /* ShowEnergyViewController.m in Sources */,
 				B00E07BF1A2792560004320C /* UIButton+AFNetworking.m in Sources */,
