@@ -33,10 +33,13 @@
     self.images = [[NSArray alloc] initWithObjects:@"ciervo_comiendo_1", @"gato_comiendo_1", @"leon_comiendo_1", @"jirafa_comiendo_1", nil];
     self.myPet = [MyPet sharedInstance];
     
+    
     // Get ranking from app database
     self.sortedRankingItems = [PetDatabaseHelper getPetRanking];
     if (self.sortedRankingItems.count)
         [self.tableView reloadData];
+    else
+        [self getRankingFromServer];
     
     // After 5 sec, get ranking from server
     [self performSelector:@selector(getRankingFromServer) withObject:nil afterDelay:5];
@@ -70,9 +73,15 @@
 - (Success) getSuccessHandler {
     
     return ^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray *rankingItems = [[NSArray alloc] initWithArray:responseObject];
+        NSArray *array = [[NSArray alloc] initWithArray:responseObject];
+        NSMutableArray *rankingItems = [[NSMutableArray alloc] init];
         
-        NSSortDescriptor *sortByLevel = [NSSortDescriptor sortDescriptorWithKey:@"level" ascending:NO];
+        for (NSDictionary* dict in array) {
+            Pet *pet = [[Pet alloc] initWithDictionary:dict];
+            [rankingItems addObject:pet];
+        }
+        
+        NSSortDescriptor *sortByLevel = [NSSortDescriptor sortDescriptorWithKey:@"petLevel" ascending:NO];
         NSArray *sortDescriptors = [NSArray arrayWithObject:sortByLevel];
         self.sortedRankingItems = [rankingItems sortedArrayUsingDescriptors:sortDescriptors];
 
@@ -107,10 +116,7 @@
     }
     
     // Populate each cell
-    NSDictionary *item = self.sortedRankingItems[indexPath.row];
-    Pet *pet = [[Pet alloc] initWithDictionary:item];
-    
-    [cell fillDataWithPet:pet];
+    [cell fillDataWithPet:self.sortedRankingItems[indexPath.row]];
     cell.delegate = self;
     
     return cell;

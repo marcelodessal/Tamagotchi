@@ -13,18 +13,8 @@
 #pragma mark - Dabatabe operations
 
 + (void)insertPet:(Pet *) newPet {
+    
     NSManagedObjectContext *context = [[DatabaseHelper sharedInstance] managedObjectContext];
-    NSManagedObject *pet = [NSEntityDescription insertNewObjectForEntityForName:@"Pet" inManagedObjectContext:context];
-    
-    [pet setValue:newPet.code forKey:@"code"];
-    [pet setValue:newPet.petName forKey:@"name"];
-    [pet setValue:newPet.petLevel forKey:@"level"];
-    [pet setValue:newPet.petEnergy forKey:@"energy"];
-    [pet setValue:newPet.petExperience forKey:@"experience"];
-    [pet setValue:newPet.petType forKey:@"pet_type"];
-    [pet setValue:newPet.petLatitude forKey:@"position_lat"];
-    [pet setValue:newPet.petLongitude forKey:@"position_lon"];
-    
     NSError *localerror;
     if (![context save:&localerror]) { //Save changes in context.
         NSLog([NSString stringWithFormat:@"Error al guardar: %@", [localerror localizedDescription]]);

@@ -7,6 +7,7 @@
 //
 
 #import "Pet.h"
+#import "PetDatabaseHelper.h"
 
 @interface Pet()
 
@@ -16,29 +17,22 @@
 
 @implementation Pet
 
-@synthesize code;
-@synthesize petName;
-@synthesize petImage;
-@synthesize petType;
-@synthesize petEnergy;
-@synthesize petLevel;
-@synthesize petExperience;
-@synthesize petLatitude;
-@synthesize petLongitude;
-@synthesize pets;
+@synthesize code, petName, petImage, petType, petEnergy, petLevel, petExperience, petLatitude, petLongitude, pets;
 
 
 - (instancetype)initWithDictionary:(NSDictionary*) dict {
-    self = [super init];
+    NSManagedObjectContext *context = [[PetDatabaseHelper sharedInstance] managedObjectContext];
+    self = [NSEntityDescription insertNewObjectForEntityForName:@"Pet" inManagedObjectContext:context];
+    
     if (self) {
-        self.code = [dict objectForKey:@"code"];
-        self.petName = [dict objectForKey:@"name"];
-        self.petType = [dict objectForKey:@"pet_type"];
-        self.petEnergy = [dict objectForKey:@"energy"];
-        self.petLevel = [dict objectForKey:@"level"];
-        self.petExperience = [dict objectForKey:@"experience"];
-        self.petLatitude = [dict objectForKey:@"position_lat"];
-        self.petLongitude = [dict objectForKey:@"position_lon"];
+        code = [dict objectForKey:@"code"];
+        petName = [dict objectForKey:@"name"];
+        petType = [dict objectForKey:@"pet_type"];
+        petEnergy = [dict objectForKey:@"energy"];
+        petLevel = [dict objectForKey:@"level"];
+        petExperience = [dict objectForKey:@"experience"];
+        petLatitude = [dict objectForKey:@"position_lat"];
+        petLongitude = [dict objectForKey:@"position_lon"];
     }
     return self;
 }
@@ -82,9 +76,9 @@
 
 - (NSDictionary*) getNotificationJSON {
     NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
-                          self.code, @"code",
-                          self.petName, @"name",
-                          self.petLevel, @"level",
+                          code, @"code",
+                          petName, @"name",
+                          petLevel, @"level",
                           nil];
     return json;
 }
@@ -92,27 +86,27 @@
 - (NSDictionary*) getServerJSON {
     
     NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
-                          self.code, @"code",
-                          self.petName, @"name",
-                          self.petType, @"pet_type",
-                          self.petEnergy, @"energy",
-                          self.petLevel, @"level",
-                          self.petExperience, @"experience",
-                          self.petLatitude, @"position_lat",
-                          self.petLongitude, @"position_lon",
+                          code, @"code",
+                          petName, @"name",
+                          petType, @"pet_type",
+                          petEnergy, @"energy",
+                          petLevel, @"level",
+                          petExperience, @"experience",
+                          petLatitude, @"position_lat",
+                          petLongitude, @"position_lon",
                           nil];
     return json;
 }
 
 - (void)restoreValuesfromJSON:(NSDictionary *)dict {
-    self.code = [dict objectForKey:@"code"];
-    self.petName = [dict objectForKey:@"name"];
-    self.petType = [dict objectForKey:@"pet_type"];
-    self.petEnergy = [dict objectForKey:@"energy"];
-    self.petLevel = [dict objectForKey:@"level"];
-    self.petExperience = [dict objectForKey:@"experience"];
-    self.petLatitude = [dict objectForKey:@"position_lat"];
-    self.petLongitude = [dict objectForKey:@"position_lon"];
+    code = [dict objectForKey:@"code"];
+    petName = [dict objectForKey:@"name"];
+    petType = [dict objectForKey:@"pet_type"];
+    petEnergy = [dict objectForKey:@"energy"];
+    petLevel = [dict objectForKey:@"level"];
+    petExperience = [dict objectForKey:@"experience"];
+    petLatitude = [dict objectForKey:@"position_lat"];
+    petLongitude = [dict objectForKey:@"position_lon"];
 
 }
 

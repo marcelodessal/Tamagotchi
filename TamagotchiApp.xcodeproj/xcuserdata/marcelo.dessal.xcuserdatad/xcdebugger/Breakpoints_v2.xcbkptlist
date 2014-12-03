@@ -40,12 +40,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TamagotchiApp/Data/PetDatabaseHelper.m"
-            timestampString = "439329022.927594"
+            timestampString = "439340340.343987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "+insertPet:"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "+getPetRanking"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

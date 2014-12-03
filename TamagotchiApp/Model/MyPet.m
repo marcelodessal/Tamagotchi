@@ -8,6 +8,7 @@
 
 #import "MyPet.h"
 #import <CoreLocation/CoreLocation.h>
+#import "PetDatabaseHelper.h"
 
 NSString* const GET_EXHAUSTED = @"GET_EXHAUSTED";
 NSString* const GET_RECOVERED = @"GET_RECOVERED";
@@ -33,7 +34,7 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
         _sharedObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
         
         if (!_sharedObject) {
-            _sharedObject = [[self alloc] init];
+            _sharedObject = [[super alloc] init];
             [_sharedObject setInitialValues];
         }
     });
@@ -160,6 +161,81 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
     NSString *fileName = @"TamagotchiApp.data";
     return [folder stringByAppendingPathComponent: fileName];
 }
+
+
+
+- (NSString*)getStringType:(int) type {
+    
+    switch (type) {
+        case Ciervo:
+            return @"ciervo";
+            break;
+        case Gato:
+            return @"gato";
+            break;
+        case Leon:
+            return @"leon";
+            break;
+        case Jirafa:
+            return @"jirafa";
+            break;
+        default:
+            break;
+    }
+    return @"";
+}
+
+- (NSString*)getStringType {
+    return [self getStringType:[self.petType intValue]];
+}
+
+
+- (UIImage*) getDefaultImageForType:(int) type {
+    NSString *imageName = [NSString stringWithFormat:@"%@_comiendo_1", [self getStringType:type]];
+    return [UIImage imageNamed:imageName];
+}
+
+- (UIImage*) getDefaultImage {
+    return [self getDefaultImageForType:[self.petType intValue]];
+}
+
+
+- (NSDictionary*) getNotificationJSON {
+    NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
+                          self.code, @"code",
+                          self.petName, @"name",
+                          self.petLevel, @"level",
+                          nil];
+    return json;
+}
+
+- (NSDictionary*) getServerJSON {
+    
+    NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
+                          self.code, @"code",
+                          self.petName, @"name",
+                          self.petType, @"pet_type",
+                          self.petEnergy, @"energy",
+                          self.petLevel, @"level",
+                          self.petExperience, @"experience",
+                          self.petLatitude, @"position_lat",
+                          self.petLongitude, @"position_lon",
+                          nil];
+    return json;
+}
+
+- (void)restoreValuesfromJSON:(NSDictionary *)dict {
+    self.code = [dict objectForKey:@"code"];
+    self.petName = [dict objectForKey:@"name"];
+    self.petType = [dict objectForKey:@"pet_type"];
+    self.petEnergy = [dict objectForKey:@"energy"];
+    self.petLevel = [dict objectForKey:@"level"];
+    self.petExperience = [dict objectForKey:@"experience"];
+    self.petLatitude = [dict objectForKey:@"position_lat"];
+    self.petLongitude = [dict objectForKey:@"position_lon"];
+    
+}
+
 
 
 @end

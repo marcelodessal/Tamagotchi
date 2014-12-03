@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Marcelo Fabian Dessal. All rights reserved.
 //
 
-#import "Pet.h"
+//#import "Pet.h"
 #import "Food.h"
 #import "NetworkManager.h"
 #import <CoreLocation/CoreLocation.h>
@@ -18,7 +18,27 @@ extern NSString* const GET_PROMOTED;
 extern NSString* const NAME_SELECTED;
 extern NSString* const IMAGE_SELECTED;
 
-@interface MyPet : Pet <NSCoding>
+@interface MyPet : NSObject <NSCoding>
+
+// Copied from Pet.h
+@property (strong, nonatomic) NSString *code;
+@property (strong, nonatomic) NSString *petName;
+@property (strong, nonatomic) UIImage *petImage;
+@property (strong, nonatomic) NSNumber *petType;
+@property (strong, nonatomic) NSNumber *petEnergy;
+@property (strong, nonatomic) NSNumber *petLevel;
+@property (strong, nonatomic) NSNumber *petExperience;
+@property (strong, nonatomic) NSNumber *petLatitude;
+@property (strong, nonatomic) NSNumber *petLongitude;
+
+- (NSDictionary*) getServerJSON;
+- (void) restoreValuesfromJSON:(NSDictionary*) values;
+- (NSDictionary*) getNotificationJSON;
+- (UIImage*) getDefaultImageForType:(int) type;
+- (UIImage*) getDefaultImage;
+- (NSString*) getStringType:(int) type;
+- (NSString*) getStringType;
+//
 
 + (instancetype) sharedInstance;
 + (NSString*) pathForDataFile;
