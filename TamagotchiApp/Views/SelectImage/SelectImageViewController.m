@@ -67,7 +67,6 @@
     
     self.myPet.petType = type;
     [self.imagenSeleccionada setImage:[self.myPet getDefaultImageForType:type]];
-    self.myPet.petStringType = [self.myPet getStringType:type];
     self.lblMessage.text = @"";
     
 }

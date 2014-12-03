@@ -15,7 +15,6 @@ typedef enum {Ciervo, Gato, Leon, Jirafa} PetType;
 @property (strong, nonatomic) NSString *code;
 @property (strong, nonatomic) NSString *petName;
 @property (strong, nonatomic) UIImage *petImage;
-@property (strong, nonatomic) NSString *petStringType;
 @property int petType;
 @property int petEnergy;
 @property int petLevel;
@@ -30,5 +29,6 @@ typedef enum {Ciervo, Gato, Leon, Jirafa} PetType;
 - (UIImage*) getDefaultImageForType:(int) type;
 - (UIImage*) getDefaultImage;
 - (NSString*) getStringType:(int) type;
+- (NSString*) getStringType;
 
 @end

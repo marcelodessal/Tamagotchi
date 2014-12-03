@@ -48,7 +48,7 @@
     self.myPet = [MyPet sharedInstance];
     
     if (self.myPet.isExhausted) {
-        NSString* imageName = [NSString stringWithFormat:@"%@_exhausto_4",self.myPet.petStringType];
+        NSString* imageName = [NSString stringWithFormat:@"%@_exhausto_4",[self.myPet getStringType]];
         [self.image setImage:[UIImage imageNamed:imageName]];
         [self.btnExercise setEnabled:NO];
     } else {
@@ -196,13 +196,13 @@
 - (void)petGetExhausted {
     [self stopExercise];
     [self.btnExercise setEnabled:NO];
-    [self.image setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_4",self.myPet.petStringType]]];
+    [self.image setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_4",[self.myPet getStringType]]]];
     [self getExhaustAnimation];
 }
 
 - (void)petGetRecovered {
     [self.btnExercise setEnabled:YES];
-    [self.image setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",self.myPet.petStringType]]];
+    [self.image setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",[self.myPet getStringType]]]];
 }
 
 - (void)petGetPromoted {
@@ -266,10 +266,10 @@
 - (void) eatFoodAnimation {
     
     NSArray *images = [[NSArray alloc] initWithObjects:
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_2",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_3",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_4",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_2",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_3",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_4",[self.myPet getStringType]]],
                        nil];
     
     [self.image setAnimationImages:images];
@@ -284,11 +284,11 @@
 - (void) startExerciseAnimation {
     
     NSArray *images = [[NSArray alloc] initWithObjects:
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_1",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_2",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_3",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_4",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_5",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_1",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_2",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_3",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_4",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_5",[self.myPet getStringType]]],
                        nil];
     
     [self.image setAnimationImages:images];
@@ -304,10 +304,10 @@
 - (void) getExhaustAnimation {
     
     NSArray *images = [[NSArray alloc] initWithObjects:
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_1",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_2",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_3",self.myPet.petStringType]],
-                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_4",self.myPet.petStringType]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_1",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_2",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_3",[self.myPet getStringType]]],
+                       [UIImage imageNamed:[NSString stringWithFormat:@"%@_exhausto_4",[self.myPet getStringType]]],
                        nil];
     
     [self.image setAnimationImages:images];

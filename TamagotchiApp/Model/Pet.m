@@ -22,7 +22,6 @@
         self.code = [dict objectForKey:@"code"];
         self.petName = [dict objectForKey:@"name"];
         self.petType = [[dict objectForKey:@"pet_type"] intValue];
-        self.petStringType = [self getStringType:self.petType];
         self.petEnergy = [[dict objectForKey:@"energy"] intValue];
         self.petLevel = [[dict objectForKey:@"level"] intValue];
         self.petExperience = [[dict objectForKey:@"experience"] intValue];
@@ -54,6 +53,11 @@
     return @"";
 }
 
+- (NSString*)getStringType {
+    return [self getStringType:self.petType];
+}
+
+
 - (UIImage*) getDefaultImageForType:(int) type {
     NSString *imageName = [NSString stringWithFormat:@"%@_comiendo_1", [self getStringType:type]];
     return [UIImage imageNamed:imageName];
@@ -75,22 +79,10 @@
 
 - (NSDictionary*) getServerJSON {
     
-    NSNumber *petTypeValue;
-    
-    if ([self.petStringType isEqualToString:@"ciervo"]){
-        petTypeValue = [NSNumber numberWithInt:Ciervo];
-    } else if ([self.petStringType isEqualToString:@"gato"]){
-        petTypeValue = [NSNumber numberWithInt:Gato];
-    } else if ([self.petStringType isEqualToString:@"leon"]){
-        petTypeValue = [NSNumber numberWithInt:Leon];
-    } else if ([self.petStringType isEqualToString:@"jirafa"]){
-        petTypeValue = [NSNumber numberWithInt:Jirafa];
-    }
-    
     NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
                           self.code, @"code",
                           self.petName, @"name",
-                          petTypeValue, @"pet_type",
+                          [NSNumber numberWithInt:self.petType], @"pet_type",
                           [NSNumber numberWithInt:self.petEnergy], @"energy",
                           [NSNumber numberWithInt:self.petLevel], @"level",
                           [NSNumber numberWithInt:self.petExperience], @"experience",
@@ -101,9 +93,9 @@
 }
 
 - (void)restoreValuesfromJSON:(NSDictionary *)dict {
+    self.code = [dict objectForKey:@"code"];
     self.petName = [dict objectForKey:@"name"];
     self.petType = [[dict objectForKey:@"pet_type"] intValue];
-    self.petStringType = [self getStringType:self.petType];
     self.petEnergy = [[dict objectForKey:@"energy"] intValue];
     self.petLevel = [[dict objectForKey:@"level"] intValue];
     self.petExperience = [[dict objectForKey:@"experience"] intValue];
