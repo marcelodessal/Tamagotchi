@@ -51,6 +51,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Pet" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchLimit:50];
+    [fetchRequest setReturnsDistinctResults:YES];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];

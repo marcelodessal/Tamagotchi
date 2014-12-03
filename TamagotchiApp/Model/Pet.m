@@ -21,7 +21,7 @@
 
 
 - (instancetype)initWithDictionary:(NSDictionary*) dict {
-    NSManagedObjectContext *context = [[PetDatabaseHelper sharedInstance] managedObjectContext];
+    NSManagedObjectContext *context = [[DatabaseHelper sharedInstance] managedObjectContext];
     self = [NSEntityDescription insertNewObjectForEntityForName:@"Pet" inManagedObjectContext:context];
     
     if (self) {

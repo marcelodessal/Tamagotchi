@@ -42,7 +42,7 @@
         [self getRankingFromServer];
     
     // After 5 sec, get ranking from server
-    [self performSelector:@selector(getRankingFromServer) withObject:nil afterDelay:5];
+//    [self performSelector:@selector(getRankingFromServer) withObject:nil afterDelay:5];
     
     // Update app database
     [PetDatabaseHelper deleteAllPets];

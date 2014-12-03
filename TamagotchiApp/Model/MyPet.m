@@ -58,7 +58,7 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
 - (void) eatFood:(Food*)foodItem {
     if (self.isExhausted)
         [[NSNotificationCenter defaultCenter] postNotificationName:GET_RECOVERED object:nil];
-    self.petEnergy = [NSNumber numberWithInt:[self.petEnergy intValue] + [self.petEnergy intValue]];
+    self.petEnergy = [NSNumber numberWithInt:[self.petEnergy intValue] + foodItem.foodEnergy];
     
     if ([self.petEnergy intValue] > 100)
         self.petEnergy = [NSNumber numberWithInt:100];
@@ -90,7 +90,8 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
 }
 
 - (BOOL) isExhausted {
-    return ![self canExercise];
+    BOOL result = ![self canExercise];
+    return result;
 }
 
 - (void)postToServer {
