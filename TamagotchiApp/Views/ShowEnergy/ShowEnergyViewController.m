@@ -207,7 +207,7 @@
 
 - (void)petGetPromoted {
     [self stopExercise];
-    NSString *message = [NSString stringWithFormat:@"%@ ha pasado al nivel %i", self.myPet.petName, self.myPet.petLevel];
+    NSString *message = [NSString stringWithFormat:@"%@ ha pasado al nivel %i", self.myPet.petName, [self.myPet.petLevel intValue]];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Felicidades!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
     [self.myPet postToServer];
@@ -318,10 +318,10 @@
 
 
 -(void) updateEnergyBarAnimationWithDuration:(float) duration {
-    float progress = self.myPet.petEnergy / 100.0f;
+    float progress = [self.myPet.petEnergy intValue] / 100.0f;
     [UIView animateWithDuration:duration animations:^{ [self.progressView setProgress:progress animated:YES];}];
-    [self.lblEnergy setText:[NSString stringWithFormat:@"%i", self.myPet.petEnergy]];
-    [self.lblLevel setText:[NSString stringWithFormat:@"Nivel: %i", self.myPet.petLevel]];
+    [self.lblEnergy setText:[NSString stringWithFormat:@"%i", [self.myPet.petEnergy intValue]]];
+    [self.lblLevel setText:[NSString stringWithFormat:@"Nivel: %i", [self.myPet.petLevel intValue]]];
 
 }
 

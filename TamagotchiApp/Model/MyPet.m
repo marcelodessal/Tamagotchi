@@ -43,38 +43,42 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
 
 - (void) setInitialValues {
     self.code = @"MD8462";
-    self.petEnergy = 100;
-    self.petLevel = 1;
-    self.petType = -1;
+    self.petEnergy = [NSNumber numberWithInt:100];
+    self.petLevel = [NSNumber numberWithInt:1];
+    self.petType = [NSNumber numberWithInt:-1];
+
 }
 
 - (void) setLocation:(CLLocation*) location {
-    self.petLatitude = location.coordinate.latitude;
-    self.petLongitude = location.coordinate.longitude;
+    self.petLatitude = [NSNumber numberWithFloat:location.coordinate.latitude];
+    self.petLongitude = [NSNumber numberWithFloat:location.coordinate.longitude];
 }
 
 - (void) eatFood:(Food*)foodItem {
     if (self.isExhausted)
         [[NSNotificationCenter defaultCenter] postNotificationName:GET_RECOVERED object:nil];
-    self.petEnergy += foodItem.foodEnergy;
-    if (self.petEnergy > 100)
-        self.petEnergy = 100;
+    self.petEnergy = [NSNumber numberWithInt:[self.petEnergy intValue] + [self.petEnergy intValue]];
     
+    if ([self.petEnergy intValue] > 100)
+        self.petEnergy = [NSNumber numberWithInt:100];
 }
 
 - (void) exercise {
-    self.petEnergy -= 10;
-    if (self.petEnergy <= 0) {
-        self.petEnergy = 0;
+    self.petEnergy = [NSNumber numberWithInt:[self.petEnergy intValue] - 10];
+    
+    if ([self.petEnergy intValue] <= 0) {
+        self.petEnergy = [NSNumber numberWithInt:0];
         [[NSNotificationCenter defaultCenter] postNotificationName:GET_EXHAUSTED object:nil];
     }
-    self.petExperience += 15;
-    NSLog(@"Experience: %i - Needed to promotion: %i", self.petExperience, 100*self.petLevel*self.petLevel);
     
-    if (self.petExperience >= 100*self.petLevel*self.petLevel) {
-        self.petLevel++;
-        NSLog(@"Level: %i", self.petLevel);
-        self.petExperience = 0;
+    self.petExperience = [NSNumber numberWithInt:[self.petExperience intValue] + 15];
+    int experienceForPromotion = 100 * [self.petLevel intValue] * [self.petLevel intValue];
+    NSLog(@"Experience: %i - Needed to promotion: %i", [self.petExperience intValue], experienceForPromotion);
+    
+    if ([self.petExperience intValue] >= experienceForPromotion) {
+        self.petLevel = [NSNumber numberWithInt:[self.petLevel intValue] + 1];
+        NSLog(@"Level: %i", [self.petLevel intValue]);
+        self.petExperience = [NSNumber numberWithInt:0];
         [[NSNotificationCenter defaultCenter] postNotificationName:GET_PROMOTED object:nil];
     }
     
@@ -123,12 +127,12 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
     if (self) {
         [self setCode:[coder decodeObjectForKey:@"code"]];
         [self setPetName:[coder decodeObjectForKey:@"name"]];
-        [self setPetType:[coder decodeIntForKey:@"pet_type"]];
-        [self setPetEnergy:[coder decodeIntForKey:@"energy"]];
-        [self setPetLevel:[coder decodeIntForKey:@"level"]];
-        [self setPetExperience:[coder decodeIntForKey:@"experience"]];
-        [self setPetLatitude:[coder decodeFloatForKey:@"position_lat"]];
-        [self setPetLongitude:[coder decodeFloatForKey:@"position_lon"]];
+        [self setPetType:[coder decodeObjectForKey:@"pet_type"]];
+        [self setPetEnergy:[coder decodeObjectForKey:@"energy"]];
+        [self setPetLevel:[coder decodeObjectForKey:@"level"]];
+        [self setPetExperience:[coder decodeObjectForKey:@"experience"]];
+        [self setPetLatitude:[coder decodeObjectForKey:@"position_lat"]];
+        [self setPetLongitude:[coder decodeObjectForKey:@"position_lon"]];
     }
     return self;
 }
@@ -136,12 +140,12 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
 - (void) encodeWithCoder: (NSCoder *) coder {
     [coder encodeObject: self.code forKey:@"code"];
     [coder encodeObject:self.petName forKey:@"name"];
-    [coder encodeInt:self.petType forKey:@"pet_type"];
-    [coder encodeInt:self.petEnergy forKey:@"energy"];
-    [coder encodeInt:self.petLevel forKey:@"level"];
-    [coder encodeInt:self.petExperience forKey:@"experience"];
-    [coder encodeFloat:self.petLatitude forKey:@"position_lat"];
-    [coder encodeFloat:self.petLongitude forKey:@"position_lon"];
+    [coder encodeObject:self.petType forKey:@"pet_type"];
+    [coder encodeObject:self.petEnergy forKey:@"energy"];
+    [coder encodeObject:self.petLevel forKey:@"level"];
+    [coder encodeObject:self.petExperience forKey:@"experience"];
+    [coder encodeObject:self.petLatitude forKey:@"position_lat"];
+    [coder encodeObject:self.petLongitude forKey:@"position_lon"];
 }
 
 

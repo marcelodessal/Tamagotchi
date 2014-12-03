@@ -19,7 +19,6 @@
 
 @property (weak, nonatomic) id <RankingCellDelegate> delegate;
 
-- (instancetype) initWithPet:(Pet*) pet;
 -(void) fillDataWithPet:(Pet*) pet;
 
 @end

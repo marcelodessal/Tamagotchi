@@ -37,8 +37,8 @@
     self.myPet = [MyPet sharedInstance];
     [self.lblPetName setText:self.myPet.petName];
     
-    if (self.myPet.petType >= 0) {
-        [self.imagenSeleccionada setImage:[self.myPet getDefaultImageForType:self.myPet.petType]];
+    if ([self.myPet.petType intValue] >= 0) {
+        [self.imagenSeleccionada setImage:[self.myPet getDefaultImageForType:[self.myPet.petType intValue]]];
     }
 }
 
@@ -65,7 +65,7 @@
     
     int type = (int)sender.tag;
     
-    self.myPet.petType = type;
+    self.myPet.petType = [NSNumber numberWithInt:type];
     [self.imagenSeleccionada setImage:[self.myPet getDefaultImageForType:type]];
     self.lblMessage.text = @"";
     

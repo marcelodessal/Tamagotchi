@@ -11,4 +11,6 @@
 
 @interface RankingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RankingCellDelegate>
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @end

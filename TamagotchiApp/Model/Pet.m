@@ -16,17 +16,29 @@
 
 @implementation Pet
 
+@synthesize code;
+@synthesize petName;
+@synthesize petImage;
+@synthesize petType;
+@synthesize petEnergy;
+@synthesize petLevel;
+@synthesize petExperience;
+@synthesize petLatitude;
+@synthesize petLongitude;
+@synthesize pets;
+
+
 - (instancetype)initWithDictionary:(NSDictionary*) dict {
     self = [super init];
     if (self) {
         self.code = [dict objectForKey:@"code"];
         self.petName = [dict objectForKey:@"name"];
-        self.petType = [[dict objectForKey:@"pet_type"] intValue];
-        self.petEnergy = [[dict objectForKey:@"energy"] intValue];
-        self.petLevel = [[dict objectForKey:@"level"] intValue];
-        self.petExperience = [[dict objectForKey:@"experience"] intValue];
-        self.petLatitude = [[dict objectForKey:@"position_lat"] floatValue];
-        self.petLongitude = [[dict objectForKey:@"position_lon"] floatValue];
+        self.petType = [dict objectForKey:@"pet_type"];
+        self.petEnergy = [dict objectForKey:@"energy"];
+        self.petLevel = [dict objectForKey:@"level"];
+        self.petExperience = [dict objectForKey:@"experience"];
+        self.petLatitude = [dict objectForKey:@"position_lat"];
+        self.petLongitude = [dict objectForKey:@"position_lon"];
     }
     return self;
 }
@@ -54,7 +66,7 @@
 }
 
 - (NSString*)getStringType {
-    return [self getStringType:self.petType];
+    return [self getStringType:[self.petType intValue]];
 }
 
 
@@ -64,7 +76,7 @@
 }
 
 - (UIImage*) getDefaultImage {
-    return [self getDefaultImageForType:self.petType];
+    return [self getDefaultImageForType:[self.petType intValue]];
 }
 
 
@@ -72,7 +84,7 @@
     NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
                           self.code, @"code",
                           self.petName, @"name",
-                          [NSNumber numberWithInt:self.petLevel], @"level",
+                          self.petLevel, @"level",
                           nil];
     return json;
 }
@@ -82,12 +94,12 @@
     NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
                           self.code, @"code",
                           self.petName, @"name",
-                          [NSNumber numberWithInt:self.petType], @"pet_type",
-                          [NSNumber numberWithInt:self.petEnergy], @"energy",
-                          [NSNumber numberWithInt:self.petLevel], @"level",
-                          [NSNumber numberWithInt:self.petExperience], @"experience",
-                          [NSNumber numberWithFloat:self.petLatitude], @"position_lat",
-                          [NSNumber numberWithFloat:self.petLongitude], @"position_lon",
+                          self.petType, @"pet_type",
+                          self.petEnergy, @"energy",
+                          self.petLevel, @"level",
+                          self.petExperience, @"experience",
+                          self.petLatitude, @"position_lat",
+                          self.petLongitude, @"position_lon",
                           nil];
     return json;
 }
@@ -95,12 +107,12 @@
 - (void)restoreValuesfromJSON:(NSDictionary *)dict {
     self.code = [dict objectForKey:@"code"];
     self.petName = [dict objectForKey:@"name"];
-    self.petType = [[dict objectForKey:@"pet_type"] intValue];
-    self.petEnergy = [[dict objectForKey:@"energy"] intValue];
-    self.petLevel = [[dict objectForKey:@"level"] intValue];
-    self.petExperience = [[dict objectForKey:@"experience"] intValue];
-    self.petLatitude = [[dict objectForKey:@"position_lat"] floatValue];
-    self.petLongitude = [[dict objectForKey:@"position_lon"] floatValue];
+    self.petType = [dict objectForKey:@"pet_type"];
+    self.petEnergy = [dict objectForKey:@"energy"];
+    self.petLevel = [dict objectForKey:@"level"];
+    self.petExperience = [dict objectForKey:@"experience"];
+    self.petLatitude = [dict objectForKey:@"position_lat"];
+    self.petLongitude = [dict objectForKey:@"position_lon"];
 
 }
 

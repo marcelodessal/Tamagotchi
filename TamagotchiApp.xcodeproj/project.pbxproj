@@ -36,6 +36,8 @@
 		B018C3781A292618003ADA05 /* RankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B018C3761A292618003ADA05 /* RankingCell.m */; };
 		B018C3791A292618003ADA05 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B018C3771A292618003ADA05 /* RankingCell.xib */; };
 		B01DE4BB1A1F501800E2C7DF /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = B01DE4BA1A1F501800E2C7DF /* Food.plist */; };
+		B06AB0F11A2F669E00BD90A2 /* TamagotchiModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B06AB0EF1A2F669E00BD90A2 /* TamagotchiModel.xcdatamodeld */; };
+		B06AB0F41A2F904700BD90A2 /* PetDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B06AB0F31A2F904700BD90A2 /* PetDatabaseHelper.m */; };
 		B0822DA91A28D24400EFDD4E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DA81A28D24400EFDD4E /* MessageUI.framework */; };
 		B0822DAB1A28D25800EFDD4E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DAA1A28D25800EFDD4E /* AudioToolbox.framework */; };
 		B0822DAD1A28D26400EFDD4E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DAC1A28D26400EFDD4E /* CFNetwork.framework */; };
@@ -50,6 +52,8 @@
 		B0822DC01A28D2F100EFDD4E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DBE1A28D2F100EFDD4E /* Bolts.framework */; };
 		B0822DC11A28D2F100EFDD4E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DBF1A28D2F100EFDD4E /* Parse.framework */; };
 		B0822DC41A28F85600EFDD4E /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0822DC31A28F85600EFDD4E /* PushNotificationManager.m */; };
+		B08320751A2F5F980000C18D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08320741A2F5F980000C18D /* CoreData.framework */; };
+		B083207C1A2F61650000C18D /* DatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B083207B1A2F61650000C18D /* DatabaseHelper.m */; };
 		B0880BBF1A2DDC3A000EB2EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0880BBD1A2DDC3A000EB2EB /* MapViewController.m */; };
 		B0880BC01A2DDC3A000EB2EB /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0880BBE1A2DDC3A000EB2EB /* MapViewController.xib */; };
 		B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B088FE5A1A1E46A800C19810 /* SelectFoodViewController.m */; };
@@ -137,6 +141,9 @@
 		B018C3761A292618003ADA05 /* RankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingCell.m; sourceTree = "<group>"; };
 		B018C3771A292618003ADA05 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
 		B01DE4BA1A1F501800E2C7DF /* Food.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
+		B06AB0F01A2F669E00BD90A2 /* TamagotchiModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TamagotchiModel.xcdatamodel; sourceTree = "<group>"; };
+		B06AB0F21A2F904700BD90A2 /* PetDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetDatabaseHelper.h; sourceTree = "<group>"; };
+		B06AB0F31A2F904700BD90A2 /* PetDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetDatabaseHelper.m; sourceTree = "<group>"; };
 		B0822DA81A28D24400EFDD4E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B0822DAA1A28D25800EFDD4E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B0822DAC1A28D26400EFDD4E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -152,6 +159,9 @@
 		B0822DBF1A28D2F100EFDD4E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1-2/Parse.framework"; sourceTree = "<group>"; };
 		B0822DC21A28F85600EFDD4E /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
 		B0822DC31A28F85600EFDD4E /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
+		B08320741A2F5F980000C18D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B083207A1A2F61650000C18D /* DatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseHelper.h; sourceTree = "<group>"; };
+		B083207B1A2F61650000C18D /* DatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseHelper.m; sourceTree = "<group>"; };
 		B0880BBC1A2DDC3A000EB2EB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		B0880BBD1A2DDC3A000EB2EB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		B0880BBE1A2DDC3A000EB2EB /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
@@ -184,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B08320751A2F5F980000C18D /* CoreData.framework in Frameworks */,
 				B0BE41401A2D074A0079C2EB /* MapKit.framework in Frameworks */,
 				B0822DC01A28D2F100EFDD4E /* Bolts.framework in Frameworks */,
 				B0822DC11A28D2F100EFDD4E /* Parse.framework in Frameworks */,
@@ -277,6 +288,7 @@
 		B00F85E91A1BD0630005847C = {
 			isa = PBXGroup;
 			children = (
+				B08320741A2F5F980000C18D /* CoreData.framework */,
 				B0BE413F1A2D074A0079C2EB /* MapKit.framework */,
 				B0822DBE1A28D2F100EFDD4E /* Bolts.framework */,
 				B0822DBF1A28D2F100EFDD4E /* Parse.framework */,
@@ -309,6 +321,7 @@
 		B00F85F41A1BD0630005847C /* TamagotchiApp */ = {
 			isa = PBXGroup;
 			children = (
+				B08320761A2F60260000C18D /* Data */,
 				B00E07861A2791220004320C /* Services */,
 				B0F823FA1A2642B6000195B2 /* Model */,
 				B0F823F91A264265000195B2 /* ThirdPartiesLibraries */,
@@ -373,6 +386,18 @@
 			);
 			name = Ranking;
 			path = Views/Ranking;
+			sourceTree = "<group>";
+		};
+		B08320761A2F60260000C18D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B083207A1A2F61650000C18D /* DatabaseHelper.h */,
+				B083207B1A2F61650000C18D /* DatabaseHelper.m */,
+				B06AB0F21A2F904700BD90A2 /* PetDatabaseHelper.h */,
+				B06AB0F31A2F904700BD90A2 /* PetDatabaseHelper.m */,
+				B06AB0EF1A2F669E00BD90A2 /* TamagotchiModel.xcdatamodeld */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		B0880B7D1A2DD460000EB2EB /* Maps */ = {
@@ -568,6 +593,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B06AB0F41A2F904700BD90A2 /* PetDatabaseHelper.m in Sources */,
 				B0BE413E1A2D066D0079C2EB /* LocationManager.m in Sources */,
 				B00E07B71A2792560004320C /* AFSecurityPolicy.m in Sources */,
 				B00E078B1A2791EB0004320C /* Food.m in Sources */,
@@ -591,12 +617,14 @@
 				B00E07BB1A2792560004320C /* AFURLSessionManager.m in Sources */,
 				B088FE5C1A1E46A800C19810 /* SelectFoodViewController.m in Sources */,
 				B00E07B41A2792560004320C /* AFHTTPRequestOperationManager.m in Sources */,
+				B083207C1A2F61650000C18D /* DatabaseHelper.m in Sources */,
 				B00E07C11A2792560004320C /* UIProgressView+AFNetworking.m in Sources */,
 				B0D3607E1A1BE2C70059E6AC /* ShowEnergyViewController.m in Sources */,
 				B00E07BF1A2792560004320C /* UIButton+AFNetworking.m in Sources */,
 				B00E07BA1A2792560004320C /* AFURLResponseSerialization.m in Sources */,
 				B018C36E1A291A58003ADA05 /* RankingViewController.m in Sources */,
 				B00E078C1A2791EB0004320C /* Pet.m in Sources */,
+				B06AB0F11A2F669E00BD90A2 /* TamagotchiModel.xcdatamodeld in Sources */,
 				B0BE413B1A2CE1750079C2EB /* MyPet.m in Sources */,
 				B00F85F81A1BD0630005847C /* main.m in Sources */,
 				B00E07C21A2792560004320C /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -807,6 +835,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B06AB0EF1A2F669E00BD90A2 /* TamagotchiModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B06AB0F01A2F669E00BD90A2 /* TamagotchiModel.xcdatamodel */,
+			);
+			currentVersion = B06AB0F01A2F669E00BD90A2 /* TamagotchiModel.xcdatamodel */;
+			path = TamagotchiModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B00F85EA1A1BD0630005847C /* Project object */;
 }

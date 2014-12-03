@@ -17,12 +17,12 @@
 @property (strong, nonatomic) IBOutlet UILabel *level;
 @property (strong, nonatomic) IBOutlet UIButton *btnMap;
 
-@property (strong,nonatomic) Pet *pet;
-
 @end
 
-@implementation RankingCell
-
+@implementation RankingCell {
+    Pet *petItem;
+    
+}
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -33,31 +33,11 @@
     // Configure the view for the selected state
 }
 
-- (instancetype)initWithPet:(Pet *)pet {
-
-    self = [super init];
-    if (self) {
-        self.pet = pet;
-        self.name.text = pet.petName;
-        self.level.text = [NSString stringWithFormat:@"%i", pet.petLevel];
-        [self.image setImage:[pet getDefaultImage]];
-        
-        MyPet *myPet = [MyPet sharedInstance];
-        
-        if ([pet.code isEqualToString:myPet.code]){
-            self.backgroundColor = [UIColor grayColor];
-        } else {
-            self.backgroundColor = [UIColor whiteColor];
-        }
-    }
-    return self;
-}
-
 -(void) fillDataWithPet:(Pet*) pet
 {
-    self.pet = pet;
+    petItem = pet;
     self.name.text = pet.petName;
-    self.level.text = [NSString stringWithFormat:@"%i", pet.petLevel];
+    self.level.text = [NSString stringWithFormat:@"%i", [pet.petLevel intValue]];
     [self.image setImage:[pet getDefaultImage]];
     
     MyPet *myPet = [MyPet sharedInstance];
@@ -71,7 +51,7 @@
 
 - (IBAction)showMap:(id)sender {
     if (self.delegate) {
-        [self.delegate didSelectPetMap:self.pet];
+        [self.delegate didSelectPetMap:petItem];
     }
 }
 @end

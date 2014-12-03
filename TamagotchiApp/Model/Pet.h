@@ -8,19 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 typedef enum {Ciervo, Gato, Leon, Jirafa} PetType;
 
-@interface Pet : NSObject
+@interface Pet : NSManagedObject
 @property (strong, nonatomic) NSString *code;
 @property (strong, nonatomic) NSString *petName;
 @property (strong, nonatomic) UIImage *petImage;
-@property int petType;
-@property int petEnergy;
-@property int petLevel;
-@property int petExperience;
-@property float petLatitude;
-@property float petLongitude;
+@property (strong, nonatomic) NSNumber *petType;
+@property (strong, nonatomic) NSNumber *petEnergy;
+@property (strong, nonatomic) NSNumber *petLevel;
+@property (strong, nonatomic) NSNumber *petExperience;
+@property (strong, nonatomic) NSNumber *petLatitude;
+@property (strong, nonatomic) NSNumber *petLongitude;
 
 - (instancetype)initWithDictionary:(NSDictionary*) dict;
 - (NSDictionary*) getServerJSON;

@@ -12,6 +12,7 @@
 #import "MyPet.h"
 #import "NetworkManager.h"
 #import "MapViewController.h"
+#import "PetDatabaseHelper.h"
 
 @interface RankingViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -23,6 +24,8 @@
 
 @implementation RankingViewController
 
+@synthesize managedObjectContext = _managedObjectContext;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -30,8 +33,22 @@
     self.images = [[NSArray alloc] initWithObjects:@"ciervo_comiendo_1", @"gato_comiendo_1", @"leon_comiendo_1", @"jirafa_comiendo_1", nil];
     self.myPet = [MyPet sharedInstance];
     
-    [self getRankingFromServer];
-
+    // Get ranking from app database
+    self.sortedRankingItems = [PetDatabaseHelper getPetRanking];
+    if (self.sortedRankingItems.count)
+        [self.tableView reloadData];
+    
+    // After 5 sec, get ranking from server
+    [self performSelector:@selector(getRankingFromServer) withObject:nil afterDelay:5];
+    
+    // Update app database
+    [PetDatabaseHelper deleteAllPets];
+    for (Pet *pet in self.sortedRankingItems) {
+        [PetDatabaseHelper insertPet:pet];
+    }
+    
+ 
+    // Register cell view
     [self.tableView registerNib:[UINib nibWithNibName:@"RankingCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"rankingCell"];
 
 }

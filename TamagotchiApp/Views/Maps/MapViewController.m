@@ -19,8 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     NSString *title = self.pet.petName;
-    NSString *subtitle = [NSString stringWithFormat:@"Nivel: %i", self.pet.petLevel];
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.pet.petLatitude, self.pet.petLongitude);
+    NSString *subtitle = [NSString stringWithFormat:@"Nivel: %i", [self.pet.petLevel intValue]];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.pet.petLatitude floatValue], [self.pet.petLongitude floatValue]);
     
     SpotAnnotation *spot = [[SpotAnnotation alloc] initWithTitle:title AndSubtitle:subtitle AndCoordinate:coordinate];
     
@@ -36,8 +36,8 @@
 -(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
     
     MKCoordinateRegion region;
-    region.center.latitude = self.pet.petLatitude;
-    region.center.longitude = self.pet.petLongitude;
+    region.center.latitude = [self.pet.petLatitude floatValue];
+    region.center.longitude = [self.pet.petLongitude floatValue];
     region.span.latitudeDelta = 0.02;
     region.span.longitudeDelta = 0.02;
     [mapView setRegion:region animated:YES];
