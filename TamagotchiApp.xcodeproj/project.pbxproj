@@ -69,6 +69,8 @@
 		B0D35F6C1A1BD52F0059E6AC /* SelectImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D35F6A1A1BD52F0059E6AC /* SelectImageViewController.xib */; };
 		B0D3607E1A1BE2C70059E6AC /* ShowEnergyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D3607C1A1BE2C70059E6AC /* ShowEnergyViewController.m */; };
 		B0D3607F1A1BE2C70059E6AC /* ShowEnergyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D3607D1A1BE2C70059E6AC /* ShowEnergyViewController.xib */; };
+		B0EDF0FB1A30FE6200C44470 /* PetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0EDF0F91A30FE6200C44470 /* PetDetailViewController.m */; };
+		B0EDF0FC1A30FE6200C44470 /* PetDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0EDF0FA1A30FE6200C44470 /* PetDetailViewController.xib */; };
 		B0FF90A81A2DE4DA005E1C1C /* SpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FF90A71A2DE4DA005E1C1C /* SpotAnnotation.m */; };
 /* End PBXBuildFile section */
 
@@ -185,6 +187,9 @@
 		B0D3607B1A1BE2C70059E6AC /* ShowEnergyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowEnergyViewController.h; sourceTree = "<group>"; };
 		B0D3607C1A1BE2C70059E6AC /* ShowEnergyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowEnergyViewController.m; sourceTree = "<group>"; };
 		B0D3607D1A1BE2C70059E6AC /* ShowEnergyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowEnergyViewController.xib; sourceTree = "<group>"; };
+		B0EDF0F81A30FE6200C44470 /* PetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetDetailViewController.h; sourceTree = "<group>"; };
+		B0EDF0F91A30FE6200C44470 /* PetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetDetailViewController.m; sourceTree = "<group>"; };
+		B0EDF0FA1A30FE6200C44470 /* PetDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetDetailViewController.xib; sourceTree = "<group>"; };
 		B0FF90A61A2DE4DA005E1C1C /* SpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotAnnotation.h; sourceTree = "<group>"; };
 		B0FF90A71A2DE4DA005E1C1C /* SpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -364,6 +369,7 @@
 		B00F86201A1BD3320005847C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B0EDF0F71A30FE4100C44470 /* PetDetail */,
 				B0880B7D1A2DD460000EB2EB /* Maps */,
 				B018C36A1A291A3D003ADA05 /* Ranking */,
 				B088FE581A1E468100C19810 /* SelectFood */,
@@ -457,6 +463,17 @@
 			);
 			name = ShowEnergy;
 			path = Views/ShowEnergy;
+			sourceTree = "<group>";
+		};
+		B0EDF0F71A30FE4100C44470 /* PetDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B0EDF0F81A30FE6200C44470 /* PetDetailViewController.h */,
+				B0EDF0F91A30FE6200C44470 /* PetDetailViewController.m */,
+				B0EDF0FA1A30FE6200C44470 /* PetDetailViewController.xib */,
+			);
+			name = PetDetail;
+			path = Views/PetDetail;
 			sourceTree = "<group>";
 		};
 		B0F823F91A264265000195B2 /* ThirdPartiesLibraries */ = {
@@ -575,6 +592,7 @@
 				B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */,
 				B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */,
 				B0880BC01A2DDC3A000EB2EB /* MapViewController.xib in Resources */,
+				B0EDF0FC1A30FE6200C44470 /* PetDetailViewController.xib in Resources */,
 				B0D3607F1A1BE2C70059E6AC /* ShowEnergyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,6 +644,7 @@
 				B00E078C1A2791EB0004320C /* Pet.m in Sources */,
 				B06AB0F11A2F669E00BD90A2 /* TamagotchiModel.xcdatamodeld in Sources */,
 				B0BE413B1A2CE1750079C2EB /* MyPet.m in Sources */,
+				B0EDF0FB1A30FE6200C44470 /* PetDetailViewController.m in Sources */,
 				B00F85F81A1BD0630005847C /* main.m in Sources */,
 				B00E07C21A2792560004320C /* UIRefreshControl+AFNetworking.m in Sources */,
 				B088FE701A1E70DD00C19810 /* FoodCell.m in Sources */,

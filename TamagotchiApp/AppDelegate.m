@@ -10,6 +10,7 @@
 #import "WelcomeViewController.h"
 #import "SelectImageViewController.h"
 #import "ShowEnergyViewController.h"
+#import "PetDetailViewController.h"
 #import "MyPet.h"
 #import <Parse/Parse.h>
 
@@ -111,10 +112,54 @@
     [self saveDataToDisk];
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    NSString *urlString = [url absoluteString];
+    NSArray *components = [urlString componentsSeparatedByString:@"/"];
+    
+    if ([[components objectAtIndex:2] isEqualToString:@"pet"]) {
+        NSString *petCode = [components objectAtIndex:3];
+        [self getPetWithCode:petCode];
+    }
+    return YES;
+}
+
+
 - (void) saveDataToDisk {
     MyPet *myPet = [MyPet sharedInstance];
     NSString *path = [MyPet pathForDataFile];
     [NSKeyedArchiver archiveRootObject: myPet toFile: path];
 }
+
+- (void)getPetWithCode:(NSString*)code {
+    
+    NSString *restoreURLString = [NSString stringWithFormat:@"/pet/%@", [code uppercaseString]];
+    
+    [[NetworkManager sharedInstance] GET:restoreURLString parameters:nil
+                                 success:[self getSuccessHandler]
+                                 failure:[self getErrorHandler]];
+}
+
+- (Success) getSuccessHandler {
+    
+    return ^(NSURLSessionDataTask *task, id responseObject) {
+        Pet *pet = [[Pet alloc] initWithDictionary:responseObject];
+        PetDetailViewController *newController = [[PetDetailViewController alloc] initWithPet:pet];
+        [self.window.rootViewController.navigationController pushViewController:newController animated:YES];
+     };
+}
+
+- (Failure) getErrorHandler {
+    
+    return ^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *errorMessage = [NSString stringWithFormat:@"Error: %@", error];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:errorMessage
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    };
+}
+
 
 @end
