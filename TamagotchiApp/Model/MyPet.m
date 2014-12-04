@@ -86,12 +86,11 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
 }
 
 - (BOOL)canExercise {
-    return self.petEnergy;
+    return [self.petEnergy boolValue];
 }
 
 - (BOOL) isExhausted {
-    BOOL result = ![self canExercise];
-    return result;
+    return ![self canExercise];
 }
 
 - (void)postToServer {

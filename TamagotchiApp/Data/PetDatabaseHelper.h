@@ -8,7 +8,7 @@
 
 #import "DatabaseHelper.h"
 
-@interface PetDatabaseHelper : DatabaseHelper
+@interface PetDatabaseHelper : NSObject
 
 + (void) insertPet:(Pet*) pet;
 + (void) deleteAllPets;

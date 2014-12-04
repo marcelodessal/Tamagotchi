@@ -38,19 +38,12 @@
     self.sortedRankingItems = [PetDatabaseHelper getPetRanking];
     if (self.sortedRankingItems.count)
         [self.tableView reloadData];
-    else
-        [self getRankingFromServer];
+//    else
+//        [self getRankingFromServer];
     
     // After 5 sec, get ranking from server
-//    [self performSelector:@selector(getRankingFromServer) withObject:nil afterDelay:5];
+    [self performSelector:@selector(getRankingFromServer) withObject:nil afterDelay:5];
     
-    // Update app database
-    [PetDatabaseHelper deleteAllPets];
-    for (Pet *pet in self.sortedRankingItems) {
-        [PetDatabaseHelper insertPet:pet];
-    }
-    
- 
     // Register cell view
     [self.tableView registerNib:[UINib nibWithNibName:@"RankingCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"rankingCell"];
 
@@ -61,6 +54,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)updateDatabaseWithRankingFromServer {
+    
+    
+    [PetDatabaseHelper insertPet:nil];
+
+}
 - (void)getRankingFromServer {
     
     NSString *rankingURLString = @"/pet/all";
@@ -76,6 +75,8 @@
         NSArray *array = [[NSArray alloc] initWithArray:responseObject];
         NSMutableArray *rankingItems = [[NSMutableArray alloc] init];
         
+        [PetDatabaseHelper deleteAllPets];
+        
         for (NSDictionary* dict in array) {
             Pet *pet = [[Pet alloc] initWithDictionary:dict];
             [rankingItems addObject:pet];
@@ -84,6 +85,9 @@
         NSSortDescriptor *sortByLevel = [NSSortDescriptor sortDescriptorWithKey:@"petLevel" ascending:NO];
         NSArray *sortDescriptors = [NSArray arrayWithObject:sortByLevel];
         self.sortedRankingItems = [rankingItems sortedArrayUsingDescriptors:sortDescriptors];
+        
+        // Update app database
+        [self updateDatabaseWithRankingFromServer];
 
         [self.tableView reloadData];
         };

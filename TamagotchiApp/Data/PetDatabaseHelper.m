@@ -15,6 +15,7 @@
 + (void)insertPet:(Pet *) newPet {
     
     NSManagedObjectContext *context = [[DatabaseHelper sharedInstance] managedObjectContext];
+    
     NSError *localerror;
     if (![context save:&localerror]) { //Save changes in context.
         NSLog([NSString stringWithFormat:@"Error al guardar: %@", [localerror localizedDescription]]);
@@ -51,13 +52,16 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Pet" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchLimit:50];
-    [fetchRequest setReturnsDistinctResults:YES];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:NO];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    NSSortDescriptor *sortByLevel = [NSSortDescriptor sortDescriptorWithKey:@"petLevel" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortByLevel]];
     
     NSError *error;
     NSArray *ranking = [context executeFetchRequest:fetchRequest error:&error];
+    
+    
+//    self.sortedRankingItems = [rankingItems sortedArrayUsingDescriptors:sortDescriptors];
+    
     return ranking;
 }
 
