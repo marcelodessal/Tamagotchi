@@ -36,6 +36,7 @@
 		B018C3781A292618003ADA05 /* RankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B018C3761A292618003ADA05 /* RankingCell.m */; };
 		B018C3791A292618003ADA05 /* RankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B018C3771A292618003ADA05 /* RankingCell.xib */; };
 		B01DE4BB1A1F501800E2C7DF /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = B01DE4BA1A1F501800E2C7DF /* Food.plist */; };
+		B039083E1A320568002D6B4A /* PetRemoteService.m in Sources */ = {isa = PBXBuildFile; fileRef = B039083D1A320568002D6B4A /* PetRemoteService.m */; };
 		B06AB0F11A2F669E00BD90A2 /* TamagotchiModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B06AB0EF1A2F669E00BD90A2 /* TamagotchiModel.xcdatamodeld */; };
 		B06AB0F41A2F904700BD90A2 /* PetDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B06AB0F31A2F904700BD90A2 /* PetDatabaseHelper.m */; };
 		B0822DA91A28D24400EFDD4E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0822DA81A28D24400EFDD4E /* MessageUI.framework */; };
@@ -143,6 +144,8 @@
 		B018C3761A292618003ADA05 /* RankingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingCell.m; sourceTree = "<group>"; };
 		B018C3771A292618003ADA05 /* RankingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingCell.xib; sourceTree = "<group>"; };
 		B01DE4BA1A1F501800E2C7DF /* Food.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
+		B039083C1A320568002D6B4A /* PetRemoteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetRemoteService.h; sourceTree = "<group>"; };
+		B039083D1A320568002D6B4A /* PetRemoteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetRemoteService.m; sourceTree = "<group>"; };
 		B06AB0F01A2F669E00BD90A2 /* TamagotchiModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TamagotchiModel.xcdatamodel; sourceTree = "<group>"; };
 		B06AB0F21A2F904700BD90A2 /* PetDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetDatabaseHelper.h; sourceTree = "<group>"; };
 		B06AB0F31A2F904700BD90A2 /* PetDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetDatabaseHelper.m; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 				B0822DC31A28F85600EFDD4E /* PushNotificationManager.m */,
 				B0BE413C1A2D066D0079C2EB /* LocationManager.h */,
 				B0BE413D1A2D066D0079C2EB /* LocationManager.m */,
+				B039083C1A320568002D6B4A /* PetRemoteService.h */,
+				B039083D1A320568002D6B4A /* PetRemoteService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -612,6 +617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B06AB0F41A2F904700BD90A2 /* PetDatabaseHelper.m in Sources */,
+				B039083E1A320568002D6B4A /* PetRemoteService.m in Sources */,
 				B0BE413E1A2D066D0079C2EB /* LocationManager.m in Sources */,
 				B00E07B71A2792560004320C /* AFSecurityPolicy.m in Sources */,
 				B00E078B1A2791EB0004320C /* Food.m in Sources */,

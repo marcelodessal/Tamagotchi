@@ -9,6 +9,7 @@
 #import "WelcomeViewController.h"
 #import "SelectImageViewController.h"
 #import "MyPet.h"
+#import "PetRemoteService.h"
 
 @interface WelcomeViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *nombreMascota;
@@ -34,19 +35,14 @@
 // Restore previous game
 
 - (IBAction)restoreValues:(id)sender {
-    
-    NSString *restoreURLString = [NSString stringWithFormat:@"/pet/%@", self.myPet.code];
-
-    [[NetworkManager sharedInstance] GET:restoreURLString parameters:nil
-                                  success:[self getSuccessHandler]
-                                  failure:[self getErrorHandler]];
+    [PetRemoteService getPetFromServerWithCode:self.myPet.code success:[self getSuccessHandler] failure:[self getErrorHandler]];
 }
 
 - (Success) getSuccessHandler {
-    
+    __weak typeof(self) weakerSelf = self;
     return ^(NSURLSessionDataTask *task, id responseObject) {
-        [self.myPet restoreValuesfromJSON: responseObject];
-        [self nextScreen];
+        [weakerSelf.myPet restoreValuesfromJSON: responseObject];
+        [weakerSelf nextScreen];
     };
 }
 
