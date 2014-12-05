@@ -56,8 +56,9 @@
 
 - (void)updateDatabaseWithRankingFromServer {
     
-    
-    [PetDatabaseHelper insertPet:nil];
+    for (Pet *pet in self.sortedRankingItems) {
+       [PetDatabaseHelper insertPet:pet];
+    }
 
 }
 - (void)getRankingFromServer {

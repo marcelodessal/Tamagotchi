@@ -15,6 +15,8 @@
 + (void)insertPet:(Pet *) newPet {
     
     NSManagedObjectContext *context = [[DatabaseHelper sharedInstance] managedObjectContext];
+
+    [context insertObject:newPet];
     
     NSError *localerror;
     if (![context save:&localerror]) { //Save changes in context.
@@ -52,6 +54,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Pet" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchLimit:50];
+    [fetchRequest setReturnsObjectsAsFaults:NO];
     
     NSSortDescriptor *sortByLevel = [NSSortDescriptor sortDescriptorWithKey:@"petLevel" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortByLevel]];

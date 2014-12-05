@@ -22,7 +22,14 @@
 
 - (instancetype)initWithDictionary:(NSDictionary*) dict {
     NSManagedObjectContext *context = [[DatabaseHelper sharedInstance] managedObjectContext];
-    self = [NSEntityDescription insertNewObjectForEntityForName:@"Pet" inManagedObjectContext:context];
+
+    // This line creates the proper description using the managed context and entity name.
+    // Note that it uses the managed object context
+    NSEntityDescription *ent = [NSEntityDescription entityForName:@"Pet" inManagedObjectContext:context];
+    
+    // This line initialized the entity but does not insert it into the managed object context.
+    self = [[Pet alloc] initWithEntity:ent insertIntoManagedObjectContext:nil];
+
     
     if (self) {
         code = [dict objectForKey:@"code"];
