@@ -11,6 +11,7 @@
 #import "Pet.h"
 #import "MyPet.h"
 #import "NetworkManager.h"
+#import "PetRemoteService.h"
 #import "MapViewController.h"
 #import "PetDatabaseHelper.h"
 
@@ -63,16 +64,13 @@
 }
 - (void)getRankingFromServer {
     
-    NSString *rankingURLString = @"/pet/all";
-    
-    [[NetworkManager sharedInstance] GET:rankingURLString parameters:nil
-                                 success:[self getSuccessHandler]
-                                 failure:[self getErrorHandler]];
+    [PetRemoteService getAllPets:[self getSuccessHandler] failure:[self getErrorHandler]];
 }
 
 - (Success) getSuccessHandler {
     
     return ^(NSURLSessionDataTask *task, id responseObject) {
+        __weak typeof (self) weakerSelf = self;
         NSArray *array = [[NSArray alloc] initWithArray:responseObject];
         NSMutableArray *rankingItems = [[NSMutableArray alloc] init];
         
@@ -85,12 +83,12 @@
         
         NSSortDescriptor *sortByLevel = [NSSortDescriptor sortDescriptorWithKey:@"petLevel" ascending:NO];
         NSArray *sortDescriptors = [NSArray arrayWithObject:sortByLevel];
-        self.sortedRankingItems = [rankingItems sortedArrayUsingDescriptors:sortDescriptors];
+        weakerSelf.sortedRankingItems = [rankingItems sortedArrayUsingDescriptors:sortDescriptors];
         
         // Update app database
-        [self updateDatabaseWithRankingFromServer];
+        [weakerSelf updateDatabaseWithRankingFromServer];
 
-        [self.tableView reloadData];
+        [weakerSelf.tableView reloadData];
         };
 }
 

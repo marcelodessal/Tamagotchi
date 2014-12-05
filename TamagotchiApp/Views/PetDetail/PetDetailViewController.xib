@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PetDetailViewController">
             <connections>
-                <outlet property="image" destination="dgx-wG-mJS" id="qax-bK-fZd"/>
-                <outlet property="lblEnergy" destination="OQs-pt-ekI" id="GQF-iA-ehT"/>
-                <outlet property="lblExperience" destination="pin-dd-PVC" id="jCO-D8-lFH"/>
-                <outlet property="lblLevel" destination="jmC-01-raN" id="mQF-b1-5Be"/>
-                <outlet property="lblName" destination="SSM-qg-p9o" id="UlV-0m-rYu"/>
+                <outlet property="image" destination="dgx-wG-mJS" id="cMr-RL-SdW"/>
+                <outlet property="lblEnergy" destination="OQs-pt-ekI" id="A7k-lt-Dd6"/>
+                <outlet property="lblExperience" destination="pin-dd-PVC" id="onm-xE-gfk"/>
+                <outlet property="lblLevel" destination="jmC-01-raN" id="8Zf-Nv-fon"/>
+                <outlet property="lblName" destination="SSM-qg-p9o" id="iBw-39-shy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

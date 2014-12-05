@@ -9,6 +9,7 @@
 #import "MyPet.h"
 #import <CoreLocation/CoreLocation.h>
 #import "PetDatabaseHelper.h"
+#import "PetRemoteService.h"
 
 NSString* const GET_EXHAUSTED = @"GET_EXHAUSTED";
 NSString* const GET_RECOVERED = @"GET_RECOVERED";
@@ -80,9 +81,9 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
         self.petLevel = [NSNumber numberWithInt:[self.petLevel intValue] + 1];
         NSLog(@"Level: %i", [self.petLevel intValue]);
         self.petExperience = [NSNumber numberWithInt:[self.petExperience intValue]-experienceForPromotion];
+        [self postMeToServer];
         [[NSNotificationCenter defaultCenter] postNotificationName:GET_PROMOTED object:nil];
     }
-    
 }
 
 - (BOOL)canExercise {
@@ -93,20 +94,8 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
     return ![self canExercise];
 }
 
-- (void)postToServer {
-    NSDictionary *parameters = [self getServerJSON];
-
-    [[NetworkManager sharedInstance] POST:@"/pet" parameters:parameters
-                                 success:[self getSuccessHandler]
-                                 failure:[self getErrorHandler]];
-}
-
-- (void)postToServerWithSuccessBlock:(Success) successBlock AndFailureBlock:(Failure) failureBlock {
-    NSDictionary *parameters = [self getServerJSON];
-    
-    [[NetworkManager sharedInstance] POST:@"/pet" parameters:parameters
-                                  success:(successBlock) ? successBlock : [self getSuccessHandler]
-                                  failure:(failureBlock) ? failureBlock : [self getErrorHandler]];
+- (void)postMeToServer {
+    [PetRemoteService postPetWithDictionary:[self getServerJSON] success:[self getSuccessHandler] failure:[self getErrorHandler]];
 }
 
 - (Success) getSuccessHandler {
@@ -170,7 +159,9 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
     return [folder stringByAppendingPathComponent: fileName];
 }
 
-
+- (void)saveMeToDisk {
+    [NSKeyedArchiver archiveRootObject:self toFile:[MyPet pathForDataFile]];
+}
 
 - (NSString*)getStringType:(int) type {
     

@@ -10,7 +10,6 @@
 #import "SelectFoodViewController.h"
 #import <MessageUI/MessageUI.h>
 #import <NotificationCenter/NotificationCenter.h>
-#import "NetworkManager.h"
 
 @interface ShowEnergyViewController : UIViewController <SelectFoodDelegate, MFMailComposeViewControllerDelegate>
 

@@ -35,7 +35,7 @@
 // Restore previous game
 
 - (IBAction)restoreValues:(id)sender {
-    [PetRemoteService getPetFromServerWithCode:self.myPet.code success:[self getSuccessHandler] failure:[self getErrorHandler]];
+    [PetRemoteService getPetWithCode:self.myPet.code success:[self getSuccessHandler] failure:[self getErrorHandler]];
 }
 
 - (Success) getSuccessHandler {

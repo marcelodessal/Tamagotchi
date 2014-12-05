@@ -12,6 +12,7 @@
 #import "ShowEnergyViewController.h"
 #import "PetDetailViewController.h"
 #import "MyPet.h"
+#import "PetRemoteService.h"
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
@@ -96,7 +97,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [self saveDataToDisk];
+    [self savePetToDisk];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -109,7 +110,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [self saveDataToDisk];
+    [self savePetToDisk];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -118,33 +119,22 @@
     
     if ([[components objectAtIndex:2] isEqualToString:@"pet"]) {
         NSString *petCode = [components objectAtIndex:3];
-        [self getPetWithCode:petCode];
+        [PetRemoteService getPetWithCode:[petCode uppercaseString] success:[self getSuccessHandler] failure:[self getErrorHandler]];
     }
     return YES;
 }
 
-
-- (void) saveDataToDisk {
-    MyPet *myPet = [MyPet sharedInstance];
-    NSString *path = [MyPet pathForDataFile];
-    [NSKeyedArchiver archiveRootObject: myPet toFile: path];
-}
-
-- (void)getPetWithCode:(NSString*)code {
-    
-    NSString *restoreURLString = [NSString stringWithFormat:@"/pet/%@", [code uppercaseString]];
-    
-    [[NetworkManager sharedInstance] GET:restoreURLString parameters:nil
-                                 success:[self getSuccessHandler]
-                                 failure:[self getErrorHandler]];
+- (void) savePetToDisk {
+    [[MyPet sharedInstance] saveMeToDisk];
 }
 
 - (Success) getSuccessHandler {
     
     return ^(NSURLSessionDataTask *task, id responseObject) {
+        __weak typeof (self) weakerSelf = self;
         Pet *pet = [[Pet alloc] initWithDictionary:responseObject];
         PetDetailViewController *newController = [[PetDetailViewController alloc] initWithPet:pet];
-        [(UINavigationController*)self.window.rootViewController pushViewController:newController animated:YES];
+        [(UINavigationController*)weakerSelf.window.rootViewController pushViewController:newController animated:YES];
      };
 }
 

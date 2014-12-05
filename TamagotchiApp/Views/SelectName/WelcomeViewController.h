@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NetworkManager.h"
 
 @interface WelcomeViewController : UIViewController
 

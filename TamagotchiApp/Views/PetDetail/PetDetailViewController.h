@@ -10,13 +10,6 @@
 #import "Pet.h"
 
 @interface PetDetailViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UILabel *lblName;
-@property (strong, nonatomic) IBOutlet UIImageView *image;
-@property (strong, nonatomic) IBOutlet UILabel *lblLevel;
-@property (strong, nonatomic) IBOutlet UILabel *lblEnergy;
-@property (strong, nonatomic) IBOutlet UILabel *lblExperience;
-
-@property (strong, nonatomic) Pet* pet;
 
 - (instancetype)initWithPet:(Pet *)pet;
 

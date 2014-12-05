@@ -210,7 +210,6 @@
     NSString *message = [NSString stringWithFormat:@"%@ ha pasado al nivel %i", self.myPet.petName, [self.myPet.petLevel intValue]];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Felicidades!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
-    [self.myPet postToServer];
     [self sendNotification];
     
 }

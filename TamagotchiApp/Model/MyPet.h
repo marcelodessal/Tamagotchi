@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 Marcelo Fabian Dessal. All rights reserved.
 //
 
-//#import "Pet.h"
 #import "Food.h"
-#import "NetworkManager.h"
 #import <CoreLocation/CoreLocation.h>
+#import <UIKit/UIKit.h>
 
 extern NSString* const GET_EXHAUSTED;
 extern NSString* const GET_RECOVERED;
@@ -48,7 +47,7 @@ extern NSString* const IMAGE_SELECTED;
 - (BOOL) canExercise;
 - (BOOL) isExhausted;
 - (void) setLocation:(CLLocation*) location;
-- (void) postToServer;
-- (void)postToServerWithSuccessBlock:(Success) successBlock AndFailureBlock:(Failure) failureBlock;
+- (void) postMeToServer;
+- (void) saveMeToDisk;
 
 @end

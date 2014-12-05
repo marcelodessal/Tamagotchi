@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "MyPet.h"
-#import "NetworkManager.h"
+#import "PetRemoteService.h"
 
 @interface TamagotchiAppTests : XCTestCase
 
@@ -66,20 +66,58 @@
     
 }
 
-- (void)test1PostToServer {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"test1PostToServer"];
+- (void)test1PostPetToServer {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test1PostPetToServer"];
     
     MyPet *pet = [MyPet sharedInstance];
-    [pet postToServerWithSuccessBlock:^(NSURLSessionDataTask *task, id responseObject) {
-        [expectation fulfill];}
-                      AndFailureBlock:^(NSURLSessionDataTask *task, NSError *error) {
-                          XCTFail(@"FAIL:Post data to server failed in \"%s\" test", __PRETTY_FUNCTION__);
-                      }];
+    [PetRemoteService postPetWithDictionary:[pet getServerJSON] success:^(NSURLSessionDataTask *task, id responseObject) {
+        [expectation fulfill];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        XCTFail(@"FAIL:Post pet data to server failed in \"%s\" test", __PRETTY_FUNCTION__);
+    }];
     
     [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) { if (error) {
         NSLog(@"Timeout Error: %@", error); }
     }];
 }
 
+- (void)test2GetPetFromServer {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test2GetPetFromServer"];
+    
+    NSString* code = @"MD8462";
+    
+    [PetRemoteService getPetWithCode:code success:^(NSURLSessionDataTask *task, id responseObject) {
+        Pet *pet = [[Pet alloc] initWithDictionary:responseObject];
+        XCTAssertTrue([code isEqualToString:pet.code], @"FAIL: expected return value was %@ but received %@ instead.", code, pet.code);
+        if ([code isEqualToString:pet.code])
+            [expectation fulfill];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        XCTFail(@"FAIL:Get pet data from server failed in \"%s\" test", __PRETTY_FUNCTION__);
+    }];
+    
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) { if (error) {
+        NSLog(@"Timeout Error: %@", error); }
+    }];
+}
+
+- (void)test2GetPetListFromServer {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test2GetPetListFromServer"];
+    
+    [PetRemoteService getAllPets:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = [[NSArray alloc] initWithArray:responseObject];
+        if (array.count > 0)
+            [expectation fulfill];
+        else
+            XCTFail(@"FAIL:Get pet list from server returned no data in \"%s\" test", __PRETTY_FUNCTION__);
+            
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        XCTFail(@"FAIL:Get pet list from server failed in \"%s\" test", __PRETTY_FUNCTION__);
+    }];
+    
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) { if (error) {
+        NSLog(@"Timeout Error: %@", error); }
+    }];
+}
 
 @end

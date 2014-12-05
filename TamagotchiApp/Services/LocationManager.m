@@ -37,7 +37,7 @@
 
     MyPet *myPet = [MyPet sharedInstance];
     [myPet setLocation:newLocation];
-    [myPet postToServer];
+    [myPet postMeToServer];
     
  }
 

@@ -12,6 +12,8 @@
 
 @interface PetRemoteService : NSObject
 
-+ (void)getPetFromServerWithCode:(NSString*)code success:(Success)success failure:(Failure)failure;
++ (void)getPetWithCode:(NSString*)code success:(Success)success failure:(Failure)failure;
++ (void)postPetWithDictionary:(NSDictionary*)petJson success:(Success)success failure:(Failure)failure;
++ (void)getAllPets:(Success)success failure:(Failure)failure;
 
 @end
