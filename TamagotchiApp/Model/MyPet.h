@@ -49,5 +49,6 @@ extern NSString* const IMAGE_SELECTED;
 - (BOOL) isExhausted;
 - (void) setLocation:(CLLocation*) location;
 - (void) postToServer;
+- (void)postToServerWithSuccessBlock:(Success) successBlock AndFailureBlock:(Failure) failureBlock;
 
 @end

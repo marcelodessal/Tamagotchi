@@ -10,7 +10,8 @@
 #import "AFNetworkActivityIndicatorManager.h"
 
 
-NSString* const baseURLString = @"http://tamagotchi.herokuapp.com";
+//NSString* const baseURLString = @"http://tamagotchi.herokuapp.com";
+NSString* const baseURLString = @"http://169.254.226.91:3000";
 
 @implementation NetworkManager
 

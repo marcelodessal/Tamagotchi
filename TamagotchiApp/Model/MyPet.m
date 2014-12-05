@@ -79,7 +79,7 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
     if ([self.petExperience intValue] >= experienceForPromotion) {
         self.petLevel = [NSNumber numberWithInt:[self.petLevel intValue] + 1];
         NSLog(@"Level: %i", [self.petLevel intValue]);
-        self.petExperience = [NSNumber numberWithInt:0];
+        self.petExperience = [NSNumber numberWithInt:[self.petExperience intValue]-experienceForPromotion];
         [[NSNotificationCenter defaultCenter] postNotificationName:GET_PROMOTED object:nil];
     }
     
@@ -99,6 +99,14 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
     [[NetworkManager sharedInstance] POST:@"/pet" parameters:parameters
                                  success:[self getSuccessHandler]
                                  failure:[self getErrorHandler]];
+}
+
+- (void)postToServerWithSuccessBlock:(Success) successBlock AndFailureBlock:(Failure) failureBlock {
+    NSDictionary *parameters = [self getServerJSON];
+    
+    [[NetworkManager sharedInstance] POST:@"/pet" parameters:parameters
+                                  success:(successBlock) ? successBlock : [self getSuccessHandler]
+                                  failure:(failureBlock) ? failureBlock : [self getErrorHandler]];
 }
 
 - (Success) getSuccessHandler {

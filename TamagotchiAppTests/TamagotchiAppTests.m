@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "MyPet.h"
+#import "NetworkManager.h"
 
 @interface TamagotchiAppTests : XCTestCase
 
@@ -25,16 +27,59 @@
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testEnergyDecreaseWithExercise {
     // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+    MyPet *pet = [MyPet sharedInstance];
+    pet.petEnergy = [NSNumber numberWithInt:20];
+    [pet exercise];
+    
+    if ([pet.petEnergy intValue] == 10)
+        return;
+
+    XCTFail(@"FAIL:Energy wasn't correctly updated in \"%s\" test", __PRETTY_FUNCTION__);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+- (void)testExperienceIncrementWithExercise {
+    // This is an example of a functional test case.
+    MyPet *pet = [MyPet sharedInstance];
+    pet.petExperience = [NSNumber numberWithInt:20];
+    [pet exercise];
+    
+    if ([pet.petExperience intValue] == 35)
+        return;
+    
+    XCTFail(@"FAIL:Experience wasn't correctly updated in \"%s\" test", __PRETTY_FUNCTION__);
+}
+
+- (void)testLevelPromotion {
+    // This is an example of a functional test case.
+    MyPet *pet = [MyPet sharedInstance];
+    pet.petLevel = [NSNumber numberWithInt:2];
+    pet.petExperience = [NSNumber numberWithInt:395];
+    [pet exercise];
+    
+    if ([pet.petLevel intValue] != 3)
+        XCTFail(@"FAIL:Level wasn't correctly updated in \"%s\" test", __PRETTY_FUNCTION__);
+    
+    if ([pet.petExperience intValue] != 10)
+        XCTFail(@"FAIL:Experience wasn't correctly updated in \"%s\" test", __PRETTY_FUNCTION__);
+    
+}
+
+- (void)test1PostToServer {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test1PostToServer"];
+    
+    MyPet *pet = [MyPet sharedInstance];
+    [pet postToServerWithSuccessBlock:^(NSURLSessionDataTask *task, id responseObject) {
+        [expectation fulfill];}
+                      AndFailureBlock:^(NSURLSessionDataTask *task, NSError *error) {
+                          XCTFail(@"FAIL:Post data to server failed in \"%s\" test", __PRETTY_FUNCTION__);
+                      }];
+    
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) { if (error) {
+        NSLog(@"Timeout Error: %@", error); }
     }];
 }
+
 
 @end

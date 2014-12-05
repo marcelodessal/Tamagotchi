@@ -144,7 +144,7 @@
     return ^(NSURLSessionDataTask *task, id responseObject) {
         Pet *pet = [[Pet alloc] initWithDictionary:responseObject];
         PetDetailViewController *newController = [[PetDetailViewController alloc] initWithPet:pet];
-        [self.window.rootViewController.navigationController pushViewController:newController animated:YES];
+        [(UINavigationController*)self.window.rootViewController pushViewController:newController animated:YES];
      };
 }
 
