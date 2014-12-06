@@ -9,6 +9,7 @@
 #import "ShowEnergyViewController.h"
 #import "SelectFoodViewController.h"
 #import "RankingViewController.h"
+#import "ContactsViewController.h"
 #import "MyPet.h"
 #import "PushNotificationManager.h"
 #import "LocationManager.h"
@@ -20,7 +21,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 @property (strong, nonatomic) IBOutlet UIImageView *imgFood;
 @property (strong, nonatomic) IBOutlet UIImageView *mouth;
-@property (strong, nonatomic) MFMailComposeViewController *mailComposer;
 @property (strong, nonatomic) IBOutlet UIButton *btnExercise;
 
 @property BOOL isFoodAvailable;
@@ -63,15 +63,11 @@
     self.isFoodAvailable = NO;
     self.isExercising = NO;
     
+    UIBarButtonItem* btnAction = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"contacts_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(getContacts:)];
     
-    //Add mail button to navigation bar
-    UIBarButtonItem* mailButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mail_icon"]  style:UIBarButtonItemStyleDone target:self action:@selector(sendMail:)];
- 
-    self.navigationItem.rightBarButtonItem = mailButton;
+    self.navigationItem.rightBarButtonItem = btnAction;
     
     [[LocationManager sharedInstance] startUpdates];
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -109,51 +105,13 @@
 - (IBAction)listRanking:(id)sender {
     RankingViewController *newController = [[RankingViewController alloc] initWithNibName:@"RankingViewController" bundle:nil];
     [self.navigationController pushViewController:newController animated:YES];
-   
 }
 
-- (void)sendMail:(id)sender {
-    NSString *emailTitle = @"Que app copada";
-    NSString *messageBody = [NSString stringWithFormat:@"Buenas! Soy %@, cómo va? Quería comentarte que estuve usando la App TamagotchiApp para comerme todo y está genial. Bajatela YA!!   Saludos", self.myPet.petName];
-    
-    self.mailComposer = [[MFMailComposeViewController alloc] init];
-    self.mailComposer.mailComposeDelegate = self;
-    [self.mailComposer setSubject:emailTitle];
-    [self.mailComposer setMessageBody:messageBody isHTML:NO];
-    
-    // Present mail view controller on screen
-    [self presentViewController:self.mailComposer animated:YES completion:nil];
-    
+- (void)getContacts:(id)sender {
+    ContactsViewController *newController = [[ContactsViewController alloc] initWithNibName:@"ContactsViewController" bundle:nil];
+    [self.navigationController pushViewController:newController animated:YES];
 }
 
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    
-    UIAlertView *alert;
-    switch (result) {
-         case MFMailComposeResultCancelled:
-            alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"Has cancelado el mensaje" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [alert show];
-            break;
-        case MFMailComposeResultSaved:
-            alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El mensaje ha sido guardado como borrador." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [alert show];
-            break;
-        case MFMailComposeResultSent:
-            alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El mensaje fue enviado exitosamente." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [alert show];
-            break;
-        case MFMailComposeResultFailed:
-            alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"El envio ha fallado." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [alert show];
-            break;
-        default:
-            break;
-    }
-    
-    // Close the Mail Interface
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
 
 - (IBAction)exercise:(id)sender {
     if (self.isExercising)

@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SelectFoodViewController.h"
-#import <MessageUI/MessageUI.h>
 #import <NotificationCenter/NotificationCenter.h>
 
-@interface ShowEnergyViewController : UIViewController <SelectFoodDelegate, MFMailComposeViewControllerDelegate>
+@interface ShowEnergyViewController : UIViewController <SelectFoodDelegate>
 
 @end

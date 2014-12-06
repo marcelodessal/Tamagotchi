@@ -33,7 +33,7 @@
     // Configure the view for the selected state
 }
 
--(void) fillDataWithPet:(Pet*) pet
+-(void) fillDataWithPet:(Pet*) pet 
 {
     petItem = pet;
     self.name.text = pet.petName;
