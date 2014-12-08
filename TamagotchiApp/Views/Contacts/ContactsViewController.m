@@ -66,7 +66,12 @@
 
 - (void) didSelectPhoneCall:(NSString*)phoneNumber {
     phoneNumber = [@"tel://" stringByAppendingString:phoneNumber];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]]){
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Atención" message:@"Comprate un device, con este simulador barato no podes hacer llamadas" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 #pragma mark - Email message methods
