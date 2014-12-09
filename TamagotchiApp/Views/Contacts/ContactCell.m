@@ -46,27 +46,23 @@
 
     if (contact.phones.count){
         self.lblPhone.text = contact.phones[0];
-        [self.btnPhoneCall setAlpha:1];
+        [self.btnPhoneCall setHidden:YES];
         [self.btnPhoneCall setEnabled:YES];
     } else {
         self.lblPhone.text = @"";
-        [self.btnPhoneCall setAlpha:0];
+        [self.btnPhoneCall setHidden:YES];
         [self.btnPhoneCall setEnabled:NO];
     }
 
 }
 
 - (IBAction)sendEmail:(id)sender {
-    if (self.delegate) {
-        [self.delegate didSelectEmail:self.lblEmail.text];
-    }
+    [self.delegate didSelectEmail:self.lblEmail.text];
 }
 
 - (IBAction)Call:(id)sender {
     NSLog(@"Phone call selected");
-    if (self.delegate) {
-        [self.delegate didSelectPhoneCall:self.lblPhone.text];
-    }
+    [self.delegate didSelectPhoneCall:self.lblPhone.text];
 }
 
 @end

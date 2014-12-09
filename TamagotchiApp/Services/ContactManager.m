@@ -25,6 +25,7 @@
         _sharedObject = [[self alloc] init];
     });
     
+    
     return _sharedObject;
 }
 
