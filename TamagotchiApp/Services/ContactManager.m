@@ -96,18 +96,19 @@
     for (NSInteger i = 0; i < numberOfPeople; i++) {
         ABRecordRef person = CFArrayGetValueAtIndex(allPeople, i);
         
-        NSString *firstName = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-        NSString *lastName  = (__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+        NSString *firstName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNameProperty));
+        NSString *lastName  = CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
         NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         
-        NSString *company = (__bridge NSString *)ABRecordCopyValue(person, kABPersonOrganizationProperty);
+        NSString *company = CFBridgingRelease(ABRecordCopyValue(person, kABPersonOrganizationProperty));
         
         ABMultiValueRef emailProperty = ABRecordCopyValue(person, kABPersonEmailProperty);
-        NSArray *emails = (__bridge NSArray*)ABMultiValueCopyArrayOfAllValues(emailProperty);
+        NSArray *emails = CFBridgingRelease(ABMultiValueCopyArrayOfAllValues(emailProperty));
+        CFRelease(emailProperty);
         
         ABMultiValueRef phoneNumberProperty = ABRecordCopyValue(person, kABPersonPhoneProperty);
-        NSArray *phones = (__bridge NSArray*)ABMultiValueCopyArrayOfAllValues(phoneNumberProperty);
-        
+        NSArray *phones = CFBridgingRelease(ABMultiValueCopyArrayOfAllValues(phoneNumberProperty));
+        CFRelease(phoneNumberProperty);
         
         //Load the contact dictionary with the data and add it to the contacts array
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -120,4 +121,5 @@
         [self.contacts addObject:[[Contact alloc] initWithDictionary:dict]];
     }
 }
+
 @end

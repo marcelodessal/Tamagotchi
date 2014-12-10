@@ -36,17 +36,17 @@
     
     if (contact.emails.count){
         self.lblEmail.text = contact.emails[0];
-        [self.btnEmail setAlpha:1];
+        [self.btnEmail setHidden:NO];
         [self.btnEmail setEnabled:YES];
     } else {
         self.lblEmail.text = @"";
-        [self.btnEmail setAlpha:0];
+        [self.btnEmail setHidden:YES];
         [self.btnEmail setEnabled:NO];
     }
 
     if (contact.phones.count){
         self.lblPhone.text = contact.phones[0];
-        [self.btnPhoneCall setHidden:YES];
+        [self.btnPhoneCall setHidden:NO];
         [self.btnPhoneCall setEnabled:YES];
     } else {
         self.lblPhone.text = @"";
