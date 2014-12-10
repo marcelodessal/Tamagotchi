@@ -13,6 +13,8 @@
 #import "MyPet.h"
 #import "PushNotificationManager.h"
 #import "LocationManager.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ShowEnergyViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *btnFeed;
@@ -35,6 +37,7 @@
 @property (strong, nonatomic) NSTimer *timer;
 
 @property (strong, nonatomic) LocationManager *locationManager;
+@property (strong, nonatomic) AVAudioPlayer *player;
 
 @end
 
@@ -57,6 +60,10 @@
     }
     
     [self.lblPetName setText:self.myPet.petName];
+    
+    // Set mouth position according to pet type
+    CGPoint origin = [self.myPet getMouthOriginPosition];
+    self.mouth.frame = CGRectMake(origin.x, origin.y, 50, 50);
     
     [self updateEnergyBarAnimationWithDuration:1];
     
@@ -234,6 +241,12 @@
     [self.image setAnimationRepeatCount:2];
     [self.image startAnimating];
     
+    // Play eating sound
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"Eating-Sound" ofType:@"wav"];
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
+    AudioServicesPlaySystemSound (soundID);
+    
     // update progress bar with duration equals to 2 sec (twice previous animation duration of 1 sec)
     [self updateEnergyBarAnimationWithDuration:2];
 }
@@ -252,10 +265,21 @@
     [self.image setAnimationDuration:1];
     [self.image setAnimationRepeatCount:0];
     [self.image startAnimating];
+    
+    // Play exercise sound
+    NSURL *soundFileURL = [[NSBundle mainBundle] URLForResource:@"Toke_and_Exhale" withExtension:@"wav"];
+    if (soundFileURL) {
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+        self.player.enableRate = YES;
+        self.player.rate = 2.2;
+        self.player.numberOfLoops = -1; //infinite
+    }
+    [self.player play];
 }
 
 - (void) stopExerciseAnimation {
     [self.image stopAnimating];
+    [self.player stop];
 }
 
 - (void) getExhaustAnimation {

@@ -94,6 +94,25 @@ NSString* const IMAGE_SELECTED = @"IMAGE_SELECTED";
     return ![self canExercise];
 }
 
+- (CGPoint)getMouthOriginPosition {
+    CGPoint pt;
+    switch ([self.petType intValue]) {
+        case Ciervo:
+            pt = [self canExercise]? CGPointMake(143, 274) : CGPointMake(140, 288);
+            break;
+        case Gato:
+            pt = [self canExercise]? CGPointMake(114, 274) : CGPointMake(135, 295);
+            break;
+        case Leon:
+            pt = [self canExercise]? CGPointMake(100, 288) : CGPointMake(101, 294);
+            break;
+        case Jirafa:
+            pt = [self canExercise]? CGPointMake(141, 231) : CGPointMake(140, 247);
+            break;
+    }
+    return pt;
+}
+
 - (void)postMeToServer {
     [PetRemoteService postPetWithDictionary:[self getServerJSON] success:[self getSuccessHandler] failure:[self getErrorHandler]];
 }

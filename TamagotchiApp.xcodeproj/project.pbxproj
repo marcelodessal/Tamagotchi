@@ -70,6 +70,8 @@
 		B0BE413B1A2CE1750079C2EB /* MyPet.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE413A1A2CE1750079C2EB /* MyPet.m */; };
 		B0BE413E1A2D066D0079C2EB /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BE413D1A2D066D0079C2EB /* LocationManager.m */; };
 		B0BE41401A2D074A0079C2EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BE413F1A2D074A0079C2EB /* MapKit.framework */; };
+		B0C9329E1A38E77500814B04 /* Eating-Sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0C9329C1A38E77500814B04 /* Eating-Sound.wav */; };
+		B0C9329F1A38E77500814B04 /* Toke_and_Exhale.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0C9329D1A38E77500814B04 /* Toke_and_Exhale.wav */; };
 		B0D35F661A1BD4D90059E6AC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */; };
 		B0D35F671A1BD4D90059E6AC /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */; };
 		B0D35F6B1A1BD52F0059E6AC /* SelectImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D35F691A1BD52F0059E6AC /* SelectImageViewController.m */; };
@@ -197,6 +199,8 @@
 		B0BE413C1A2D066D0079C2EB /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		B0BE413D1A2D066D0079C2EB /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		B0BE413F1A2D074A0079C2EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B0C9329C1A38E77500814B04 /* Eating-Sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Eating-Sound.wav"; sourceTree = "<group>"; };
+		B0C9329D1A38E77500814B04 /* Toke_and_Exhale.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Toke_and_Exhale.wav; sourceTree = "<group>"; };
 		B0D35F631A1BD4D90059E6AC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		B0D35F641A1BD4D90059E6AC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		B0D35F651A1BD4D90059E6AC /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0822DAB1A28D25800EFDD4E /* AudioToolbox.framework in Frameworks */,
 				B08320751A2F5F980000C18D /* CoreData.framework in Frameworks */,
 				B0BE41401A2D074A0079C2EB /* MapKit.framework in Frameworks */,
 				B0822DC01A28D2F100EFDD4E /* Bolts.framework in Frameworks */,
@@ -231,7 +236,6 @@
 				B0822DB11A28D27A00EFDD4E /* CoreLocation.framework in Frameworks */,
 				B0822DAF1A28D27000EFDD4E /* CoreGraphics.framework in Frameworks */,
 				B0822DAD1A28D26400EFDD4E /* CFNetwork.framework in Frameworks */,
-				B0822DAB1A28D25800EFDD4E /* AudioToolbox.framework in Frameworks */,
 				B0822DA91A28D24400EFDD4E /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +353,7 @@
 		B00F85F41A1BD0630005847C /* TamagotchiApp */ = {
 			isa = PBXGroup;
 			children = (
+				B0C9329B1A38E77500814B04 /* Sounds */,
 				B08320761A2F60260000C18D /* Data */,
 				B00E07861A2791220004320C /* Services */,
 				B0F823FA1A2642B6000195B2 /* Model */,
@@ -468,6 +473,15 @@
 				B088FE6F1A1E70DD00C19810 /* FoodCell.xib */,
 			);
 			name = SelectFood;
+			sourceTree = "<group>";
+		};
+		B0C9329B1A38E77500814B04 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B0C9329C1A38E77500814B04 /* Eating-Sound.wav */,
+				B0C9329D1A38E77500814B04 /* Toke_and_Exhale.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		B0D35F611A1BD4D90059E6AC /* SelectImage */ = {
@@ -627,6 +641,7 @@
 				B04D72621A3246B7002473FA /* ContactsViewController.xib in Resources */,
 				B00F86031A1BD0630005847C /* Images.xcassets in Resources */,
 				B018C3791A292618003ADA05 /* RankingCell.xib in Resources */,
+				B0C9329F1A38E77500814B04 /* Toke_and_Exhale.wav in Resources */,
 				B088FE5D1A1E46A800C19810 /* SelectFoodViewController.xib in Resources */,
 				B018C36F1A291A58003ADA05 /* RankingViewController.xib in Resources */,
 				B0D35F6C1A1BD52F0059E6AC /* SelectImageViewController.xib in Resources */,
@@ -635,6 +650,7 @@
 				B088FE711A1E70DD00C19810 /* FoodCell.xib in Resources */,
 				B0880BC01A2DDC3A000EB2EB /* MapViewController.xib in Resources */,
 				B0EDF0FC1A30FE6200C44470 /* PetDetailViewController.xib in Resources */,
+				B0C9329E1A38E77500814B04 /* Eating-Sound.wav in Resources */,
 				B0D3607F1A1BE2C70059E6AC /* ShowEnergyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

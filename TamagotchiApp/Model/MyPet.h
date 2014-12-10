@@ -49,5 +49,6 @@ extern NSString* const IMAGE_SELECTED;
 - (void) setLocation:(CLLocation*) location;
 - (void) postMeToServer;
 - (void) saveMeToDisk;
+- (CGPoint) getMouthOriginPosition;
 
 @end
