@@ -132,6 +132,7 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="6Xo-qI-U8h" appends="YES" id="O1T-yE-SZo"/>
+                <outletCollection property="gestureRecognizers" destination="izx-Ii-eZI" appends="YES" id="F0p-af-ZcQ"/>
             </connections>
             <point key="canvasLocation" x="140" y="155"/>
         </view>
@@ -140,6 +141,11 @@
                 <action selector="handleTap:" destination="-1" id="24X-bp-nPp"/>
             </connections>
         </tapGestureRecognizer>
+        <swipeGestureRecognizer direction="left" id="izx-Ii-eZI">
+            <connections>
+                <action selector="feed:" destination="-1" id="4hx-MW-M6Z"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
     <resources>
         <image name="ciervo_exhausto_4" width="319" height="373"/>

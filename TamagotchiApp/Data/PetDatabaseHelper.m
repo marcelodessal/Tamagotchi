@@ -20,7 +20,7 @@
     
     NSError *localerror;
     if (![context save:&localerror]) { //Save changes in context.
-        NSLog([NSString stringWithFormat:@"Error al guardar: %@", [localerror localizedDescription]]);
+        NSLog([NSString stringWithFormat:@"Error al guardar: %@", [localerror localizedDescription]], nil);
         [context rollback]; }
 }
 
@@ -42,7 +42,7 @@
     
     NSError *saveError = nil;
     if (![context save:&saveError]) { //Guardamos los cambios en el contexto.
-        NSLog([NSString stringWithFormat:@"Error al borrar: %@", [saveError localizedDescription]]);
+        NSLog([NSString stringWithFormat:@"Error al borrar: %@", [saveError localizedDescription]], nil);
         [context rollback];
     }
 }

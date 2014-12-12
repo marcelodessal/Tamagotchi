@@ -16,6 +16,8 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
+float const exerciseDuration = 1.0f;
+
 @interface ShowEnergyViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *btnFeed;
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
@@ -78,10 +80,16 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
+    [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(petGetExhausted) name:GET_EXHAUSTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(petGetRecovered) name:GET_RECOVERED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(petGetPromoted) name:GET_PROMOTED object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // Set this view controller to become first responder to motion events
+    [self becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -94,7 +102,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:GET_RECOVERED object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:GET_PROMOTED object:nil];
     
-    [super viewWillDisappear:YES];
+    [self resignFirstResponder];
+    
+    [super viewWillDisappear:animated];
 
 }
 
@@ -132,15 +142,15 @@
     self.isExercising = YES;
     [self.btnExercise setTitle:@"Parar" forState:UIControlStateNormal];
     
-    //start timer to decrease pet energy every 1 sec
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startPetExercise) userInfo:nil repeats:YES];
+    //start timer to decrease pet energy according to animation duration
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:exerciseDuration target:self selector:@selector(startPetExercise) userInfo:nil repeats:YES];
     
     [self startExerciseAnimation];
 }
 
 - (void)startPetExercise {
     [self.myPet exercise];
-    [self updateEnergyBarAnimationWithDuration:1];
+    [self updateEnergyBarAnimationWithDuration:exerciseDuration];
     }
 
 - (void)stopExercise {
@@ -191,9 +201,9 @@
     self.foodItem = foodItem;
     [self.imgFood setImage:[UIImage imageNamed:foodItem.foodImage]];
     [self.imgFood setCenter:CGPointMake(250, 430)];
+    [self.imgFood setBounds:CGRectMake(0, 0, 55, 55)];
     [self.navigationController popViewControllerAnimated:YES];
     self.isFoodAvailable = YES;
-    [self.imgFood setHidden:NO];
 }
 
 
@@ -203,9 +213,9 @@
     CGPoint location = [recognizer locationInView:self.view];
 
     if (self.isFoodAvailable) {
-        [UIView animateWithDuration:2.0f
-                              delay:0.5f
-                            options:UIViewAnimationOptionCurveEaseIn
+        [UIView animateWithDuration:1.0f
+                              delay:0.0f
+                            options:UIViewAnimationOptionCurveLinear
                          animations:^{
                              [self.imgFood setCenter:location];
                          }
@@ -213,9 +223,8 @@
                              CGPoint pt = CGPointMake(location.x - self.mouth.frame.origin.x, location.y - self.mouth.frame.origin.y);
                              BOOL isInside = [self.mouth pointInside: pt withEvent:nil];
                              if (isInside){
-                                 [self.imgFood setHidden:YES];
                                  [self.myPet eatFood:self.foodItem];
-                                 [self eatFoodAnimation];
+                                 [self eatAnimation];
                                  self.isFoodAvailable = NO;
                              }
                          }];
@@ -227,8 +236,20 @@
 
 #pragma mark - Animations methods
 
+- (void) eatAnimation {
+    //Animate food disappearing
+    CGFloat x = self.imgFood.center.x - self.imgFood.frame.size.width / 2;
+    CGFloat y = self.imgFood.center.y - self.imgFood.frame.size.height / 2;
+    [UIView animateWithDuration:1 animations:^{
+        self.imgFood.bounds = CGRectMake(x, y, 0, 0);
+    }
+     completion:^(BOOL finished) {
+         [self eatFoodAnimation];
+    }];
+}
+
 - (void) eatFoodAnimation {
-    
+    // Animate eating process
     NSArray *images = [[NSArray alloc] initWithObjects:
                        [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_1",[self.myPet getStringType]]],
                        [UIImage imageNamed:[NSString stringWithFormat:@"%@_comiendo_2",[self.myPet getStringType]]],
@@ -252,7 +273,6 @@
 }
 
 - (void) startExerciseAnimation {
-    
     NSArray *images = [[NSArray alloc] initWithObjects:
                        [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_1",[self.myPet getStringType]]],
                        [UIImage imageNamed:[NSString stringWithFormat:@"%@_ejercicio_2",[self.myPet getStringType]]],
@@ -262,7 +282,7 @@
                        nil];
     
     [self.image setAnimationImages:images];
-    [self.image setAnimationDuration:1];
+    [self.image setAnimationDuration:exerciseDuration];
     [self.image setAnimationRepeatCount:0];
     [self.image startAnimating];
     
@@ -272,6 +292,7 @@
         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
         self.player.enableRate = YES;
         self.player.rate = 2.2;
+        self.player.volume = 0.1;
         self.player.numberOfLoops = -1; //infinite
     }
     [self.player play];
@@ -304,6 +325,20 @@
     [self.lblEnergy setText:[NSString stringWithFormat:@"%i", [self.myPet.petEnergy intValue]]];
     [self.lblLevel setText:[NSString stringWithFormat:@"Nivel: %i", [self.myPet.petLevel intValue]]];
 
+}
+
+#pragma mark - Shake detection methods
+
+// View controller must become FirstResponder to respond to a shake gesture.
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+// We need to detect when a user starts and ends a shake.
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        self.isExercising ? [self stopExercise] : [self startExercise];
+    }
 }
 
 

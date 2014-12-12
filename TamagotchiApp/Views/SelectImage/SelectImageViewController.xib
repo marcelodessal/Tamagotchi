@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectImageViewController">
@@ -89,20 +88,11 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="6dC-xd-iAE" secondAttribute="trailing" constant="161" id="0XT-ae-xMB"/>
-                        <constraint firstItem="z1D-9N-suU" firstAttribute="firstBaseline" secondItem="yxT-Nf-LMd" secondAttribute="firstBaseline" id="0ni-nr-KUr"/>
-                        <constraint firstItem="47s-cN-PXb" firstAttribute="firstBaseline" secondItem="yxT-Nf-LMd" secondAttribute="firstBaseline" id="1BV-XT-9u0"/>
-                        <constraint firstItem="6dC-xd-iAE" firstAttribute="baseline" secondItem="47s-cN-PXb" secondAttribute="baseline" id="44l-9n-hid"/>
-                        <constraint firstItem="47s-cN-PXb" firstAttribute="firstBaseline" secondItem="6dC-xd-iAE" secondAttribute="firstBaseline" id="60G-sS-77a"/>
-                        <constraint firstItem="yxT-Nf-LMd" firstAttribute="firstBaseline" secondItem="6dC-xd-iAE" secondAttribute="firstBaseline" id="76a-xL-9wz"/>
                         <constraint firstItem="yxT-Nf-LMd" firstAttribute="leading" secondItem="ATT-nm-Lar" secondAttribute="leading" constant="23" id="8Uy-FT-7dw"/>
                         <constraint firstItem="47s-cN-PXb" firstAttribute="leading" secondItem="yxT-Nf-LMd" secondAttribute="trailing" id="8hF-RK-KUY"/>
-                        <constraint firstItem="yxT-Nf-LMd" firstAttribute="baseline" secondItem="z1D-9N-suU" secondAttribute="baseline" id="A8y-fJ-wac"/>
                         <constraint firstAttribute="bottom" secondItem="6dC-xd-iAE" secondAttribute="bottom" id="FLQ-9B-e6m"/>
-                        <constraint firstItem="z1D-9N-suU" firstAttribute="baseline" secondItem="6dC-xd-iAE" secondAttribute="baseline" id="Gom-8U-EPV"/>
                         <constraint firstItem="z1D-9N-suU" firstAttribute="bottom" secondItem="47s-cN-PXb" secondAttribute="bottom" id="Grt-TW-ATS"/>
                         <constraint firstItem="z1D-9N-suU" firstAttribute="leading" secondItem="47s-cN-PXb" secondAttribute="trailing" id="MAw-rf-pvV"/>
-                        <constraint firstItem="yxT-Nf-LMd" firstAttribute="baseline" secondItem="47s-cN-PXb" secondAttribute="baseline" id="O04-Fh-CTO"/>
-                        <constraint firstItem="z1D-9N-suU" firstAttribute="firstBaseline" secondItem="47s-cN-PXb" secondAttribute="firstBaseline" id="PmU-0B-cGx"/>
                         <constraint firstItem="yxT-Nf-LMd" firstAttribute="top" secondItem="47s-cN-PXb" secondAttribute="top" id="SLy-hJ-RnK"/>
                         <constraint firstItem="6dC-xd-iAE" firstAttribute="bottom" secondItem="z1D-9N-suU" secondAttribute="bottom" id="VJv-xF-FKf"/>
                         <constraint firstItem="47s-cN-PXb" firstAttribute="bottom" secondItem="yxT-Nf-LMd" secondAttribute="bottom" id="Zpi-KY-FvR"/>
@@ -111,9 +101,6 @@
                         <constraint firstItem="6dC-xd-iAE" firstAttribute="leading" secondItem="z1D-9N-suU" secondAttribute="trailing" id="dad-9j-2H6"/>
                         <constraint firstItem="z1D-9N-suU" firstAttribute="top" secondItem="6dC-xd-iAE" secondAttribute="top" id="eY9-uU-mrg"/>
                         <constraint firstItem="47s-cN-PXb" firstAttribute="centerY" secondItem="ATT-nm-Lar" secondAttribute="centerY" id="ifA-Z9-KCS"/>
-                        <constraint firstItem="47s-cN-PXb" firstAttribute="baseline" secondItem="z1D-9N-suU" secondAttribute="baseline" id="k8D-mh-YRw"/>
-                        <constraint firstItem="6dC-xd-iAE" firstAttribute="firstBaseline" secondItem="z1D-9N-suU" secondAttribute="firstBaseline" id="rnV-k2-Y6E"/>
-                        <constraint firstItem="6dC-xd-iAE" firstAttribute="baseline" secondItem="yxT-Nf-LMd" secondAttribute="baseline" id="xe3-3e-5zW"/>
                     </constraints>
                 </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fup-Na-XMd">

@@ -49,13 +49,7 @@
 - (Failure) getErrorHandler {
     
     return ^(NSURLSessionDataTask *task, NSError *error) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Error: %@", error];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                            message:errorMessage
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
+        NSLog([NSString stringWithFormat:@"Error: %@", error], nil);
     };
 }
 
